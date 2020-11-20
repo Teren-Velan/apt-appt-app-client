@@ -54,11 +54,6 @@ function logout(){
 </Navbar.Collapse>
 </Navbar>
 
-
-
-
-
-
     {/* switch routes below */}
     <Switch>
     <Route path="/register" exact>
