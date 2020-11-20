@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
 import Registration from "./components/auth/Registration"
