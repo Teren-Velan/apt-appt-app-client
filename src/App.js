@@ -6,19 +6,53 @@ import Axios from "axios"
 import Registration from "./components/auth/Registration"
 import Login from "./components/auth/Login"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
+import {Navbar,Nav,FaHome} from "react-bootstrap"
 
 function App() {
 //states
 const [userInfo, setUserInfo] = useState({})
 const [isAuth, setIsAuth] = useState(false);
+let history = useHistory()
 
+function logout(){
+  localStorage.removeItem("token")
+  setUserInfo({})
+  setIsAuth(false)
+  history.push("/profile")
+}
 
   return (
   <Router>
 
-    <div className="App">
-      
-    </div>
+<Navbar bg="light" expand="lg">
+
+<Navbar.Brand  href="#home">AAA
+</Navbar.Brand>
+
+<Navbar.Toggle aria-controls="basic-navbar-nav"/>
+<Navbar.Collapse id="basic-navbar-nav">
+  <Nav className="mr-auto">
+    
+
+  </Nav>
+  <Nav>{isAuth ?
+    <>
+    <Nav.Link href={`/profile/${userInfo.username}`}> <h2>{userInfo.username}</h2></Nav.Link> 
+    <Nav.Link className="mt-2 mr-auto" href="/">
+      something
+    </Nav.Link>
+
+    
+    <Nav.Link className="mt-2" color="black" href="/" onClick={logout}> something
+      </Nav.Link></> : <>
+    <Nav.Link href="/login"><h4>LOGIN</h4></Nav.Link>
+    <Nav.Link href="/register"><h4>REGISTER</h4></Nav.Link>
+    </>
+  }
+  </Nav>
+
+</Navbar.Collapse>
+</Navbar>
 
 
 
