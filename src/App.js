@@ -5,8 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
 import Registration from "./components/auth/Registration"
 import Login from "./components/auth/Login"
+import Dashboard from "./components/pages/dashboard/Dashboard"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar,Nav,FaHome} from "react-bootstrap"
+import Event from "./components/pages/dashboard/Event"
 
 function App() {
 //states
@@ -61,6 +63,15 @@ function logout(){
     </Route>
     <Route path="/login">
       <Login setUserInfo = {setUserInfo} setIsAuth ={setIsAuth}/>
+    </Route>
+
+    <Route path="/dashboard/:username/event">
+      <Dashboard/>
+    </Route>
+
+    
+    <Route path="/event/:username/:eventid">
+      <Event/>
     </Route>
 
 
