@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { Container, Card, Button } from "react-bootstrap";
-
-import DatePick2 from "../../ui/DatePick2";
+// import DatePick2 from "../../ui/DatePick2";
+import Calender2 from "../../ui/Calender2";
 
 function Events() {
   let { username } = useParams();
@@ -76,7 +76,7 @@ function Events() {
   return (
     <div>
       {render}
-      <DatePick2 />
+      <Calender2 />
     </div>
   );
 }

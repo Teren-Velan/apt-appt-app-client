@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Button } from "react-bootstrap";
 
 function Dashboard() {
   let { username } = useParams();
   const [eventData, setEventData] = useState({});
-  const [eventStatus, setEventStatus] = useState("");
+  const [newEvent, setNewEvent] = useState({});
 
   useEffect(() => {
     getEventData();
   }, []);
-
-  function statusHandler() {
-    setEventStatus();
-  }
 
   async function getEventData() {
     try {
@@ -26,6 +22,24 @@ function Dashboard() {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  let component = [
+    <Card style={{ width: "18rem" }}>
+      <Card.Title>new event</Card.Title>
+      <Card.Subtitle className="mb-2 text-muted">participants</Card.Subtitle>
+    </Card>,
+  ];
+
+  async function addNewEvent() {
+    try {
+      setNewEvent(component);
+      let resData = await Axios.post(
+        `http://localhost:80/event/${username}/addevent`,
+        newEvent
+      );
+      getEventData();
+    } catch (error) {}
   }
 
   let render = "";
@@ -48,9 +62,12 @@ function Dashboard() {
               <Card.Link href="#">Another Link</Card.Link>
             </Card.Body>
             <Card.Text>Status of event</Card.Text>
-            <Card.Text>{eventStatus}</Card.Text>
+
+            <Button>See more</Button>
           </Card>
         ))}
+
+        <Button onClick={addNewEvent}>Create New Event</Button>
       </Container>,
     ];
   }
@@ -59,3 +76,9 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+// redo dahsboard break it down into components, refer to image taken
+
+//make a state called events setevents then pass populate it with the data given from the get request.
+
+// for populating the event, do a post request to update the datatbase with the new event then, call your get request again to make sure the whole page reloads with the new info.
