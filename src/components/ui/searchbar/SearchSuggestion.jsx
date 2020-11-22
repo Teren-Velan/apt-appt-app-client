@@ -49,7 +49,7 @@ function SearchSuggestion({user, searchField, setShowSuggestions}) {
           <div className="suggestion-text">
             <span dangerouslySetInnerHTML={{__html: username}}></span>
           </div>
-          <button onClick={()=>addFriend(id)}>add</button>
+          <div onClick={()=>addFriend(id)}>add friend</div>
         </div>
       </Link>
     </Route>

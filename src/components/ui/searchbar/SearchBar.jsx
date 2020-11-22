@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import SearchSuggestions from "./SearchSuggestions";
 import {debounce} from 'throttle-debounce'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaSearch } from 'react-icons/fa'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FaSearch} from 'react-icons/fa'
 import OutsideAlerter from "./OutsideAlerter";
 import {Redirect} from "react-router-dom";
 import SearchSuggestion from "./SearchSuggestion";
@@ -11,8 +11,8 @@ function SearchBar() {
 
   const [searchField, setSearchField] = useState("")
   const [searchingSpinner, setSearchingSpinner] = useState(false)
-  const [showSuggestions, setShowSuggestions] = useState(true)
-  const debouncedSetField = debounce(1000, setSearchField)
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const debouncedSetField = debounce(500, setSearchField)
   let debounced
   const latestSearchField = useRef("")
 
@@ -73,13 +73,13 @@ function SearchBar() {
   return (
     <OutsideAlerter clickedOut={clickedOutOfSearchBar}>
       <div className="searchBar">
-        <input onChange={searchFieldChangeHandler} onClick={clickedOnSearchBar} onKeyDown={searchFieldKeyHandler}
-               type="text" size="sm" placeholder="Search for users"/>
         {searchingSpinner ? <div className="small-loader"></div> :
           <FaSearch onClick={searchButtonClick} className="search-icon" icon={"search"}/>}
+        <input onChange={searchFieldChangeHandler} onClick={clickedOnSearchBar} onKeyDown={searchFieldKeyHandler}
+               type="text" placeholder="Search for events or users..."/>
 
 
-        {searchField === "" || <SearchSuggestions searchField={searchField} showSuggestions={showSuggestions}
+        {searchField === "" || showSuggestions === false || <SearchSuggestions searchField={searchField} showSuggestions={showSuggestions}
                                                   setSearchingSpinner={setSearchingSpinner}
                                                   setShowSuggestions={setShowSuggestions}/>}
       </div>

@@ -31,7 +31,7 @@ function Topbar({userInfo}) {
   }
 
   function upcomingDropdown() {
-    console.log("profile dropdown")
+    console.log("upcoming dropdown")
   }
 
   return (
@@ -46,7 +46,7 @@ function Topbar({userInfo}) {
 
           <div className="display-circle" style={{backgroundColor: "#03b687"}}>5</div>
           <div className="topbar-element-texts">
-            <p>upcoming event.</p>
+            <p>upcoming events.</p>
             <h4>event name</h4>
           </div>
           <div className="dropdown-div" onClick={upcomingDropdown}>
