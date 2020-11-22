@@ -3,6 +3,8 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { Container, Card, Button } from "react-bootstrap";
 
+import DatePick2 from "../../ui/DatePick2";
+
 function Events() {
   let { username } = useParams();
   const [eventData, setEventData] = useState({});
@@ -71,7 +73,12 @@ function Events() {
     ];
   }
 
-  return <div>{render}</div>;
+  return (
+    <div>
+      {render}
+      <DatePick2 />
+    </div>
+  );
 }
 
 export default Events;
