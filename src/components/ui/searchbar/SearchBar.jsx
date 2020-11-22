@@ -21,6 +21,7 @@ function SearchBar() {
       // console.log("search field is empty")
       setSearchField("")
       setShowSuggestions(false)
+      setSearchingSpinner(false)
     } else {
       // console.log(searchField)
     }

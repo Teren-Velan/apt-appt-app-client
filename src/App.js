@@ -8,7 +8,7 @@ import Login from "./components/auth/Login"
 import Dashboard from "./components/pages/dashboard/Dashboard"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
-import { tokenCheck } from "./functions/func";
+import {tokenCheck} from "./functions/func";
 import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/dashboard/Event"
 
@@ -20,19 +20,17 @@ function App() {
   let history = useHistory()
 
 
-  useEffect(()=>{
+  useEffect(() => {
     tokenCheck(setIsAuth, setUserInfo)
-  },[])
+  }, [])
 
 
   function logout() {
     localStorage.removeItem("token")
     setUserInfo({})
     setIsAuth(false)
-    history.push("/profile")
+    history.push("/login")
   }
-
-
 
 
   let welcomePage = ""
@@ -71,7 +69,6 @@ function App() {
               </Nav.Link>
 
 
-
               <Nav.Link className="mt-2" color="black" href="/" onClick={logout}> something
               </Nav.Link></> : <>
               <Nav.Link href="/login"><h4>LOGIN</h4></Nav.Link>
@@ -83,16 +80,16 @@ function App() {
         </Navbar.Collapse>
       </Navbar>
 
-
+      <div className="main-div">
       {/* switch routes below */}
       <Switch>
         <Route path="/" exact>
-          {welcomePage}
+          <Topbar userInfo={userInfo}/>
+          {/*{welcomePage}*/}
         </Route>
         <Route path="/topbar">
           <Topbar/>
         </Route>
-
 
         <Route path="/register" exact>
           <Registration/>
@@ -101,18 +98,17 @@ function App() {
           <Login setUserInfo={setUserInfo} setIsAuth={setIsAuth}/>
         </Route>
 
+        <Route path="/dashboard/:username/event">
+          <Dashboard/>
+        </Route>
 
-    <Route path="/dashboard/:username/event">
-      <Dashboard/>
-    </Route>
-
-    
-    <Route path="/event/:username/:eventid">
-      <Event/>
-    </Route>
-
+        <Route path="/event/:username/:eventid">
+          <Event/>
+        </Route>
 
       </Switch>
+      </div>
+
     </Router>
 
   );

@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
+import SearchBar from '../searchbar/SearchBar'
 import Pusher from 'pusher-js'
+import {FaUser, FaAngleDown} from 'react-icons/fa'
 import Axios from "axios";
-import SearchBar from "../searchbar/SearchBar";
-import OutsideAlerter from "../searchbar/OutsideAlerter";
+
 require('dotenv').config()
 
 
-
-function Topbar() {
+function Topbar({userInfo}) {
 
 
   // on load
@@ -26,37 +26,47 @@ function Topbar() {
   }, [])
 
 
-
-
-
-  async function sendTrigger() {
-    try {
-      await Axios.post('http://localhost:80/pusher', {
-        message: 'hello'
-      })
-    } catch (err) {
-      console.log(err)
-    }
+  function profileDropdown() {
+    console.log("profile dropdown")
   }
 
-
-
-
+  function upcomingDropdown() {
+    console.log("profile dropdown")
+  }
 
   return (
     <div className="topbar">
-
-      <div>
-          <SearchBar/>
-
+      <div className="topbar-left">
+        <SearchBar/>
       </div>
 
-      <div>
-        Profile
-      </div>
+      <div className="topbar-right">
 
-      <input></input>
-      <button onClick={sendTrigger}>trigger</button>
+        <div className="topbar-element-group">
+
+          <div className="display-circle" style={{backgroundColor: "#03b687"}}>5</div>
+          <div className="topbar-element-texts">
+            <p>upcoming event.</p>
+            <h4>event name</h4>
+          </div>
+          <div className="dropdown-div" onClick={upcomingDropdown}>
+            <FaAngleDown className="dropdown-icon"/>
+          </div>
+        </div>
+
+
+
+        <div className="topbar-element-group">
+          <FaUser className="display-circle" />
+          <div className="topbar-element-texts">
+            <p>user.</p>
+            <h4>{userInfo.username}</h4>
+          </div>
+          <div className="dropdown-div" onClick={profileDropdown}>
+            <FaAngleDown className="dropdown-icon"/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
