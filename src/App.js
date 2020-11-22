@@ -5,10 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
 import Registration from "./components/auth/Registration"
 import Login from "./components/auth/Login"
+import Dashboard from "./components/pages/dashboard/Dashboard"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import { tokenCheck } from "./functions/func";
 import Topbar from "./components/ui/topbar/Topbar";
+import Event from "./components/pages/dashboard/Event"
+
 
 function App() {
 //states
@@ -68,6 +71,7 @@ function App() {
               </Nav.Link>
 
 
+
               <Nav.Link className="mt-2" color="black" href="/" onClick={logout}> something
               </Nav.Link></> : <>
               <Nav.Link href="/login"><h4>LOGIN</h4></Nav.Link>
@@ -96,6 +100,16 @@ function App() {
         <Route path="/login">
           <Login setUserInfo={setUserInfo} setIsAuth={setIsAuth}/>
         </Route>
+
+
+    <Route path="/dashboard/:username/event">
+      <Dashboard/>
+    </Route>
+
+    
+    <Route path="/event/:username/:eventid">
+      <Event/>
+    </Route>
 
 
       </Switch>
