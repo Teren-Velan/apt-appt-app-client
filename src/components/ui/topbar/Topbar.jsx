@@ -1,13 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import SearchBar from '../searchbar/SearchBar'
 import Pusher from 'pusher-js'
+import {FaUser, FaAngleDown} from 'react-icons/fa'
 import Axios from "axios";
-import SearchBar from "../searchbar/SearchBar";
 import OutsideAlerter from "../searchbar/OutsideAlerter";
+import DropdownMenu from "../dropdown/DropdownMenu";
+
 require('dotenv').config()
 
 
+function Topbar({userInfo, logout}) {
 
-function Topbar() {
+
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false)
+  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false)
 
 
   // on load
@@ -21,42 +27,65 @@ function Topbar() {
     })
     return () => {
       channel.unbind()
-
     }
   }, [])
 
 
+  function profileDropdown() {
+    setShowProfileDropdown(!showProfileDropdown)
+  }
 
-
-
-  async function sendTrigger() {
-    try {
-      await Axios.post('http://localhost:80/pusher', {
-        message: 'hello'
-      })
-    } catch (err) {
-      console.log(err)
-    }
+  function profileDropdownOut() {
+    setShowProfileDropdown(false)
   }
 
 
+  function upcomingDropdown() {
+    setShowUpcomingEvents(!showUpcomingEvents)
+  }
 
+  function upcomingDropdownOut() {
+    setShowUpcomingEvents(false)
+  }
 
 
   return (
     <div className="topbar">
-
-      <div>
-          <SearchBar/>
-
+      <div className="topbar-left">
+        <SearchBar/>
       </div>
 
-      <div>
-        Profile
-      </div>
+      <div className="topbar-right">
+        <div className="topbar-element-group">
+          <div className="display-circle" style={{backgroundColor: "#03b687"}}>5</div>
+          <div className="topbar-element-texts">
+            <p>upcoming events.</p>
+            <h4>event name</h4>
+          </div>
+        <OutsideAlerter clickedOut={upcomingDropdownOut}>
+          <div className="dropdown-icon-div" onClick={upcomingDropdown}>
+            <FaAngleDown className="dropdown-icon"/>
+          </div>
+          { showUpcomingEvents && <DropdownMenu type={"upcomingEvents"}/>}
+        </OutsideAlerter>
+        </div>
 
-      <input></input>
-      <button onClick={sendTrigger}>trigger</button>
+
+        <div className="topbar-element-group">
+          <FaUser className="display-circle"/>
+          <div className="topbar-element-texts">
+            <p>user.</p>
+            <h4>{userInfo.username}</h4>
+          </div>
+          <OutsideAlerter clickedOut={profileDropdownOut}>
+            <div className="dropdown-icon-div" onClick={profileDropdown}>
+              <FaAngleDown className="dropdown-icon"/>
+            </div>
+            {showProfileDropdown && <DropdownMenu logout={logout} type={"profile"} key={"profileDropdown"}/>}
+          </OutsideAlerter>
+
+        </div>
+      </div>
     </div>
   );
 }

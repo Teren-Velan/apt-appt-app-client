@@ -49,7 +49,6 @@ function SearchSuggestions({searchField, showSuggestions, setSearchingSpinner, s
         return <SearchSuggestion user={user} key={user._id} setShowSuggestions={setShowSuggestions} searchField={searchField}/>
       })
     }
-
   }
 
 

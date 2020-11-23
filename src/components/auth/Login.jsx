@@ -29,7 +29,9 @@ function Login({ setUserInfo, setIsAuth }) {
       setUserInfo(decoded_user.user);
       console.log("decoded: ", decoded_user);
       // console.log(user);
+
       history.push(`/dashboard/${decoded_user.user.username}/event`);
+
     } catch (err) {
       console.log(err);
     }

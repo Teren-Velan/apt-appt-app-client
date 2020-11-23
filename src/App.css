@@ -2,130 +2,141 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.searchBar {
+.topbar {
   display: flex;
-  margin-right: 70px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f6f6f6;
+  margin-top: 15px;
+  padding: 0 20px;
+  border-radius: 15px;
+  width: 70%;
+  height: 70px;
+}
+.topbar .topbar-left {
+  display: flex;
+}
+.topbar .topbar-left .searchBar {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   z-index: 5;
-  width: 300px;
 }
-.searchBar input {
-  width: 300px;
+.topbar .topbar-left .searchBar input {
+  width: 400px;
   height: 30px;
-  font-family: Helvetica, sans-serif;
-  font-size: 13px;
-  color: #2b2b2b;
-  background-color: whitesmoke;
-  border-radius: 3px;
-  border: #b1b1b1 1px solid;
-  padding: 3px 10px;
-}
-.searchBar .search-icon {
-  color: #343434;
-  position: absolute;
+  font-family: "Heebo", sans-serif;
   font-size: 15px;
-  top: 3px;
-  right: 10px;
-  margin: 4px 2px;
+  color: #7a7a7a;
+  background-color: #f6f6f6;
+  border: none;
+  margin-left: 10px;
+  padding: 0 10px;
+}
+.topbar .topbar-left .searchBar input:focus {
+  outline: none;
+}
+.topbar .topbar-left .searchBar input::placeholder {
+  color: #a4a4a4;
+}
+.topbar .topbar-left .searchBar .search-icon {
+  color: #8d8d8d;
+  font-size: 20px;
   cursor: pointer;
 }
-.searchBar .small-loader {
-  position: absolute;
-  top: 6px;
-  right: 10px;
+.topbar .topbar-left .searchBar .small-loader {
   margin: auto;
   border: 3px solid #f3f3f3;
   border-radius: 50%;
   border-top: 3px solid #343434;
-  width: 18px;
-  height: 18px;
+  width: 25px;
+  height: 25px;
   -webkit-animation: spin 0.5s linear infinite;
   /* Safari */
   animation: spin 0.5s linear infinite;
 }
-.searchBar .searchSuggestions {
+.topbar .topbar-left .searchBar .searchSuggestions {
   position: absolute;
-  top: 30px;
-  border-radius: 10px;
+  top: 50px;
+  border-radius: 20px;
 }
-.searchBar .searchSuggestions .suggestion-card {
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card {
   display: flex;
   flex-direction: row;
-  border-bottom: solid 1px #dddddd;
-  border-radius: 1px;
-  background-color: whitesmoke;
-  width: 300px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fcfcfc;
+  width: 400px;
   height: 45px;
-  padding: 5px 13px;
+  margin-top: 10px;
+  padding: 0 0 0 13px;
   animation-duration: 1s;
   animation-name: slidein;
+  box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5), 1px 1px 20px 2px rgba(191, 191, 191, 0.3);
+  cursor: pointer;
 }
-.searchBar .searchSuggestions .suggestion-card:hover {
-  background-color: #e5e5e5;
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card:hover {
+  text-decoration: none;
 }
-.searchBar .searchSuggestions .suggestion-card img {
-  height: 33px;
-  margin: auto;
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card:link {
+  text-decoration: none;
 }
-.searchBar .searchSuggestions .suggestion-card .suggestion-text {
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .add-friend-button {
+  width: 100px;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #efefef;
+}
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .add-friend-button p {
+  font-family: "Heebo", sans-serif;
+  font-size: 12px;
+  margin: 0;
+}
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .add-friend-button:hover {
+  cursor: pointer;
+  background-color: #e2e2e2;
+}
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text {
   display: flex;
   flex-direction: column;
-  font-family: "Lora", serif;
-  font-weight: 500;
-  font-size: 11px;
-  margin: auto;
+  font-family: "Heebo", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  margin: 0 10px;
   width: 80%;
   z-index: 6;
 }
-.searchBar .searchSuggestions .suggestion-card .suggestion-text:hover {
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text:hover {
   text-decoration: none;
 }
-.searchBar .searchSuggestions .suggestion-card .suggestion-text span {
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
 }
-.searchBar .searchSuggestions .suggestion-card .suggestion-text span:first-of-type {
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text span:first-of-type {
   color: #2b2b2b;
 }
-.searchBar .searchSuggestions .suggestion-card .suggestion-text span:nth-of-type(2) {
+.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text span:nth-of-type(2) {
   color: #606060;
 }
-.searchBar .searchSuggestions .see-more {
+.topbar .topbar-left .searchBar .searchSuggestions .see-more {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -133,7 +144,197 @@
   color: #5b5b5b;
   border-radius: 0 0 5px 5px;
 }
+.topbar .topbar-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topbar .topbar-right .topbar-element-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+.topbar .topbar-right .topbar-element-group:before {
+  content: "";
+  background-image: linear-gradient(rgba(210, 210, 210, 0.1), rgba(210, 210, 210, 0.7), rgba(210, 210, 210, 0.1));
+  height: 35px;
+  width: 1px;
+  margin-right: 7px;
+}
+.topbar .topbar-right .topbar-element-group .display-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  margin: 0 10px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #dedede;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px #ffffff, 1px 1px 2px 0 rgba(186, 186, 186, 0.2), 1px 1px 15px 2px rgba(140, 140, 140, 0.2);
+  font-family: "Heebo", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+.topbar .topbar-right .topbar-element-group .topbar-element-texts {
+  display: flex;
+  flex-direction: column;
+}
+.topbar .topbar-right .topbar-element-group .topbar-element-texts p {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0;
+  color: #b1b1b1;
+}
+.topbar .topbar-right .topbar-element-group .topbar-element-texts h4 {
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #777777;
+}
+.topbar .topbar-right .topbar-element-group .dropdown-icon-div {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.topbar .topbar-right .topbar-element-group .dropdown-icon-div .dropdown-icon {
+  font-size: 15px;
+  color: #606060;
+}
+.topbar .topbar-right .topbar-element-group .arrow-div {
+  position: absolute;
+  top: 55px;
+  right: 3px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 10px solid #001946;
+}
+.topbar .topbar-right .topbar-element-group .dropdown-div {
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  top: 60px;
+  right: -10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 2px 0 rgba(31, 31, 31, 0.5), 1px 1px 15px 2px rgba(140, 140, 140, 0.3);
+}
+.topbar .topbar-right .topbar-element-group .dropdown-div .dropdown-card {
+  border-bottom: rgba(165, 165, 165, 0.2) solid 1px;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  width: 125px;
+  height: 45px;
+  background-color: #001946;
+  color: white;
+  font-family: "Cabin", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+.topbar .topbar-right .topbar-element-group .dropdown-div .dropdown-card:last-child {
+  border-bottom: none;
+}
+.topbar .topbar-right .topbar-element-group .dropdown-div .dropdown-card:hover {
+  background-color: #001f5a;
+}
 
+.friends-list-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  width: 250px;
+  height: 500px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+}
+.friends-list-div h3 {
+  margin-top: 10px;
+  font-family: "Cabin", sans-serif;
+  font-size: 20px;
+}
+.friends-list-div .friend-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 20px;
+  border-bottom: #b0b0b0 solid 1px;
+}
+.friends-list-div .friend-card p {
+  font-family: "Heebo", sans-serif;
+}
+.friends-list-div .friend-card button {
+  height: 30px;
+  border: #2b2b2b 1px solid;
+}
+
+.chatbox-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 100px;
+  width: 250px;
+  height: 500px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.chatbox-div h3 {
+  margin-top: 10px;
+  font-family: "Cabin", sans-serif;
+  font-size: 20px;
+}
+.chatbox-div .messages-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div {
+  overflow-x: hidden;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div .message-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div .message-card.peer {
+  align-items: flex-start;
+  padding-left: 15px;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div .message-card.user {
+  align-items: flex-end;
+  padding-right: 15px;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div .message-card .message-bubble {
+  background-color: #acacac;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div .message-card h6 {
+  font-family: "Cabin", sans-serif;
+  font-size: 12px;
+  margin: 0;
+}
+.chatbox-div .messages-scroll-wrapper .messages-div .message-card p {
+  font-family: "Heebo", sans-serif;
+  font-size: 15px;
+  margin: 0;
+}
+.chatbox-div .chat-bottom-div {
+  padding-bottom: 10px;
+}
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
