@@ -22,7 +22,12 @@ function Dashboard() {
 
   async function getEventData() {
     try {
-      let resData = await Axios.get(`http://localhost:80/dashboard/event`);
+      let token = localStorage.token;
+      let resData = await Axios.get(`http://localhost:80/dashboard/event`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log("user: ", resData.data);
       setEventData(resData.data.user.events);
     } catch (err) {
@@ -30,16 +35,18 @@ function Dashboard() {
     }
   }
 
-  // async function addNewEvent() {
-  //   try {
-  //     let res = await Axios.post(`http://event/${username}/addevent`);
-  //     getEventData();
-  //   } catch (error) {}
-  // }
+  async function addNewEvent() {
+    try {
+      let res = await Axios.post(`http://event/${username}/addevent`);
+      getEventData();
+    } catch (error) {}
+  }
 
   let render = "";
   if (Object.keys(eventData).length !== 0) {
-    render = [<EventsDisplay eventData={eventData} />];
+    render = [
+      <EventsDisplay eventData={eventData} setEventData={setEventData} />,
+    ];
   }
 
   return (

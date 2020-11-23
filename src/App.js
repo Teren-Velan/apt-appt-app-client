@@ -109,8 +109,8 @@ function App() {
     </Route>
 
     
-    <Route path="/event/:username/:eventid">
-      <Event/>
+    <Route path="/event/:eventid">
+      <Event />
     </Route>
 
 
