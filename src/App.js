@@ -32,7 +32,6 @@ function App() {
     localStorage.removeItem("token")
     setUserInfo({})
     setIsAuth(false)
-    history.push("/login")
   }
 
 
