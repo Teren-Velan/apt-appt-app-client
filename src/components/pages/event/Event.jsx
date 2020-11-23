@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
-import { Container, Card, Button } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Button,
+  Dropdown,
+  DropdownButton,
+  Form,
+} from "react-bootstrap";
 // import DatePick2 from "../../ui/DatePick2";
-import Calender2 from "../../ui/Calender2";
 
 function Events() {
   let { username } = useParams();
@@ -52,33 +58,45 @@ function Events() {
               laboriosam voluptates minima aliquid. Ullam neque at autem
               perspiciatis eos! Quisquam!
             </Card.Text>
-            <Card.Text>Status of event</Card.Text>
 
-            {eventData.participants.map((post) => (
-              <li>{post}</li>
-            ))}
+            <select id="cars" name="Status">
+              <option value="status">Status</option>
+              <option value="pending">Pending</option>
+              <option value="over">Over</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
 
-            <Button onClick={clickHandler} name="pending" variant="primary">
-              pending
-            </Button>
-            <Button onClick={clickHandler} name="confirm" variant="info">
-              confirm
-            </Button>
-            <Button onClick={clickHandler} name="over" variant="danger">
-              over
-            </Button>
+            <Card.Text>
+              Current Participants
+              {eventData.participants.map((post) => (
+                <li>{post}</li>
+              ))}
+            </Card.Text>
+
+            <Card.Text>For Host</Card.Text>
+
+            <div>
+              <p>Start dates</p>
+              <input type="date" />
+              <p>End Date</p>
+              <input type="date" />
+            </div>
+
+            <div>
+              <p>For Participants</p>
+              {eventData.availableDates.map((ad) => (
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" label={`${ad}`} />
+                </Form.Group>
+              ))}
+            </div>
           </Card.Body>
         </Card>
       </Container>,
     ];
   }
 
-  return (
-    <div>
-      {render}
-      <Calender2 />
-    </div>
-  );
+  return <div>{render}</div>;
 }
 
 export default Events;

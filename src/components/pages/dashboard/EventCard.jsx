@@ -1,25 +1,26 @@
 import React from "react";
+import { Container, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-function EventCard() {
+function EventCard({ eventData }) {
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "70rem", height: "10rem" }}>
         <Card.Body>
-          <Card.Title>{event.event_name}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            participants
-          </Card.Subtitle>
+          <Card.Title>{eventData.event_name}</Card.Title>
           <Card.Text>
-            {event.participants.map((post) => (
-              <li>{post}</li>
-            ))}
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit autem
+            ab excepturi? Placeat eos adipisci omnis voluptates aspernatur
+            suscipit facere. Itaque dolorum quibusdam quae modi tenetur eveniet
+            vel dolor recusandae.
           </Card.Text>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
         </Card.Body>
-        <Card.Text>Status of event</Card.Text>
-
-        <Button>See more</Button>
+        <Link
+          to="/event/nerolow/5fba071fbf8b9a45dee2ef40"
+          className="btn btn-primary"
+        >
+          See More
+        </Link>
       </Card>
     </div>
   );

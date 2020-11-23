@@ -1,9 +1,16 @@
 import React from "react";
+import { Container } from "react-bootstrap";
+import EventCard from "../dashboard/EventCard";
 
-function Events() {
-  return;
-  <div></div>;
-  // do a loop of the events state and use the event cards to display each event
+function EventsDisplay({ eventData }) {
+  console.log("my eventdisplay", eventData);
+
+  let render = "";
+  if (eventData !== undefined) {
+    render = eventData.map((event) => <EventCard eventData={event} />);
+  }
+
+  return <Container>{render}</Container>;
 }
 
-export default Events;
+export default EventsDisplay;
