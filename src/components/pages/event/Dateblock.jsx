@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import Axios from "axios";
 
-function DateBlock({ eventData, setEventData }) {
+function Dateblock({ eventData, setEventData }) {
   console.log(eventData);
 
   const [blockDates, setBlockDates] = useState([]);
@@ -78,4 +78,4 @@ function DateBlock({ eventData, setEventData }) {
   );
 }
 
-export default DateBlock;
+export default Dateblock;
