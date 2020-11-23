@@ -10,7 +10,7 @@ import DateBlock from "./DateBlock";
 import DateRange from "./DateRange";
 import DatePicker from "./DateRange";
 
-function Events() {
+function Event() {
   let { eventid } = useParams();
   const [eventData, setEventData] = useState({});
 
@@ -60,6 +60,6 @@ function Events() {
   return <div>{render}</div>;
 }
 
-export default Events;
+export default Event;
 
 // name/ description of event, host, status(over,pending conf), range of dates, participants, dateblocks of participants
