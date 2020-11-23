@@ -1,53 +1,53 @@
-import React, {useEffect} from 'react';
-import {Link, NavLink, Route} from "react-router-dom";
-import Axios from 'axios'
+import React, { useEffect } from "react";
+import { Link, NavLink, Route } from "react-router-dom";
+import Axios from "axios";
 
+function SearchSuggestion({ user, searchField, setShowSuggestions }) {
+  useEffect(() => {});
 
-function SearchSuggestion({user, searchField, setShowSuggestions}) {
+  async function addFriend() {
+    //pushing to backend to meet the format
+    let userInfo = {
+      username: user.username,
+    };
+    let token = localStorage.token;
 
-
-  useEffect(() => {
-
-  })
-
-  async function addFriend(id){
     try {
       // **** hardcoded
-      await Axios.post('http://localhost:80/jonaswong/')
+      await Axios.post("http://localhost:80/dashboard/addfriend", userInfo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
-  const searchFieldArr = searchField.split(" ")
-  let id = user._id
-  let username = user.username
-
+  const searchFieldArr = searchField.split(" ");
+  let id = user._id;
+  let username = user.username;
 
   for (const word of searchFieldArr) {
     if (word !== "") {
-      let cleanWord = word.replace(/[^a-zA-Z0-9]/g, '') // clean up word of any illegal regex characters
-      let searchFieldRegex = new RegExp(cleanWord, 'gi')
-      username = username.replace(searchFieldRegex, "<strong>$&</strong>")
+      let cleanWord = word.replace(/[^a-zA-Z0-9]/g, ""); // clean up word of any illegal regex characters
+      let searchFieldRegex = new RegExp(cleanWord, "gi");
+      username = username.replace(searchFieldRegex, "<strong>$&</strong>");
     }
   }
 
-
   return (
-
     <Route>
-
-        <div className="suggestion-card" id={id} key={id}>
-          {/*<img src={imageUrl} alt=""></img>*/}
-          <div className="suggestion-text">
-            <span dangerouslySetInnerHTML={{__html: username}}></span>
-          </div>
-          <div className="add-friend-button" onClick={()=>addFriend(id)}><p>add friend</p></div>
+      <div className="suggestion-card" id={id} key={id}>
+        {/*<img src={imageUrl} alt=""></img>*/}
+        <div className="suggestion-text">
+          <span dangerouslySetInnerHTML={{ __html: username }}></span>
         </div>
-
+        <div className="add-friend-button" onClick={() => addFriend()}>
+          <p>add friend</p>
+        </div>
+      </div>
     </Route>
-
-
   );
 }
 
