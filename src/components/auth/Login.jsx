@@ -27,7 +27,7 @@ function Login({setUserInfo, setIsAuth}) {
       setUserInfo(decoded_user.user)
       console.log("decoded: " , decoded_user)
       // console.log(user);
-      history.push(`/profile/${decoded_user.user.username}`)
+      history.push(`/`)
     } catch (err) {
       console.log(err)
     }

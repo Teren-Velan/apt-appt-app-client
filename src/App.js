@@ -11,6 +11,8 @@ import {Navbar, Nav, FaHome} from "react-bootstrap"
 import {tokenCheck} from "./functions/func";
 import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/dashboard/Event"
+import FriendsList from "./components/ui/friendslist/FriendsList";
+import Chatbox from "./components/ui/chat/Chatbox";
 
 
 function App() {
@@ -63,7 +65,7 @@ function App() {
           </Nav>
           <Nav>{isAuth ?
             <>
-              <Nav.Link href={`/profile/${userInfo.username}`}><h2>{userInfo.username}</h2></Nav.Link>
+              <Nav.Link href={'/dashboard'}><h2>{userInfo.username}</h2></Nav.Link>
               <Nav.Link className="mt-2 mr-auto" href="/">
                 something
               </Nav.Link>
@@ -84,7 +86,9 @@ function App() {
       {/* switch routes below */}
       <Switch>
         <Route path="/" exact>
-          <Topbar userInfo={userInfo}/>
+          <Topbar userInfo={userInfo} logout={logout}/>
+          <Chatbox/>
+          <FriendsList/>
           {/*{welcomePage}*/}
         </Route>
         <Route path="/topbar">

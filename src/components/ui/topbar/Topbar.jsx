@@ -1,13 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import SearchBar from '../searchbar/SearchBar'
 import Pusher from 'pusher-js'
 import {FaUser, FaAngleDown} from 'react-icons/fa'
 import Axios from "axios";
+import OutsideAlerter from "../searchbar/OutsideAlerter";
+import DropdownMenu from "../dropdown/DropdownMenu";
 
 require('dotenv').config()
 
 
-function Topbar({userInfo}) {
+function Topbar({userInfo, logout}) {
+
+
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false)
+  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false)
 
 
   // on load
@@ -21,18 +27,27 @@ function Topbar({userInfo}) {
     })
     return () => {
       channel.unbind()
-
     }
   }, [])
 
 
   function profileDropdown() {
-    console.log("profile dropdown")
+    setShowProfileDropdown(!showProfileDropdown)
   }
 
-  function upcomingDropdown() {
-    console.log("upcoming dropdown")
+  function profileDropdownOut() {
+    setShowProfileDropdown(false)
   }
+
+
+  function upcomingDropdown() {
+    setShowUpcomingEvents(!showUpcomingEvents)
+  }
+
+  function upcomingDropdownOut() {
+    setShowUpcomingEvents(false)
+  }
+
 
   return (
     <div className="topbar">
@@ -41,30 +56,34 @@ function Topbar({userInfo}) {
       </div>
 
       <div className="topbar-right">
-
         <div className="topbar-element-group">
-
           <div className="display-circle" style={{backgroundColor: "#03b687"}}>5</div>
           <div className="topbar-element-texts">
             <p>upcoming events.</p>
             <h4>event name</h4>
           </div>
-          <div className="dropdown-div" onClick={upcomingDropdown}>
+        <OutsideAlerter clickedOut={upcomingDropdownOut}>
+          <div className="dropdown-icon-div" onClick={upcomingDropdown}>
             <FaAngleDown className="dropdown-icon"/>
           </div>
+          { showUpcomingEvents && <DropdownMenu type={"upcomingEvents"}/>}
+        </OutsideAlerter>
         </div>
 
 
-
         <div className="topbar-element-group">
-          <FaUser className="display-circle" />
+          <FaUser className="display-circle"/>
           <div className="topbar-element-texts">
             <p>user.</p>
             <h4>{userInfo.username}</h4>
           </div>
-          <div className="dropdown-div" onClick={profileDropdown}>
-            <FaAngleDown className="dropdown-icon"/>
-          </div>
+          <OutsideAlerter clickedOut={profileDropdownOut}>
+            <div className="dropdown-icon-div" onClick={profileDropdown}>
+              <FaAngleDown className="dropdown-icon"/>
+            </div>
+            {showProfileDropdown && <DropdownMenu logout={logout} type={"profile"} key={"profileDropdown"}/>}
+          </OutsideAlerter>
+
         </div>
       </div>
     </div>
