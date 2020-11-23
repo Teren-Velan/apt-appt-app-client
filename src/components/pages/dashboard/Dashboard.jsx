@@ -22,9 +22,7 @@ function Dashboard() {
 
   async function getEventData() {
     try {
-      let resData = await Axios.get(
-        `http://localhost:80/dashboard/${username}/event`
-      );
+      let resData = await Axios.get(`http://localhost:80/dashboard/event`);
       console.log("user: ", resData.data);
       setEventData(resData.data.user.events);
     } catch (err) {

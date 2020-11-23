@@ -9,12 +9,16 @@ import {
   DropdownButton,
   Form,
 } from "react-bootstrap";
-// import DatePick2 from "../../ui/DatePick2";
+// import DatePick2 from "../../ui/DatePick2"
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 function Events() {
   let { username } = useParams();
   const [eventData, setEventData] = useState({});
   const [eventStatus, setEventStatus] = useState("");
+
+  const [value, onChange] = useState(new Date());
 
   useEffect(() => {
     getEventData();
@@ -23,7 +27,7 @@ function Events() {
   async function getEventData() {
     try {
       let resData = await Axios.get(
-        `http://localhost:80/event/${username}/5fba071fbf8b9a45dee2ef40`
+        `http://localhost:80/event/5fba071fbf8b9a45dee2ef40`
       );
       console.log("user: ", resData.data.event);
       setEventData(resData.data.event);
@@ -39,6 +43,8 @@ function Events() {
   console.log(eventStatus);
 
   console.log(eventData);
+
+  console.log(value);
 
   // use eventData to dislay all info
 
@@ -69,7 +75,9 @@ function Events() {
             <Card.Text>
               Current Participants
               {eventData.participants.map((post) => (
-                <li>{post}</li>
+                <li>
+                  {post} <button>Remove participant</button>
+                </li>
               ))}
             </Card.Text>
 
@@ -81,6 +89,8 @@ function Events() {
               <p>End Date</p>
               <input type="date" />
             </div>
+            <br />
+            <br />
 
             <div>
               <p>For Participants</p>
@@ -90,7 +100,11 @@ function Events() {
                 </Form.Group>
               ))}
             </div>
+            <div>
+              <Calendar onChange={onChange} value={value} />
+            </div>
           </Card.Body>
+          <Button>Update</Button>
         </Card>
       </Container>,
     ];
