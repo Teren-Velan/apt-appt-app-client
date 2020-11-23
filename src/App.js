@@ -7,10 +7,12 @@ import Registration from "./components/auth/Registration"
 import Login from "./components/auth/Login"
 import Dashboard from "./components/pages/dashboard/Dashboard"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
+
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import { tokenCheck } from "./functions/func";
 import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/dashboard/Event"
+
 
 
 function App() {
