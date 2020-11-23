@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function EventCard({ eventData }) {
+function EventCard({ eventData, setEventData }) {
   return (
     <div>
       <Card style={{ width: "70rem", height: "10rem" }}>
@@ -15,10 +15,7 @@ function EventCard({ eventData }) {
             vel dolor recusandae.
           </Card.Text>
         </Card.Body>
-        <Link
-          to="/event/nerolow/5fba071fbf8b9a45dee2ef40"
-          className="btn btn-primary"
-        >
+        <Link to={`/event/${eventData._id}`} className="btn btn-primary">
           See More
         </Link>
       </Card>
