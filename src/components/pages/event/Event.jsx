@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Axios from "axios";
-import { useParams } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import {useParams} from "react-router-dom";
+import {Container} from "react-bootstrap";
 // import DatePick2 from "../../ui/DatePick2"
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import AddParticipants from "./AddParticipants";
-import Dateblock from "./Dateblock";
+import Planner from "./Planner";
 import DateRange from "./DateRange";
 import DatePicker from "./DateRange";
+import Chatbox from "../../ui/chat/Chatbox";
 
 function Event() {
-  let { eventid } = useParams();
+  let {eventid} = useParams();
   const [eventData, setEventData] = useState({});
 
   const [value, onChange] = useState(new Date());
@@ -41,7 +42,48 @@ function Event() {
     }
   }
 
-  console.log(eventData);
+  console.log("event data: ", eventData);
+
+
+  function calcCollectiveAvailableDates() {
+
+    // console.log("available-dates: ", eventData.availableDates)
+    // let collectiveAvailDates = eventData.availableDates
+    //
+    // eventData.dateblocks.forEach((dateblock) => {
+    //     dateblock.blockeddates.forEach((bdate) =>{
+    //       collectiveAvailDates = collectiveAvailDates.filter(date => date !== bdate)
+    //     })
+    //   })
+    // console.log("collective results: ", collectiveAvailDates)
+
+    console.log("available-dates: ", eventData.availableDates)
+
+    let collectiveAvailDates = {}
+
+    eventData.availableDates.forEach((date) => {
+      collectiveAvailDates[date] = []
+    })
+    eventData.dateblocks.forEach((dateblock) => {
+      dateblock.blockeddates.forEach((bdate) => {
+        eventData.availableDates.forEach((date) => {
+          if (date === bdate) {
+            collectiveAvailDates[date].push(dateblock.participant)
+          }
+        })
+      })
+    })
+    console.log("collective results: ", collectiveAvailDates)
+
+  }
+
+
+  if (Object.keys(eventData).length !== 0) {
+    calcCollectiveAvailableDates()
+
+
+  }
+
 
   // use eventData to dislay all info
 
@@ -50,14 +92,24 @@ function Event() {
   if (Object.keys(eventData).length !== 0) {
     render = [
       <Container>
-        <AddParticipants eventData={eventData} />
-        <DateRange eventData={eventData} setEventData={setEventData} />
-        <Dateblock eventData={eventData} />
+
+        <AddParticipants eventData={eventData}/>
+        <DateRange eventData={eventData} setEventData={setEventData}/>
+        <Planner eventData={eventData}/>
       </Container>,
     ];
   }
 
-  return <div>{render}</div>;
+
+
+  return (
+    <div className="eventpage-main-div">
+      <h1>{eventData.event_name}</h1>
+      <p>{eventData.description}</p>
+      {render}
+      <Chatbox/>
+
+    </div>);
 }
 
 export default Event;

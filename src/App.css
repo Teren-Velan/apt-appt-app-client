@@ -20,9 +20,15 @@
   border-radius: 15px;
   width: 70%;
   height: 70px;
+  overflow: hidden;
 }
 .topbar .topbar-left {
+  border: solid red 1px;
+  width: 100%;
+  height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .topbar .topbar-left .searchBar {
   position: relative;
@@ -150,6 +156,7 @@
   align-items: center;
 }
 .topbar .topbar-right .topbar-element-group {
+  min-width: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;

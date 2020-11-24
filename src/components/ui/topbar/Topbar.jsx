@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import SearchBar from '../searchbar/SearchBar'
 import Pusher from 'pusher-js'
-import {FaUser, FaAngleDown} from 'react-icons/fa'
+import {FaUser, FaAngleDown, FaHome } from 'react-icons/fa'
 import Axios from "axios";
 import OutsideAlerter from "../searchbar/OutsideAlerter";
 import DropdownMenu from "../dropdown/DropdownMenu";
@@ -52,6 +52,7 @@ function Topbar({userInfo, logout}) {
   return (
     <div className="topbar">
       <div className="topbar-left">
+          <FaHome className="home-icon"/>
         <SearchBar/>
       </div>
 
