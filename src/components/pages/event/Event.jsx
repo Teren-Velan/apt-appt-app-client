@@ -6,7 +6,7 @@ import {Container} from "react-bootstrap";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import AddParticipants from "./AddParticipants";
-import Dateblock from "./Dateblock";
+import Planner from "./Planner";
 import DateRange from "./DateRange";
 import DatePicker from "./DateRange";
 import Chatbox from "../../ui/chat/Chatbox";
@@ -95,7 +95,7 @@ function Event() {
 
         <AddParticipants eventData={eventData}/>
         <DateRange eventData={eventData} setEventData={setEventData}/>
-        <Dateblock eventData={eventData}/>
+        <Planner eventData={eventData}/>
       </Container>,
     ];
   }
