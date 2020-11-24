@@ -6,6 +6,7 @@ import Axios from "axios"
 import Registration from "./components/auth/Registration"
 import Login from "./components/auth/Login"
 import Dashboard from "./components/pages/dashboard/Dashboard"
+import WelcomePage from "./components/pages/welcome/WelcomePage"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import {tokenCheck} from "./functions/func";
@@ -101,6 +102,7 @@ function App() {
           {/*{welcomePage}*/}
           <WelcomePage/>
         </Route>
+
         <Route path="/topbar">
           <Topbar/>
         </Route>
