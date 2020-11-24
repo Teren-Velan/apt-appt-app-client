@@ -7,7 +7,7 @@ import Pusher from "pusher-js";
 import { FaArrowUp } from "react-icons/fa"
 import {ca} from "react-date-range/dist/locale";
 
-function Chatbox({chat, userInfo, getEventData}) {
+function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
 
   const {eventid} = useParams()
   console.log("eventid", eventid)
@@ -27,36 +27,28 @@ function Chatbox({chat, userInfo, getEventData}) {
   }, [chat])
 
 
-  useEffect(() => {
-    let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
-      cluster: 'ap1'
-    });
-    let channel = pusher.subscribe(`channel-${eventid}`);
-    channel.bind('trigger', function (data) {
-      // alert(JSON.stringify(data));
-      getEventData()
-    })
+  // useEffect(() => {
+  //   let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+  //     cluster: 'ap1'
+  //   });
+  //   let channel = pusher.subscribe(`channel-${eventid}`);
+  //   channel.bind('trigger', function (data) {
+  //     // alert(JSON.stringify(data));
+  //     getEventData()
+  //   })
+  //
+  //   channel.bind('typing', function (data) {
+  //     if (data.user !== userInfo.username) {
+  //       alert(`${data.user} is typing`)
+  //     }
+  //   })
+  //   return () => {
+  //     channel.unbind()
+  //
+  //   }
+  // }, [])
 
-    channel.bind('typing', function (data) {
-      if (data.user !== userInfo.username) {
-        alert(`${data.user} is typing`)
-      }
-    })
-    return () => {
-      channel.unbind()
 
-    }
-  }, [])
-
-  async function pusherTrigger() {
-    try {
-      await Axios.post('http://localhost:80/pusher/trigger', {
-        channel: `channel-${eventid}`
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   async function typingTrigger(user) {
     try {
@@ -112,14 +104,14 @@ function Chatbox({chat, userInfo, getEventData}) {
       render = chat.map((message) => {
         if (message.username === userInfo.username) {
           return <div className="message-card user" key={message._id}>
-            <div className="message-bubble">
+            <div className="message-bubble user">
               <h6>You</h6>
               <p>{message.message}</p>
             </div>
           </div>
         } else {
           return <div className="message-card peer" key={message._id}>
-            <div className="message-bubble">
+            <div className="message-bubble peer">
               <h6>{message.username}</h6>
               <p>{message.message}</p>
             </div>
@@ -145,7 +137,7 @@ function Chatbox({chat, userInfo, getEventData}) {
       <div className="chat-bottom-div">
 
         <div className="chat-notif-div">
-          <p>someone is typing..</p>
+          {/*<p>someone is typing..</p>*/}
         </div>
         <div className="chat-input-div">
           <input placeholder="say something..." onChange={inputHandler} onKeyPress={e => e.key === 'Enter' ? sendMessage() : null} value={inputField}></input>

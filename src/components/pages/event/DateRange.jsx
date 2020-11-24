@@ -39,7 +39,7 @@ function DateRange({ eventData, setEventData }) {
 
   // console.log(eventData);
   return (
-    <Container style={{ width: "15rem", height: "10rem" }}>
+    <div className="date-range-main-div">
       {/* <Form.Group>
         <Form.Label>Start Date</Form.Label>
         <Form.Control name="start_date" onChange={inputHandler} type="date" />
@@ -49,11 +49,12 @@ function DateRange({ eventData, setEventData }) {
         <Form.Control name="end_date" onChange={inputHandler} type="date" />
         <Button onClick={onClick}>Submit</Button>
       </Form.Group> */}
-
+      from
       <input name="start_date" onChange={inputHandler} type="date" />
+      to
       <input name="end_date" onChange={inputHandler} type="date" />
       <button onClick={onClick}>submit</button>
-    </Container>
+    </div>
   );
 }
 
