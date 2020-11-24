@@ -1,25 +1,43 @@
 import React from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaEye, FaTrashAlt } from "react-icons/fa";
+import Axios from "axios";
 
 function EventCard({ eventData, setEventData }) {
+  // delete request to delete data
+  async function deleteEvent() {
+    let token = localStorage.token;
+    try {
+      let res = await Axios.delete(
+        `http://localhost:80/dashboard/${eventData._id}/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <div>
-      <Card style={{ width: "70rem", height: "10rem" }}>
+    <Container>
+      <Card border="danger" style={{ width: "60rem", height: "10rem" }}>
         <Card.Body>
           <Card.Title>{eventData.event_name}</Card.Title>
-          <Card.Text>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit autem
-            ab excepturi? Placeat eos adipisci omnis voluptates aspernatur
-            suscipit facere. Itaque dolorum quibusdam quae modi tenetur eveniet
-            vel dolor recusandae.
-          </Card.Text>
+          <Card.Text>{eventData.description}</Card.Text>
         </Card.Body>
-        <Link to={`/event/${eventData._id}`} className="btn btn-primary">
-          See More
+
+        <Link to={`/event/${eventData._id}`} className="btn btn-success">
+          <FaEye size={20} />
         </Link>
+        <Button onClick={deleteEvent}>
+          <FaTrashAlt />
+        </Button>
       </Card>
-    </div>
+    </Container>
   );
 }
 

@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .main-div {
   display: flex;
   flex-direction: column;
@@ -21,13 +20,12 @@
   border-radius: 15px;
   width: 70%;
   height: 70px;
+  z-index: 100;
 
   .topbar-left {
     display: flex;
 
-
     .searchBar {
-
       position: relative;
       display: flex;
       justify-content: center;
@@ -54,7 +52,6 @@
         &::placeholder {
           color: #a4a4a4;
         }
-
       }
 
       .search-icon {
@@ -64,26 +61,22 @@
       }
 
       .small-loader {
-
         margin: auto;
         border: 3px solid #f3f3f3;
         border-radius: 50%;
         border-top: 3px solid #343434;
         width: 25px;
         height: 25px;
-        -webkit-animation: spin .5s linear infinite; /* Safari */
-        animation: spin .5s linear infinite;
+        -webkit-animation: spin 0.5s linear infinite; /* Safari */
+        animation: spin 0.5s linear infinite;
       }
-
 
       .searchSuggestions {
         position: absolute;
         top: 50px;
         border-radius: 20px;
 
-
         .suggestion-card {
-
           display: flex;
           flex-direction: row;
           justify-content: center;
@@ -98,9 +91,9 @@
           padding: 0 0 0 13px;
           animation-duration: 1s;
           animation-name: slidein;
-          box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5), 1px 1px 20px 2px rgba(191, 191, 191, 0.3);
+          box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5),
+            1px 1px 20px 2px rgba(191, 191, 191, 0.3);
           cursor: pointer;
-
 
           &:hover {
             //background-color: #e5e5e5;
@@ -120,7 +113,6 @@
             justify-content: center;
             background-color: #efefef;
 
-
             p {
               font-family: "Heebo", sans-serif;
               font-size: 12px;
@@ -131,10 +123,7 @@
               cursor: pointer;
               background-color: #e2e2e2;
             }
-
-
           }
-
 
           .suggestion-text {
             display: flex;
@@ -146,11 +135,9 @@
             width: 80%;
             z-index: 6;
 
-
             &:hover {
               text-decoration: none;
             }
-
 
             span {
               white-space: nowrap;
@@ -161,18 +148,14 @@
               //border: solid red 1px;
 
               &:first-of-type {
-                color: #2b2b2b
+                color: #2b2b2b;
               }
 
               &:nth-of-type(2) {
                 color: #606060;
               }
             }
-
-
           }
-
-
         }
 
         .see-more {
@@ -183,26 +166,24 @@
           color: #5b5b5b;
 
           border-radius: 0 0 5px 5px;
-
-
         }
-
       }
-
     }
   }
-
 
   .topbar-right {
     display: flex;
     flex-direction: row;
     align-items: center;
 
-
     .topbar-element-group {
       &:before {
         content: "";
-        background-image: linear-gradient(rgba(210, 210, 210, 0.1), rgba(210, 210, 210, 0.7), rgba(210, 210, 210, 0.1));
+        background-image: linear-gradient(
+          rgba(210, 210, 210, 0.1),
+          rgba(210, 210, 210, 0.7),
+          rgba(210, 210, 210, 0.1)
+        );
         height: 35px;
         width: 1px;
         margin-right: 7px;
@@ -224,21 +205,20 @@
         height: 30px;
         background-color: #dedede;
         color: #ffffff;
-        box-shadow: 0 0 0 2px #ffffff, 1px 1px 2px 0 rgba(186, 186, 186, 0.2), 1px 1px 15px 2px rgba(140, 140, 140, 0.2);
+        box-shadow: 0 0 0 2px #ffffff, 1px 1px 2px 0 rgba(186, 186, 186, 0.2),
+          1px 1px 15px 2px rgba(140, 140, 140, 0.2);
 
-        font-family: 'Heebo', sans-serif;
+        font-family: "Heebo", sans-serif;
         font-size: 14px;
         font-weight: 700;
       }
-
 
       .topbar-element-texts {
         display: flex;
         flex-direction: column;
 
-
         p {
-          font-family: 'Cabin', sans-serif;
+          font-family: "Cabin", sans-serif;
           font-weight: 700;
           font-size: 12px;
           margin: 0;
@@ -246,15 +226,12 @@
         }
 
         h4 {
-          font-family: 'Heebo', sans-serif;
+          font-family: "Heebo", sans-serif;
           font-weight: 700;
           font-size: 16px;
           color: #777777;
         }
-
-
       }
-
 
       .dropdown-icon-div {
         //border: 1px red solid;
@@ -266,10 +243,8 @@
         .dropdown-icon {
           font-size: 15px;
           color: #606060;
-
         }
       }
-
 
       .arrow-div {
         position: absolute;
@@ -281,7 +256,6 @@
         border-right: 15px solid transparent;
 
         border-bottom: 10px solid #001946;
-
       }
 
       .dropdown-div {
@@ -293,8 +267,8 @@
         right: -10px;
         display: flex;
         flex-direction: column;
-        box-shadow: 1px 1px 2px 0 rgba(31, 31, 31, 0.5), 1px 1px 15px 2px rgba(140, 140, 140, 0.3);
-
+        box-shadow: 1px 1px 2px 0 rgba(31, 31, 31, 0.5),
+          1px 1px 15px 2px rgba(140, 140, 140, 0.3);
 
         .dropdown-card {
           border-bottom: rgba(165, 165, 165, 0.2) solid 1px;
@@ -322,7 +296,6 @@
   }
 }
 
-
 .friends-list-div {
   display: flex;
   flex-direction: column;
@@ -333,12 +306,10 @@
   background-color: #f1f1f1;
   border-radius: 20px;
 
-
   h3 {
     margin-top: 10px;
-    font-family: 'Cabin', sans-serif;
+    font-family: "Cabin", sans-serif;
     font-size: 20px;
-
   }
 
   .friend-card {
@@ -349,7 +320,7 @@
     border-bottom: #b0b0b0 solid 1px;
 
     p {
-      font-family: 'Heebo', sans-serif;
+      font-family: "Heebo", sans-serif;
     }
 
     button {
@@ -358,7 +329,6 @@
     }
   }
 }
-
 
 .chatbox-div {
   display: flex;
@@ -372,10 +342,9 @@
   border-radius: 20px;
   overflow: hidden;
 
-
   h3 {
     margin-top: 10px;
-    font-family: 'Cabin', sans-serif;
+    font-family: "Cabin", sans-serif;
     font-size: 20px;
   }
 
@@ -385,12 +354,11 @@
     justify-content: flex-end;
     overflow-y: scroll;
     width: 100%;
-      height: 100%;
+    height: 100%;
 
     .messages-div {
       overflow-x: hidden;
       //border: 1px solid red;
-
 
       .message-card {
         //border: 1px solid red;
@@ -409,43 +377,34 @@
           padding-right: 15px;
         }
 
-
         .message-bubble {
           background-color: #acacac;
           border-radius: 10px;
           padding: 10px 15px;
         }
 
-
         h6 {
-          font-family: 'Cabin', sans-serif;
+          font-family: "Cabin", sans-serif;
           font-size: 12px;
           margin: 0;
         }
 
         p {
-          font-family: 'Heebo', sans-serif;
+          font-family: "Heebo", sans-serif;
           font-size: 15px;
           margin: 0;
         }
-
       }
-
     }
   }
-
 
   .chat-bottom-div {
     padding-bottom: 10px;
 
     .chat-input-div {
-
     }
   }
-
-
 }
-
 
 @-webkit-keyframes spin {
   0% {
@@ -464,4 +423,3 @@
     transform: rotate(360deg);
   }
 }
-
