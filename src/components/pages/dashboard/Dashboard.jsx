@@ -78,20 +78,20 @@ function Dashboard({ userInfo, setUserInfo }) {
       <div className="side_chick">
         <FriendsList userInfo={userInfo} setUserInfo={setUserInfo} />
       </div>
-      <Container className="m-auto">
-        <hr />
-        <EventCount />
-        <hr />
+
+      <div className="main-dashboard-container">
+        <div className="event-count-container">
+          <EventCount />
+        </div>
 
         <div className="event-btn-cont">
           <button className="create-event-btn" onClick={handleShow}>
             <h1>
-              Create Event
+              Events List
               <BsFillPlusCircleFill size={35} className="mb-2 ml-2" />
             </h1>
           </button>
         </div>
-
         {render}
         {/* For display of modal */}
         <Modal show={show} onHide={handleClose}>
@@ -126,7 +126,7 @@ function Dashboard({ userInfo, setUserInfo }) {
             </Button>
           </Modal.Footer>
         </Modal>
-      </Container>
+      </div>
     </>
   );
 }
