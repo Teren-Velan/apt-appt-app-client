@@ -24,6 +24,7 @@ function App() {
   let history = useHistory()
 
 
+
   useEffect(() => {
     tokenCheck(setIsAuth, setUserInfo)
   }, [])
@@ -50,9 +51,10 @@ function App() {
     ]
   }
 
+  console.log(userInfo)
   return (
     <Router>
-
+{/* 
       <Navbar bg="light" expand="lg">
 
         <Navbar.Brand href="#home">AAA
@@ -81,7 +83,9 @@ function App() {
           </Nav>
 
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar>  */}
+
+      
 
 
 
@@ -107,7 +111,7 @@ function App() {
         </Route>
 
         <Route path="/dashboard/:username/event">
-          <Dashboard/>
+          <Dashboard userInfo = {userInfo}/>
         </Route>
 
 
