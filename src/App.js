@@ -9,6 +9,7 @@ import Dashboard from "./components/pages/dashboard/Dashboard"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import {tokenCheck} from "./functions/func";
+
 import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
@@ -86,11 +87,14 @@ function App() {
 
       
 
+
+
       <div className="main-div">
+        <Topbar userInfo={userInfo} logout={logout}/>
       {/* switch routes below */}
       <Switch>
         <Route path="/" exact>
-          <Topbar userInfo={userInfo} logout={logout}/>
+
           <Chatbox/>
           <FriendsList/>
           {/*{welcomePage}*/}
