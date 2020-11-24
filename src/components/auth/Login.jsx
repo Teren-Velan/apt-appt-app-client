@@ -31,7 +31,6 @@ function Login({ setUserInfo, setIsAuth }) {
       // console.log(user);
 
       history.push(`/dashboard/${decoded_user.user.username}/event`);
-
     } catch (err) {
       console.log(err);
     }

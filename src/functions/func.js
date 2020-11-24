@@ -6,7 +6,7 @@ async function tokenCheck(setIsAuth, setUserInfo) {
     let token = localStorage.getItem("token")
     if (token) {
       setIsAuth(true)
-      let user = await Axios.get("http://localhost:80/auth/tokencheck", {
+      let user = await Axios.get("http://localhost:80/dashboard", {
         headers: {
           "Authorization": `Bearer ${token}`
         }

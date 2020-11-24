@@ -9,6 +9,7 @@ function SearchSuggestions({
   showSuggestions,
   setSearchingSpinner,
   setShowSuggestions,
+  setUserInfo,
 }) {
   const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
@@ -56,6 +57,7 @@ function SearchSuggestions({
             key={user._id}
             setShowSuggestions={setShowSuggestions}
             searchField={searchField}
+            setUserInfo={setUserInfo}
           />
         );
       });

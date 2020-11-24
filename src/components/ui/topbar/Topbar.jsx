@@ -9,7 +9,7 @@ import DropdownMenu from "../dropdown/DropdownMenu";
 
 require("dotenv").config();
 
-function Topbar({ userInfo, logout }) {
+function Topbar({ userInfo, logout, setUserInfo }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
@@ -46,12 +46,16 @@ function Topbar({ userInfo, logout }) {
   return (
     <div className="topbar">
       <div className="topbar-left">
+
         <NavLink to="/">
         <div className="home-icon-div">
           <FaHome className="home-icon" />
         </div>
           </NavLink>
-        <SearchBar />
+        <SearchBar setUserInfo={setUserInfo} />
+ 
+        
+
       </div>
 
       <div className="topbar-right">

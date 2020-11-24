@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { Container, Button, Modal, Form } from "react-bootstrap";
+import { Container, Button, Modal, Form, Card } from "react-bootstrap";
 import EventsDisplay from "./EventsDisplay";
 import Topbar from "../../ui/topbar/Topbar";
 import Sidebar from "../../ui/Sidebar";
+import EventCount from "./EventCount";
+import { FaPlusCircle } from "react-icons/fa";
+import { FcPlus } from "react-icons/fc";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import FriendsList from "../../ui/friendslist/FriendsList";
 
-function Dashboard({ userInfo }) {
+function Dashboard({ userInfo, setUserInfo }) {
   let { username } = useParams();
   const [eventData, setEventData] = useState({});
   const [show, setShow] = useState(false); //for modal
@@ -14,17 +19,15 @@ function Dashboard({ userInfo }) {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  console.log(eventData);
+  useEffect(() => {
+    getEventData();
+  }, []);
 
   // for input handling of modal
   function inputHandling(e) {
     setInputFields((input) => ({ ...input, [e.target.name]: e.target.value }));
     console.log(inputFields);
   }
-
-  useEffect(() => {
-    getEventData();
-  }, []);
 
   // to get all events from database
   async function getEventData() {
@@ -61,7 +64,8 @@ function Dashboard({ userInfo }) {
       // return res.status(400).json({ error: error });
     }
   }
-
+  console.log("uuuuser,", userInfo);
+  // for rendering event data
   let render = "";
   if (Object.keys(eventData).length !== 0) {
     render = [
@@ -70,46 +74,60 @@ function Dashboard({ userInfo }) {
   }
 
   return (
-    <div>
-      <Button block onClick={handleShow}>
-        Create new event
-      </Button>
-      {render}
+    <>
+      <div className="side_chick">
+        <FriendsList userInfo={userInfo} setUserInfo={setUserInfo} />
+      </div>
+      <Container className="m-auto">
+        <hr />
+        <EventCount />
+        <hr />
 
-      {/* modal */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add a new Event</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form.Group>
-            <Form.Text>Name of Event</Form.Text>
-            <Form.Control
-              onChange={inputHandling}
-              name="event_name"
-              type="text"
-              placeholder="Trip to the Zoo"
-            />
-          </Form.Group>
+        <div className="event-btn-cont">
+          <button className="create-event-btn" onClick={handleShow}>
+            <h1>
+              Create Event
+              <BsFillPlusCircleFill size={35} className="mb-2 ml-2" />
+            </h1>
+          </button>
+        </div>
 
-          <Form.Group>
-            <Form.Text className="text-muted">Description</Form.Text>
-            <Form.Control
-              name="description"
-              onChange={inputHandling}
-              type="text"
-              placeholder="..."
-            />
-          </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={addNewEvent} variant="secondary">
-            {" "}
-            Submit{" "}
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+        {render}
+        {/* For display of modal */}
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add a new Event</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group>
+              <Form.Text>Name of Event</Form.Text>
+              <Form.Control
+                onChange={inputHandling}
+                name="event_name"
+                type="text"
+                placeholder="Trip to the Zoo"
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Text className="text-muted">Description</Form.Text>
+              <Form.Control
+                name="description"
+                onChange={inputHandling}
+                type="text"
+                placeholder="..."
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={addNewEvent} variant="secondary">
+              {" "}
+              Submit{" "}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </Container>
+    </>
   );
 }
 

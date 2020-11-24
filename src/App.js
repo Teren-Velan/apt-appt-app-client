@@ -6,6 +6,7 @@ import Axios from "axios"
 import Registration from "./components/auth/Registration"
 import Login from "./components/auth/Login"
 import Dashboard from "./components/pages/dashboard/Dashboard"
+import WelcomePage from "./components/pages/welcome/WelcomePage"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import {tokenCheck} from "./functions/func";
@@ -48,19 +49,20 @@ function App() {
     ]
   }
 
-  console.log(userInfo)
   return (
     <Router>
 
       <div className="main-div">
+       {Object.keys(userInfo).length != 0 && <Topbar 
+        userInfo={userInfo}
+        logout={logout} 
+        setUserInfo={setUserInfo}/>}
+        
+
         <Switch>
           <Route path="/" exact>
             {isAuth ? <p>Welcome back, go to your <NavLink to="/dashboard">dashboard</NavLink></p> : <WelcomePage/>}
           </Route>
-          <Route path="/topbar">
-            <Topbar/>
-          </Route>
-
           <Route path="/register" exact>
             <Registration/>
           </Route>
@@ -69,18 +71,19 @@ function App() {
           </Route>
 
           <Route path="/dashboard/:username/event">
-            <Topbar userInfo={userInfo} logout={logout}/>
+//             <Topbar userInfo={userInfo} logout={logout}/>
             <Dashboard userInfo={userInfo}/>
           </Route>
 
 
           <Route path="/event/:eventid">
-            <Topbar userInfo={userInfo} logout={logout}/>
+//             <Topbar userInfo={userInfo} logout={logout}/>
             <Event userInfo={userInfo}/>
           </Route>
 
 
         </Switch>
+
       </div>
 
     </Router>
