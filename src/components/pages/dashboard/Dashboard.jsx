@@ -79,7 +79,7 @@ function Dashboard({ userInfo }) {
       <div>
         <h1>
           Create New Event
-          <Button>
+          <Button variant="outline-success">
             <FaPlusCircle onClick={handleShow} size={30} />
           </Button>
         </h1>
