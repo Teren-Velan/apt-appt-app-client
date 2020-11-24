@@ -5,6 +5,8 @@ import { Container, Button, Modal, Form } from "react-bootstrap";
 import EventsDisplay from "./EventsDisplay";
 import Topbar from "../../ui/topbar/Topbar";
 import Sidebar from "../../ui/Sidebar";
+import EventCount from "./EventCount";
+import { FaPlusCircle } from "react-icons/fa";
 
 function Dashboard({ userInfo }) {
   let { username } = useParams();
@@ -14,17 +16,15 @@ function Dashboard({ userInfo }) {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  console.log(eventData);
+  useEffect(() => {
+    getEventData();
+  }, []);
 
   // for input handling of modal
   function inputHandling(e) {
     setInputFields((input) => ({ ...input, [e.target.name]: e.target.value }));
     console.log(inputFields);
   }
-
-  useEffect(() => {
-    getEventData();
-  }, []);
 
   // to get all events from database
   async function getEventData() {
@@ -62,6 +62,7 @@ function Dashboard({ userInfo }) {
     }
   }
 
+  // for rendering event data
   let render = "";
   if (Object.keys(eventData).length !== 0) {
     render = [
@@ -70,13 +71,22 @@ function Dashboard({ userInfo }) {
   }
 
   return (
-    <div>
-      <Button block onClick={handleShow}>
-        Create new event
-      </Button>
-      {render}
+    <Container>
+      <hr />
 
-      {/* modal */}
+      <EventCount />
+      <hr />
+      <div>
+        <h1>
+          Create New Event
+          <Button>
+            <FaPlusCircle onClick={handleShow} size={30} />
+          </Button>
+        </h1>
+      </div>
+
+      {render}
+      {/* For display of modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add a new Event</Modal.Title>
@@ -109,7 +119,7 @@ function Dashboard({ userInfo }) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </Container>
   );
 }
 
