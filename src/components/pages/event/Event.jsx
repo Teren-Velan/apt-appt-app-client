@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Axios from "axios";
 import {useParams} from "react-router-dom";
-import {Container} from "react-bootstrap";
+import {Card, Container} from "react-bootstrap";
 // import DatePick2 from "../../ui/DatePick2"
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -11,7 +11,7 @@ import DateRange from "./DateRange";
 import DatePicker from "./DateRange";
 import Chatbox from "../../ui/chat/Chatbox";
 
-function Event() {
+function Event({userInfo}) {
   let {eventid} = useParams();
   const [eventData, setEventData] = useState({});
 
@@ -91,25 +91,47 @@ function Event() {
 
   if (Object.keys(eventData).length !== 0) {
     render = [
-      <Container>
 
-        <AddParticipants eventData={eventData}/>
-        <DateRange eventData={eventData} setEventData={setEventData}/>
-        <Planner eventData={eventData}/>
-      </Container>,
+      <div className="eventpage-main-div">
+
+        <div className="eventpage-left">
+          <div className="event-name-div">
+            <h1>{eventData.event_name}</h1>
+          </div>
+
+          <p>{eventData.description}</p>
+          <div className="participants-div">
+
+            <h2>Participants</h2>
+
+            {eventData.participants.map((participant) => (
+              <div className="participant-card">
+                <p>{participant}</p>
+
+              </div>
+            ))}
+          </div>
+
+          <DateRange eventData={eventData} setEventData={setEventData}/>
+          <Planner eventData={eventData}/>
+
+        </div>
+
+        <div className="eventpage-right">
+          <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}/>
+        </div>
+      </div>
+
     ];
   }
 
 
-
   return (
-    <div className="eventpage-main-div">
-      <h1>{eventData.event_name}</h1>
-      <p>{eventData.description}</p>
+    <>
       {render}
-      <Chatbox/>
 
-    </div>);
+    </>
+  );
 }
 
 export default Event;

@@ -10,12 +10,11 @@ import WelcomePage from "./components/pages/welcome/WelcomePage"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import {tokenCheck} from "./functions/func";
-
+import WelcomePage from "./components/pages/welcome/WelcomePage";
 import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
 import Chatbox from "./components/ui/chat/Chatbox";
-
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
   const [userInfo, setUserInfo] = useState({})
   const [isAuth, setIsAuth] = useState(false);
   let history = useHistory()
-
 
 
   useEffect(() => {
@@ -46,7 +44,6 @@ function App() {
   } else {
     welcomePage = [
       <div className="welcome-note-div">
-
         <h2>Welcome to Apt Appt App, <br/> please login or register</h2>
       </div>
     ]
@@ -54,78 +51,39 @@ function App() {
 
   return (
     <Router>
-{/* 
-      <Navbar bg="light" expand="lg">
-
-        <Navbar.Brand href="#home">AAA
-        </Navbar.Brand>
-
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-
-
-          </Nav>
-          <Nav>{isAuth ?
-            <>
-              <Nav.Link href={'/dashboard'}><h2>{userInfo.username}</h2></Nav.Link>
-              <Nav.Link className="mt-2 mr-auto" href="/">
-                something
-              </Nav.Link>
-
-
-              <Nav.Link className="mt-2" color="black" href="/" onClick={logout}> something
-              </Nav.Link></> : <>
-              <Nav.Link href="/login"><h4>LOGIN</h4></Nav.Link>
-              <Nav.Link href="/register"><h4>REGISTER</h4></Nav.Link>
-            </>
-          }
-          </Nav>
-
-        </Navbar.Collapse>
-      </Navbar>  */}
-
-      
-
-
 
       <div className="main-div">
-        {Object.keys(userInfo).length != 0 && <Topbar 
+       {Object.keys(userInfo).length != 0 && <Topbar 
         userInfo={userInfo}
         logout={logout} 
         setUserInfo={setUserInfo}/>}
         
-      {/* switch routes below */}
-      <Switch>
+
+        <Switch>
+          <Route path="/" exact>
+            {isAuth ? <p>Welcome back, go to your <NavLink to="/dashboard">dashboard</NavLink></p> : <WelcomePage/>}
+          </Route>
+          <Route path="/register" exact>
+            <Registration/>
+          </Route>
+          <Route path="/login">
+            <Login setUserInfo={setUserInfo} setIsAuth={setIsAuth}/>
+          </Route>
+
+          <Route path="/dashboard/:username/event">
+//             <Topbar userInfo={userInfo} logout={logout}/>
+            <Dashboard userInfo={userInfo}/>
+          </Route>
 
 
-        <Route path="/" exact>
-          {/* <Chatbox/>
-          <FriendsList/> */}
-          {/*{welcomePage}*/}
-          <WelcomePage/>
-        </Route>
-
-        <Route path="/register" exact>
-          <Registration/>
-        </Route>
-        <Route path="/login">
-          <Login setUserInfo={setUserInfo} setIsAuth={setIsAuth}/>
-        </Route>
-
-        <Route path="/dashboard/:username/event">
-          <Dashboard userInfo = {userInfo}
-          setUserInfo = {setUserInfo}/>
-        </Route>
+          <Route path="/event/:eventid">
+//             <Topbar userInfo={userInfo} logout={logout}/>
+            <Event userInfo={userInfo}/>
+          </Route>
 
 
-    <Route path="/event/:eventid">
-      <Event />
-    </Route>
+        </Switch>
 
-
-
-      </Switch>
       </div>
 
     </Router>
@@ -135,11 +93,3 @@ function App() {
 
 export default App;
 
-
-// confirm compoenents needed
-
-//topbar
-
-//routes
-
-//plan how to display 

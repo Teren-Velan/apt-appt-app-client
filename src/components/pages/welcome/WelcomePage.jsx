@@ -1,6 +1,9 @@
 import React from "react";
 
 function WelcomePage() {
+
+  
+
   return (
     <>
       <div className="width_screen">
