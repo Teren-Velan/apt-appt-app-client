@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 .main-div {
   display: flex;
   flex-direction: column;
@@ -9,7 +8,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -20,7 +18,6 @@
   border-radius: 15px;
   width: 70%;
   height: 70px;
-  overflow: hidden;
 
   .topbar-left {
     border: solid red 1px;
@@ -31,7 +28,7 @@
     justify-content: flex-start;
 
     .home-icon {
-
+    }
     .searchBar {
       position: relative;
       display: flex;
@@ -39,7 +36,6 @@
       align-items: center;
       width: 100%;
       z-index: 5;
-
       input {
         //display: block;
         width: 400px;
@@ -51,22 +47,18 @@
         border: none;
         margin-left: 10px;
         padding: 0 10px;
-
         &:focus {
           outline: none;
         }
-
         &::placeholder {
           color: #a4a4a4;
         }
       }
-
       .search-icon {
         color: #8d8d8d;
         font-size: 20px;
         cursor: pointer;
       }
-
       .small-loader {
         margin: auto;
         border: 3px solid #f3f3f3;
@@ -77,12 +69,10 @@
         -webkit-animation: spin 0.5s linear infinite; /* Safari */
         animation: spin 0.5s linear infinite;
       }
-
       .searchSuggestions {
         position: absolute;
         top: 50px;
         border-radius: 20px;
-
         .suggestion-card {
           display: flex;
           flex-direction: row;
@@ -101,16 +91,13 @@
           box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5),
             1px 1px 20px 2px rgba(191, 191, 191, 0.3);
           cursor: pointer;
-
           &:hover {
             //background-color: #e5e5e5;
             text-decoration: none;
           }
-
           &:link {
             text-decoration: none;
           }
-
           .add-friend-button {
             width: 100px;
             height: 100%;
@@ -119,19 +106,16 @@
             align-items: center;
             justify-content: center;
             background-color: #efefef;
-
             p {
               font-family: "Heebo", sans-serif;
               font-size: 12px;
               margin: 0;
             }
-
             &:hover {
               cursor: pointer;
               background-color: #e2e2e2;
             }
           }
-
           .suggestion-text {
             display: flex;
             flex-direction: column;
@@ -141,48 +125,39 @@
             margin: 0 10px;
             width: 80%;
             z-index: 6;
-
             &:hover {
               text-decoration: none;
             }
-
             span {
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
               text-decoration: none;
-
               //border: solid red 1px;
-
               &:first-of-type {
                 color: #2b2b2b;
               }
-
               &:nth-of-type(2) {
                 color: #606060;
               }
             }
           }
         }
-
         .see-more {
           display: flex;
           justify-content: center;
           text-align: center;
           height: 30px;
           color: #5b5b5b;
-
           border-radius: 0 0 5px 5px;
         }
       }
     }
   }
-
   .topbar-right {
     display: flex;
     flex-direction: row;
     align-items: center;
-
     .topbar-element-group {
       &:before {
         content: "";
@@ -200,7 +175,6 @@
       flex-direction: row;
       align-items: center;
       position: relative;
-
       .display-circle {
         display: flex;
         justify-content: center;
@@ -214,16 +188,13 @@
         color: #ffffff;
         box-shadow: 0 0 0 2px #ffffff, 1px 1px 2px 0 rgba(186, 186, 186, 0.2),
           1px 1px 15px 2px rgba(140, 140, 140, 0.2);
-
         font-family: "Heebo", sans-serif;
         font-size: 14px;
         font-weight: 700;
       }
-
       .topbar-element-texts {
         display: flex;
         flex-direction: column;
-
         p {
           font-family: "Cabin", sans-serif;
           font-weight: 700;
@@ -231,7 +202,6 @@
           margin: 0;
           color: #b1b1b1;
         }
-
         h4 {
           font-family: "Heebo", sans-serif;
           font-weight: 700;
@@ -239,20 +209,17 @@
           color: #777777;
         }
       }
-
       .dropdown-icon-div {
         //border: 1px red solid;
         width: 25px;
         height: 25px;
         margin-left: 10px;
         cursor: pointer;
-
         .dropdown-icon {
           font-size: 15px;
           color: #606060;
         }
       }
-
       .arrow-div {
         position: absolute;
         top: 55px;
@@ -263,7 +230,6 @@
         border-right: 15px solid transparent;
         border-bottom: 10px solid #001946;
       }
-
       .dropdown-div {
         //border:red solid 1px;
         border-radius: 10px;
@@ -275,7 +241,6 @@
         flex-direction: column;
         box-shadow: 1px 1px 2px 0 rgba(31, 31, 31, 0.5),
           1px 1px 15px 2px rgba(140, 140, 140, 0.3);
-
         .dropdown-card {
           border-bottom: rgba(165, 165, 165, 0.2) solid 1px;
           display: flex;
@@ -288,11 +253,9 @@
           font-family: "Cabin", sans-serif;
           font-size: 15px;
           cursor: pointer;
-
           &:last-child {
             border-bottom: none;
           }
-
           &:hover {
             background-color: #001f5a;
           }
@@ -301,7 +264,6 @@
     }
   }
 }
-
 .friends-list-div {
   display: flex;
   flex-direction: column;
@@ -311,31 +273,26 @@
   height: 500px;
   background-color: #f1f1f1;
   border-radius: 20px;
-
   h3 {
     margin-top: 10px;
     font-family: "Cabin", sans-serif;
     font-size: 20px;
   }
-
   .friend-card {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 5px 20px;
     border-bottom: #b0b0b0 solid 1px;
-
     p {
       font-family: "Heebo", sans-serif;
     }
-
     button {
       height: 30px;
       border: #2b2b2b 1px solid;
     }
   }
 }
-
 .chatbox-div {
   display: flex;
   flex-direction: column;
@@ -347,13 +304,11 @@
   background-color: #f1f1f1;
   border-radius: 20px;
   overflow: hidden;
-
   h3 {
     margin-top: 10px;
     font-family: "Cabin", sans-serif;
     font-size: 20px;
   }
-
   .messages-scroll-wrapper {
     display: flex;
     flex-direction: column;
@@ -361,40 +316,33 @@
     overflow-y: scroll;
     width: 100%;
     height: 100%;
-
     .messages-div {
       overflow-x: hidden;
       //border: 1px solid red;
-
       .message-card {
         //border: 1px solid red;
         display: flex;
         flex-direction: column;
         width: 100%;
         margin-bottom: 10px;
-
         &.peer {
           align-items: flex-start;
           padding-left: 15px;
         }
-
         &.user {
           align-items: flex-end;
           padding-right: 15px;
         }
-
         .message-bubble {
           background-color: #acacac;
           border-radius: 10px;
           padding: 10px 15px;
         }
-
         h6 {
           font-family: "Cabin", sans-serif;
           font-size: 12px;
           margin: 0;
         }
-
         p {
           font-family: "Heebo", sans-serif;
           font-size: 15px;
@@ -403,15 +351,12 @@
       }
     }
   }
-
   .chat-bottom-div {
     padding-bottom: 10px;
-
     .chat-input-div {
     }
   }
 }
-
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -420,7 +365,6 @@
     -webkit-transform: rotate(360deg);
   }
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
