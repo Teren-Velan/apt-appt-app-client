@@ -37,7 +37,7 @@ function DateRange({ eventData, setEventData }) {
     }
   }
 
-  console.log(eventData);
+  // console.log(eventData);
   return (
     <Container style={{ width: "15rem", height: "10rem" }}>
       {/* <Form.Group>

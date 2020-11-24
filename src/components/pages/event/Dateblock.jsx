@@ -3,7 +3,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import Axios from "axios";
 
 function Dateblock({ eventData, setEventData }) {
-  console.log(eventData);
+  // console.log(eventData);
 
   const [blockDates, setBlockDates] = useState([]);
 
@@ -54,7 +54,7 @@ function Dateblock({ eventData, setEventData }) {
     ];
     let onlyDay = date.getDay();
     let onlyYear = date.getFullYear();
-    console.log(new Date(`${onlyYear}-${onlyMonth}-${onlyDate}`));
+    // console.log(new Date(`${onlyYear}-${onlyMonth}-${onlyDate}`));
 
     return `${arr[onlyDay]} ${onlyDate}-${onlyMonth}-${onlyYear}`;
   }
