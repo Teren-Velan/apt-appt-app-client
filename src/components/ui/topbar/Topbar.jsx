@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../searchbar/SearchBar";
 import Pusher from "pusher-js";
 import { FaUser, FaAngleDown, FaHome } from "react-icons/fa";
+import { NavLink } from 'react-router-dom'
 import Axios from "axios";
 import OutsideAlerter from "../searchbar/OutsideAlerter";
 import DropdownMenu from "../dropdown/DropdownMenu";
@@ -45,7 +46,11 @@ function Topbar({ userInfo, logout }) {
   return (
     <div className="topbar">
       <div className="topbar-left">
-        <FaHome className="home-icon" />
+        <NavLink to="/">
+        <div className="home-icon-div">
+          <FaHome className="home-icon" />
+        </div>
+          </NavLink>
         <SearchBar />
       </div>
 
