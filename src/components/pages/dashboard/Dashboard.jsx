@@ -71,7 +71,6 @@ function Dashboard({ userInfo }) {
 
   return (
     <div>
-      <Topbar userInfo={userInfo} />
       <Button block onClick={handleShow}>
         Create new event
       </Button>

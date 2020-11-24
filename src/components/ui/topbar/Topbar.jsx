@@ -45,7 +45,6 @@ function Topbar({ userInfo, logout }) {
   return (
     <div className="topbar">
       <div className="topbar-left">
-        <SearchBar />
         <FaHome className="home-icon" />
         <SearchBar />
       </div>
