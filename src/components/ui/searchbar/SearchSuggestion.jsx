@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import { Link, NavLink, Route } from "react-router-dom";
 import Axios from "axios";
 
-function SearchSuggestion({ user, searchField, setShowSuggestions }) {
+function SearchSuggestion({
+  user,
+  searchField,
+  setShowSuggestions,
+  setUserInfo,
+}) {
   useEffect(() => {});
 
   async function addFriend() {
@@ -19,6 +24,13 @@ function SearchSuggestion({ user, searchField, setShowSuggestions }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      let userData = await Axios.get("http://localhost:80/dashboard", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setUserInfo(userData.data.user);
     } catch (err) {
       console.log(err);
     }
