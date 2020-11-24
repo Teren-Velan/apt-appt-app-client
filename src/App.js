@@ -93,11 +93,13 @@ function App() {
         <Topbar userInfo={userInfo} logout={logout}/>
       {/* switch routes below */}
       <Switch>
-        <Route path="/" exact>
 
-          <Chatbox/>
-          <FriendsList/>
+
+        <Route path="/" exact>
+          {/* <Chatbox/>
+          <FriendsList/> */}
           {/*{welcomePage}*/}
+          <WelcomePage/>
         </Route>
         <Route path="/topbar">
           <Topbar/>
