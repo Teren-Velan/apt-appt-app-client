@@ -10,8 +10,9 @@ import Planner from "./Planner";
 import DateRange from "./DateRange";
 import DatePicker from "./DateRange";
 import Chatbox from "../../ui/chat/Chatbox";
+import FriendsList from "../../ui/friendslist/FriendsList"
 
-function Event({userInfo}) {
+function Event({userInfo , setUserInfo}) {
   let {eventid} = useParams();
   const [eventData, setEventData] = useState({});
 
@@ -91,7 +92,15 @@ function Event({userInfo}) {
 
   if (Object.keys(eventData).length !== 0) {
     render = [
-
+      <>
+      <div className="side_chick">
+        <FriendsList 
+        userInfo={userInfo}
+        eventpage="true"
+        eventID = {eventData._id}
+        setEventData = {setEventData}
+        />
+      </div>
       <div className="eventpage-main-div">
 
         <div className="eventpage-left">
@@ -121,7 +130,7 @@ function Event({userInfo}) {
           <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}/>
         </div>
       </div>
-
+</>
     ];
   }
 
