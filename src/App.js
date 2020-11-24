@@ -10,7 +10,6 @@ import WelcomePage from "./components/pages/welcome/WelcomePage"
 import {BrowserRouter as Router, Route, Switch, NavLink, useHistory, Redirect} from 'react-router-dom'
 import {Navbar, Nav, FaHome} from "react-bootstrap"
 import {tokenCheck} from "./functions/func";
-import WelcomePage from "./components/pages/welcome/WelcomePage";
 import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
@@ -71,13 +70,13 @@ function App() {
           </Route>
 
           <Route path="/dashboard/:username/event">
-//             <Topbar userInfo={userInfo} logout={logout}/>
+{/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
             <Dashboard userInfo={userInfo}/>
           </Route>
 
 
           <Route path="/event/:eventid">
-//             <Topbar userInfo={userInfo} logout={logout}/>
+{/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
             <Event userInfo={userInfo}/>
           </Route>
 
