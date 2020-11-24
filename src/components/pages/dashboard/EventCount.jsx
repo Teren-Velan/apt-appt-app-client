@@ -1,44 +1,56 @@
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import { FaRegLaughBeam, FaRegLaughWink, FaRegSadTear } from "react-icons/fa";
+import {
+  FaRegLaughBeam,
+  FaRegLaughWink,
+  FaRegSadTear,
+  FaRegLaughSquint,
+} from "react-icons/fa";
 
 function EventCount() {
   return (
-    <Container className="mb-5 mt-5">
+    <Container className="mb-2 mt-2">
       <Row>
         <Col>
-          <Card border="success" style={{ width: "20rem", height: "8rem" }}>
-            <Card.Body className="text-align-center">
-              <Card.Title style={{ textAlign: "center" }}>
-                Confirmed Events
+          <div className="countcontainer">
+            <div className="countdetails">
+              <div className="count-heading">
+                Confirmed Events{" "}
                 <FaRegLaughBeam size={25} className="ml-2 mb-1" />
-              </Card.Title>
-              <h1 style={{ textAlign: "center" }}>10</h1>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card border="warning" style={{ width: "20rem", height: "8rem" }}>
-            <Card.Body>
-              <Card.Title style={{ textAlign: "center" }}>
-                Pending Events{" "}
-                <FaRegLaughWink size={25} className="ml-1 mb-1" />
-              </Card.Title>
-              <h1 style={{ textAlign: "center" }}>5</h1>
-            </Card.Body>
-          </Card>
+              </div>
+              <div className="count-number">
+                <h1>10</h1>
+              </div>
+            </div>
+          </div>
         </Col>
 
         <Col>
-          <Card border="danger" style={{ width: "20rem", height: "8rem" }}>
-            <Card.Body style={{ textAlign: "center" }}>
-              <Card.Title>
+          <div className="countcontainer">
+            <div className="countdetails">
+              <div className="count-heading">
+                Pending Events{" "}
+                <FaRegLaughWink size={25} className="ml-2 mb-1" />
+              </div>
+              <div className="count-number">
+                <h1>5</h1>
+              </div>
+            </div>
+          </div>
+        </Col>
+
+        <Col>
+          <div className="countcontainer">
+            <div className="countdetails">
+              <div className="count-heading">
                 Completed Events{" "}
-                <FaRegSadTear size={25} className="ml-1 mb-1" />
-              </Card.Title>
-              <h1 style={{ textAlign: "center" }}>20</h1>
-            </Card.Body>
-          </Card>
+                <FaRegLaughSquint size={25} className="ml-2 mb-1" />
+              </div>
+              <div className="count-number">
+                <h1>20</h1>
+              </div>
+            </div>
+          </div>
         </Col>
       </Row>
     </Container>

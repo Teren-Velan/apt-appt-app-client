@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
-import { Container, Button, Modal, Form } from "react-bootstrap";
+import { Container, Button, Modal, Form, Card } from "react-bootstrap";
 import EventsDisplay from "./EventsDisplay";
 import Topbar from "../../ui/topbar/Topbar";
 import Sidebar from "../../ui/Sidebar";
 import EventCount from "./EventCount";
 import { FaPlusCircle } from "react-icons/fa";
+import { FcPlus } from "react-icons/fc";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import FriendsList from "../../ui/friendslist/FriendsList";
 
-function Dashboard({ userInfo }) {
+function Dashboard({ userInfo, setUserInfo }) {
   let { username } = useParams();
   const [eventData, setEventData] = useState({});
   const [show, setShow] = useState(false); //for modal
@@ -61,7 +64,7 @@ function Dashboard({ userInfo }) {
       // return res.status(400).json({ error: error });
     }
   }
-
+  console.log("uuuuser,", userInfo);
   // for rendering event data
   let render = "";
   if (Object.keys(eventData).length !== 0) {
@@ -71,55 +74,60 @@ function Dashboard({ userInfo }) {
   }
 
   return (
-    <Container>
-      <hr />
-
-      <EventCount />
-      <hr />
-      <div>
-        <h1>
-          Create New Event
-          <Button>
-            <FaPlusCircle onClick={handleShow} size={30} />
-          </Button>
-        </h1>
+    <>
+      <div className="side_chick">
+        <FriendsList userInfo={userInfo} setUserInfo={setUserInfo} />
       </div>
+      <Container className="m-auto">
+        <hr />
+        <EventCount />
+        <hr />
 
-      {render}
-      {/* For display of modal */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add a new Event</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form.Group>
-            <Form.Text>Name of Event</Form.Text>
-            <Form.Control
-              onChange={inputHandling}
-              name="event_name"
-              type="text"
-              placeholder="Trip to the Zoo"
-            />
-          </Form.Group>
+        <div className="event-btn-cont">
+          <button className="create-event-btn" onClick={handleShow}>
+            <h1>
+              Create Event
+              <BsFillPlusCircleFill size={35} className="mb-2 ml-2" />
+            </h1>
+          </button>
+        </div>
 
-          <Form.Group>
-            <Form.Text className="text-muted">Description</Form.Text>
-            <Form.Control
-              name="description"
-              onChange={inputHandling}
-              type="text"
-              placeholder="..."
-            />
-          </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={addNewEvent} variant="secondary">
-            {" "}
-            Submit{" "}
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </Container>
+        {render}
+        {/* For display of modal */}
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add a new Event</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group>
+              <Form.Text>Name of Event</Form.Text>
+              <Form.Control
+                onChange={inputHandling}
+                name="event_name"
+                type="text"
+                placeholder="Trip to the Zoo"
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Text className="text-muted">Description</Form.Text>
+              <Form.Control
+                name="description"
+                onChange={inputHandling}
+                type="text"
+                placeholder="..."
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={addNewEvent} variant="secondary">
+              {" "}
+              Submit{" "}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </Container>
+    </>
   );
 }
 

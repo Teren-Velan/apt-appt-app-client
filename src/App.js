@@ -52,7 +52,6 @@ function App() {
     ]
   }
 
-  console.log(userInfo)
   return (
     <Router>
 {/* 
@@ -91,7 +90,11 @@ function App() {
 
 
       <div className="main-div">
-        <Topbar userInfo={userInfo} logout={logout}/>
+        {Object.keys(userInfo).length != 0 && <Topbar 
+        userInfo={userInfo}
+        logout={logout} 
+        setUserInfo={setUserInfo}/>}
+        
       {/* switch routes below */}
       <Switch>
 
@@ -103,10 +106,6 @@ function App() {
           <WelcomePage/>
         </Route>
 
-        <Route path="/topbar">
-          <Topbar/>
-        </Route>
-
         <Route path="/register" exact>
           <Registration/>
         </Route>
@@ -115,7 +114,8 @@ function App() {
         </Route>
 
         <Route path="/dashboard/:username/event">
-          <Dashboard userInfo = {userInfo}/>
+          <Dashboard userInfo = {userInfo}
+          setUserInfo = {setUserInfo}/>
         </Route>
 
 

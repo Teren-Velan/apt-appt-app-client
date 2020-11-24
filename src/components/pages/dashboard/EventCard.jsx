@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FaEye, FaTrashAlt } from "react-icons/fa";
+import {
+  FaEye,
+  FaTrashAlt,
+  FaRegCircle,
+  FaRegArrowAltCircleRight,
+  FaAngleDown,
+  FaChevronCircleRight,
+  FaUserCircle,
+  FaGlobeAmericas,
+} from "react-icons/fa";
+import { BsCircle } from "react-icons/bs";
 import Axios from "axios";
+import OutsideAlerter from "../../ui/searchbar/OutsideAlerter";
+import DropdownMenu from "../../ui/dropdown/DropdownMenu";
 
 function EventCard({ eventData, setEventData }) {
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+
+  function profileDropdown() {
+    setShowProfileDropdown(!showProfileDropdown);
+  }
+  function profileDropdownOut() {
+    setShowProfileDropdown(false);
+  }
+
   async function getEventData() {
     try {
       let token = localStorage.token;
@@ -40,20 +61,32 @@ function EventCard({ eventData, setEventData }) {
 
   return (
     <Container className="mt-5">
-      <Card border="danger" style={{ width: "60rem", height: "10rem" }}>
-        <Card.Body>
-          <Card.Title>{eventData.event_name}</Card.Title>
-          <Card.Text>{eventData.description}</Card.Text>
-        </Card.Body>
+      <div className="event-Container">
+        <div className="event-Details">
+          <div className="title">
+            <h4>
+              <BsCircle size={30} /> <span> </span>
+              {eventData.event_name}
+            </h4>
+          </div>
 
-        <Link to={`/event/${eventData._id}`} className="btn btn-success">
-          <FaEye size={20} />
-        </Link>
-        <Button onClick={deleteEvent}>
-          {/* <FaTrashAlt /> */}
-          delete
-        </Button>
-      </Card>
+          <div className="status">
+            <p>Status: Pending</p>
+          </div>
+
+          <div className="event-icons">
+            <button className="svg-btn">
+              <Link className="see-more" to={`/event/${eventData._id}`}>
+                <FaEye />
+              </Link>
+            </button>
+
+            <button className="svg-btn">
+              <FaTrashAlt onClick={deleteEvent} />
+            </button>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }
