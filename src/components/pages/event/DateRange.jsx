@@ -9,8 +9,6 @@ function DateRange({ eventData, setEventData }) {
     setBothDate((input) => ({ ...input, [e.target.name]: e.target.value }));
   }
 
-  console.log("JJJJJJ", eventData);
-
   async function onClick() {
     try {
       let token = localStorage.token;

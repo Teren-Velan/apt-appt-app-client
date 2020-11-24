@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom"
 
 function DropdownMenu({type, list, logout}) {
   let render = ""
@@ -9,7 +10,7 @@ function DropdownMenu({type, list, logout}) {
         <div className="arrow-div"></div>
         <div className="dropdown-div">
           <div className="dropdown-card">Profile</div>
-          <div className="dropdown-card" onClick={logout}>Logout</div>
+          <NavLink to="/login" className="dropdown-card" onClick={logout}>Logout</NavLink>
         </div>
       </>
     ]
