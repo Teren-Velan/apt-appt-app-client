@@ -66,14 +66,17 @@
   }
 }
 .get_started {
+  position: fixed;
   color: #7c7c7c;
   text-transform: uppercase;
   font-size: 36px;
   font-weight: bold;
   width: 100%;
   display: block;
-  padding-top: 0;
-  margin: 0;
+}
+
+.fixed {
+  position: fixed;
 }
 
 .float_right {
@@ -98,12 +101,12 @@
 .width_screen {
   width: 100vh;
   height: 100vh;
-  margin-top: 18%;
-  margin-left: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signupButton {
-  margin-left: 50%;
   opacity: 1;
   transition: 1s;
   font-size: 30px;
@@ -116,6 +119,8 @@
   padding-right: 20px;
   color: #80eebb;
   font-weight: bold;
+  float: right;
+  margin-top: 5%;
 }
 
 .hoveringleft:hover .signupButton {

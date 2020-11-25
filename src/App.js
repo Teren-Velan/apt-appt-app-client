@@ -64,7 +64,7 @@ function App() {
 
         <Switch>
           <Route path="/" exact>
-            {isAuth ? <p>Welcome back, go to your <NavLink to="/dashboard">dashboard</NavLink></p> : <Login setUserInfo={setUserInfo} setIsAuth={setIsAuth}/>}
+            {isAuth ? <p>Welcome back, go to your <NavLink to="/dashboard">dashboard</NavLink></p> : <WelcomePage/>}
           </Route>
           {/*eheg*/}
           <Route path="/register" exact>

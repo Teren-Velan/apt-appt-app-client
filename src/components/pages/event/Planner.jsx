@@ -72,6 +72,22 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
     }
   }
 
+  async function readyUp(){
+    try {
+      let token = localStorage.token;
+      await Axios.put(`http://localhost:80/event/${eventData._id}/ready`, {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      pusherTrigger()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   function findUserDateBlocks() {
     let dateblocksArr = eventData.dateblocks
     console.log("dateblockarr:", dateblocksArr)
@@ -120,13 +136,13 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
 
         if (index > -1) {
           return (
-            <div className="dateblock-card blocked" id={availDate} onClick={clickBlock}>
+            <div className="date-card blocked" id={availDate} onClick={clickBlock}>
               <p id={availDate}><del id={availDate}>{stringDates(availDate)}</del></p>
             </div>
           )
         } else {
           return (
-            <div className="dateblock-card" id={availDate} onClick={clickBlock}>
+            <div className="date-card" id={availDate} onClick={clickBlock}>
               <p id={availDate}>{stringDates(availDate)}</p>
             </div>
           )
@@ -141,13 +157,10 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
   return (
     <div className="planner-main-div">
       <p>Block your unavailable dates</p>
+      <button onClick={readyUp}>I'm done!</button>
       <div className="dateblocks-chooser-div">
-        {/*<Form.Group controlId="formBasicCheckbox">*/}
         {render}
-
-        {/*</Form.Group>*/}
       </div>
-      {/*<Button onClick={onClickSubmit}>Confirm</Button>*/}
     </div>
   );
 }
