@@ -78,54 +78,54 @@ function Dashboard({ userInfo, setUserInfo }) {
       <div className="dashboard-main-div">
         {/* left side  */}
         <div className="dashboard-page-left">
-          <div className="main-dashboard-container-left">
-            <div className="event-count-container">
-              <EventCount />
-            </div>
-
-            <div className="event-btn-cont">
-              <button className="create-event-btn" onClick={handleShow}>
-                <h1>
-                  Events List
-                  <BsFillPlusCircleFill size={35} className="mb-2 ml-2" />
-                </h1>
-              </button>
-            </div>
-            {render}
-            {/* For display of modal */}
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Add a new Event</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Form.Group>
-                  <Form.Text>Name of Event</Form.Text>
-                  <Form.Control
-                    onChange={inputHandling}
-                    name="event_name"
-                    type="text"
-                    placeholder="Trip to the Zoo"
-                  />
-                </Form.Group>
-
-                <Form.Group>
-                  <Form.Text className="text-muted">Description</Form.Text>
-                  <Form.Control
-                    name="description"
-                    onChange={inputHandling}
-                    type="text"
-                    placeholder="..."
-                  />
-                </Form.Group>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={addNewEvent} variant="secondary">
-                  {" "}
-                  Submit{" "}
-                </Button>
-              </Modal.Footer>
-            </Modal>
+          <div className="event-count-container">
+            <EventCount />
           </div>
+
+          <div className="event-btn-cont">
+            <button className="create-event-btn" onClick={handleShow}>
+              <h1>
+                Events List
+                <BsFillPlusCircleFill size={35} className="mb-2 ml-2" />
+              </h1>
+            </button>
+          </div>
+
+          <div className="render-display">{render}</div>
+
+          {/* For display of modal */}
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add a new Event</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form.Group>
+                <Form.Text>Name of Event</Form.Text>
+                <Form.Control
+                  onChange={inputHandling}
+                  name="event_name"
+                  type="text"
+                  placeholder="Trip to the Zoo"
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Text className="text-muted">Description</Form.Text>
+                <Form.Control
+                  name="description"
+                  onChange={inputHandling}
+                  type="text"
+                  placeholder="..."
+                />
+              </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={addNewEvent} variant="secondary">
+                {" "}
+                Submit{" "}
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
 
         <div className="dashboard-page-right">
