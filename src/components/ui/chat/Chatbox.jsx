@@ -17,7 +17,7 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({behavior: "smooth"})
+    messagesEndRef.current.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start'})
   }
 
 
