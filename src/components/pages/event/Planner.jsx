@@ -35,10 +35,11 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
 
 
   async function clickBlock(e) {
+    let dateObj = new Date(e.target.id)
     try {
       let token = localStorage.token
       await Axios.put(`http://localhost:80/event/${eventData._id}/dateblock`, {
-        date: e.target.id
+        date: dateObj
       }, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -120,7 +121,7 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
         if (index > -1) {
           return (
             <div className="dateblock-card blocked" id={availDate} onClick={clickBlock}>
-              <p id={availDate}><del>{stringDates(availDate)}</del></p>
+              <p id={availDate}><del id={availDate}>{stringDates(availDate)}</del></p>
             </div>
           )
         } else {
