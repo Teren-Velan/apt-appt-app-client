@@ -66,6 +66,7 @@ function App() {
           <Route path="/" exact>
             {isAuth ? <p>Welcome back, go to your <NavLink to="/dashboard">dashboard</NavLink></p> : <WelcomePage/>}
           </Route>
+          {/*eheg*/}
           <Route path="/register" exact>
             <Registration/>
           </Route>
@@ -75,7 +76,7 @@ function App() {
 
           <Route path="/dashboard">
 {/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
-            <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+            <Dashboard userInfo={userInfo}/>
           </Route>
 
 

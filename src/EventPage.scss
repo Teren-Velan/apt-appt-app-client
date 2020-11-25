@@ -10,7 +10,7 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 1px 1px 2px 0 rgba(183, 183, 183, 0.5),
-    1px 1px 20px 2px rgba(181, 181, 181, 0.3);
+  1px 1px 20px 2px rgba(181, 181, 181, 0.3);
 
   h3 {
     margin-top: 10px;
@@ -51,15 +51,17 @@
         }
 
         .message-bubble {
-          border-radius: 8px;
           padding: 6px 12px;
           max-width: 200px;
+          min-width: 50px;
 
           &.peer {
             background-color: #999999;
+            border-radius: 9px 9px 9px 2px;
           }
 
           &.user {
+            border-radius: 9px 9px 2px 9px;
             background-color: #838383;
           }
         }
@@ -150,6 +152,10 @@
     // border: solid red 1px;
 
     .event-name-div {
+      //border: red solid 1px;
+
+
+
       h6 {
         margin: 0;
         font-family: "Cabin", sans-serif;
@@ -179,12 +185,14 @@
       }
 
       .participant-card {
-        background-color: #f5fcff;
+        background-color: #e3e3e3;
         border-radius: 10px;
         padding: 5px 10px;
         margin: 0 3px;
-        box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5),
-          1px 1px 10px 2px rgba(181, 181, 181, 0.3);
+
+        &.ready {
+          background-color: #79e270;
+        }
 
         p {
           margin: 0;
@@ -214,20 +222,25 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100%;
+        justify-items: center;
         //border: red solid 1px;
 
-        .dateblock-card {
-          display: flex;
-          align-items: center;
-          padding: 0 20px;
-          width: 200px;
-          height: 45px;
-          background-color: #f1f1f1;
-          margin-bottom: 10px;
-          border-radius: 10px;
+        .date-card {
+
+          &:hover {
+            //width: 220px;
+            transform: scale(1.04);
+            transform-origin: center;
+            box-shadow: 1px 1px 5px 0 rgba(190, 190, 190, 0.4),
+            1px 1px 20px 2px rgba(188, 188, 188, 0.2);
+            transition-duration: 0.3s;
+          }
 
           &.blocked {
-            opacity: 0.5;
+            transform: none;
+            opacity: 0.3;
+            box-shadow: none;
+            background-color: #f3f3f3;
           }
 
           p {
@@ -240,19 +253,74 @@
       }
     }
 
-    .dates-results-main-div {
-      margin-top: 30px;
+    .date-card {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      width: 200px;
+      height: 45px;
+      background-color: #fafafa;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5),
+      1px 1px 10px 2px rgba(181, 181, 181, 0.3);
+
+
+      &.blocked {
+        opacity: 0.5;
+      }
+
       p {
-        font-family: "Heebo", sans-serif;
-        font-size: 20px;
+        font-family: "Cabin", sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        margin: 0;
       }
     }
+
+    .dates-results-main-div {
+      margin-top: 30px;
+
+      .date-card {
+        background-color: #7ed07e;
+
+        &.confirm {
+          background-color: greenyellow;
+        }
+
+        p {
+          font-family: "Cabin", sans-serif;
+          font-weight: 500;
+          font-size: 15px;
+          margin: 0;
+        }
+      }
+
+
+    }
   }
+
 
   .eventpage-right {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     //border: solid red 1px;
+  }
+}
+
+@keyframes grow-date-card {
+  0% {
+    width: 200px;
+  }
+  15% {
+    width: 210px;
+  }
+  75% {
+    width: 220px;
+  }
+  100% {
+    width: 230px;
   }
 }
