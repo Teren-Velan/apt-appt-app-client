@@ -49,7 +49,7 @@ else {
   return (
     <>
       <div className="friends-list-div">
-        <h3>Friends list</h3>
+        <h3>{eventpage ? "Add friend to event" : "Friends list"}</h3>
         {userInfo.friendlist &&
           userInfo.friendlist.map((el, index) => (
             <div className="friend-card">
