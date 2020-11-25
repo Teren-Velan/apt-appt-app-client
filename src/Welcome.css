@@ -26,16 +26,16 @@
 
 #flip div div {
   padding: 0;
-  background: #80eebb;
+  background: #03b687;
 }
 
 #flip div:first-child div {
-  background: #88d8f3;
+  background: #000e62;
   padding: 0;
 }
 
 #flip div:last-child div {
-  background: #f6879e;
+  background: #990d0d;
   padding: 0;
 }
 
@@ -117,7 +117,7 @@
   font-family: "Heebo", sans-serif;
   padding-left: 20px;
   padding-right: 20px;
-  color: #80eebb;
+  color: #03b687;
   font-weight: bold;
   float: right;
   margin-top: 5%;
@@ -139,7 +139,7 @@
   margin-top: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   font-family: "Heebo", sans-serif;
-  color: #88d8f3;
+  color: #000e62;
   font-weight: bold;
 }
 
