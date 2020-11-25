@@ -11,15 +11,39 @@ import DateRange from "./DateRange";
 import DatePicker from "./DateRange";
 import Chatbox from "../../ui/chat/Chatbox";
 import FriendsList from "../../ui/friendslist/FriendsList"
+import Pusher from "pusher-js";
 
-function Event({userInfo , setUserInfo}) {
+function Event({userInfo, setUserInfo}) {
   let {eventid} = useParams();
   const [eventData, setEventData] = useState({});
-
+  let collectiveAvailDates = {}
+  let availRender = ''
   const [value, onChange] = useState(new Date());
   console.log("id: ", eventid);
+
+
   useEffect(() => {
     getEventData();
+    let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+      cluster: 'ap1'
+    });
+    let channel = pusher.subscribe(`channel-${eventid}`);
+    channel.bind('trigger', function (data) {
+      // alert(JSON.stringify(data));
+      getEventData()
+    })
+
+    channel.bind('typing', function (data) {
+      if (data.user !== userInfo.username) {
+        alert(`${data.user} is typing`)
+      }
+    })
+    return () => {
+      channel.unbind()
+
+    }
+
+
   }, []);
 
   async function getEventData() {
@@ -43,8 +67,37 @@ function Event({userInfo , setUserInfo}) {
     }
   }
 
-  console.log("event data: ", eventData);
 
+  async function pusherTrigger() {
+    try {
+      await Axios.post('http://localhost:80/pusher/trigger', {
+        channel: `channel-${eventid}`
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+  function stringDates(element) {
+    let date = new Date(element);
+    let onlyDate = date.getDate();
+    let onlyMonth = date.getMonth();
+    let arr = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let onlyDay = date.getDay();
+    let onlyYear = date.getFullYear();
+    // console.log(new Date(`${onlyYear}-${onlyMonth}-${onlyDate}`));
+
+    return `${arr[onlyDay]} ${onlyDate}-${onlyMonth}-${onlyYear}`;
+  }
 
   function calcCollectiveAvailableDates() {
 
@@ -76,13 +129,21 @@ function Event({userInfo , setUserInfo}) {
     })
     console.log("collective results: ", collectiveAvailDates)
 
+    let availDates = []
+    for (const [date, userArr] of Object.entries(collectiveAvailDates)) {
+      if (userArr.length === 0) {
+        availDates.push(date)
+      }
+    }
+
+    availRender = availDates.map((date) => {
+      return <li>{stringDates(date)}</li>
+    })
   }
 
 
   if (Object.keys(eventData).length !== 0) {
     calcCollectiveAvailableDates()
-
-
   }
 
 
@@ -93,44 +154,49 @@ function Event({userInfo , setUserInfo}) {
   if (Object.keys(eventData).length !== 0) {
     render = [
       <>
-      <div className="side_chick">
-        <FriendsList 
-        userInfo={userInfo}
-        eventpage="true"
-        eventID = {eventData._id}
-        setEventData = {setEventData}
-        />
-      </div>
-      <div className="eventpage-main-div">
 
-        <div className="eventpage-left">
-          <div className="event-name-div">
-            <h1>{eventData.event_name}</h1>
+        <div className="eventpage-main-div">
+
+          <div className="eventpage-left">
+            <div className="event-name-div">
+              <h6>event title.</h6>
+              <h1>{eventData.event_name}</h1>
+            </div>
+
+            <p>{eventData.description}</p>
+            <div className="participants-div">
+
+              <h2>Participants</h2>
+
+              {eventData.participants.map((participant) => (
+                <div className="participant-card">
+                  <p>{participant}</p>
+
+                </div>
+              ))}
+            </div>
+
+            <DateRange eventData={eventData} setEventData={setEventData}/>
+            <Planner eventData={eventData} userInfo={userInfo} pusherTrigger={pusherTrigger}/>
+
+
+            <div className="dates-results-main-div">
+             <p>Current potential appointment dates</p>
+              {availRender}
+            </div>
+
+
           </div>
 
-          <p>{eventData.description}</p>
-          <div className="participants-div">
+          <div className="eventpage-right">
 
-            <h2>Participants</h2>
+            <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}
+                     pusherTrigger={pusherTrigger}/>
+            <FriendsList userInfo={userInfo} eventpage="true" eventID={eventData._id} setEventData={setEventData}/>
 
-            {eventData.participants.map((participant) => (
-              <div className="participant-card">
-                <p>{participant}</p>
-
-              </div>
-            ))}
           </div>
-
-          <DateRange eventData={eventData} setEventData={setEventData}/>
-          <Planner eventData={eventData}/>
-
         </div>
-
-        <div className="eventpage-right">
-          <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}/>
-        </div>
-      </div>
-</>
+      </>
     ];
   }
 
