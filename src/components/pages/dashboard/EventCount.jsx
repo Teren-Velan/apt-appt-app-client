@@ -9,14 +9,18 @@ import {
 
 function EventCount() {
   return (
-    <Container className="mb-2 mt-2">
+    <Container className="event-count-container">
       <Row>
         <Col>
           <div className="countcontainer">
             <div className="countdetails">
               <div className="count-heading">
                 Confirmed Events{" "}
-                <FaRegLaughBeam size={25} className="ml-2 mb-1" />
+                <FaRegLaughBeam
+                  style={{ color: "green" }}
+                  size={25}
+                  className="ml-3"
+                />
               </div>
               <div className="count-number">
                 <h1>10</h1>
@@ -30,7 +34,11 @@ function EventCount() {
             <div className="countdetails">
               <div className="count-heading">
                 Pending Events{" "}
-                <FaRegLaughWink size={25} className="ml-2 mb-1" />
+                <FaRegLaughWink
+                  style={{ color: "orange" }}
+                  size={25}
+                  className="ml-3 mb-1"
+                />
               </div>
               <div className="count-number">
                 <h1>5</h1>
@@ -44,7 +52,11 @@ function EventCount() {
             <div className="countdetails">
               <div className="count-heading">
                 Completed Events{" "}
-                <FaRegLaughSquint size={25} className="ml-2 mb-1" />
+                <FaRegLaughSquint
+                  style={{ color: "tomato" }}
+                  size={25}
+                  className="ml-3 mb-1"
+                />
               </div>
               <div className="count-number">
                 <h1>20</h1>
