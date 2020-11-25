@@ -34,7 +34,7 @@ html {
 
 .topbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #f6f6f6;
   padding: 0 20px;
@@ -229,8 +229,8 @@ html {
   .main-dashboard-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 400px !important;
+    align-items: flex-;
+    width: 200px !important;
   }
 
   .topbar-right {
