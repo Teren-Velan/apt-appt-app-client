@@ -64,16 +64,10 @@ function EventCard({ eventData, setEventData }) {
     <div className="event-Container">
       <div className="holder">
         <div
-          style={
-            ({
-              backgroundColor:
-                eventData.status === "Completed" ? "#fafff0" : "#f2f2f2",
-            },
-            {
-              backgroundColor:
-                eventData.status === "Ready" ? "#fafff0" : "#f2f2f2",
-            })
-          }
+          style={{
+            backgroundColor:
+              eventData.status === "Completed" ? "#fafff0" : "#f2f2f2",
+          }}
           className="event-Details"
         >
           <div className="title">
