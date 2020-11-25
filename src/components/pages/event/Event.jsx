@@ -213,7 +213,7 @@ function Event({userInfo, setUserInfo}) {
               })}
             </div>
 
-            <DateRange eventData={eventData} setEventData={setEventData}/>
+            <DateRange eventData={eventData} setEventData={setEventData} userInfo ={userInfo}/>
             <Planner eventData={eventData} userInfo={userInfo} pusherTrigger={pusherTrigger}/>
 
 

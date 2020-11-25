@@ -45,7 +45,7 @@ function EventCard({ eventData, setEventData }) {
   async function deleteEvent() {
     let token = localStorage.token;
     try {
-      let res = await Axios.delete(
+      await Axios.delete(
         `http://localhost:80/dashboard/${eventData._id}/delete`,
         {
           headers: {
@@ -59,35 +59,61 @@ function EventCard({ eventData, setEventData }) {
     }
   }
 
+  //pending
   return (
-    <Container className="mt-5">
-      <div className="event-Container">
-        <div className="event-Details">
+    <div className="event-Container">
+      <div className="holder">
+        <div
+          style={{
+            backgroundColor:
+              eventData.status === "Completed" ? "#fafff0" : "#f2f2f2",
+          }}
+          className="event-Details"
+        >
           <div className="title">
             <h4>
-              <BsCircle size={30} /> <span> </span>
+              {" "}
+              <FaRegArrowAltCircleRight className="mr-3 mb-1" />
               {eventData.event_name}
             </h4>
           </div>
 
-          <div className="status">
-            <p>Status: Pending</p>
-          </div>
+          <div className="event-Options">
+            <div className="option-holder">
+              <div className="status">
+                <p>
+                  {eventData.status}
+                  {eventData.status == "Completed" &&
+                    `: ${new Date(
+                      eventData.confirmedDate
+                    ).getDate()}/${new Date(
+                      eventData.confirmedDate
+                    ).getMonth()}/${new Date(
+                      eventData.confirmedDate
+                    ).getFullYear()} `}
+                </p>
+              </div>
 
-          <div className="event-icons">
-            <button className="svg-btn">
-              <Link className="see-more" to={`/event/${eventData._id}`}>
-                <FaEye />
-              </Link>
-            </button>
+              <div className="event-icons">
+                <div>
+                  <button className="svg-btn">
+                    <Link className="see-more" to={`/event/${eventData._id}`}>
+                      <FaEye />
+                    </Link>
+                  </button>
+                </div>
 
-            <button className="svg-btn">
-              <FaTrashAlt onClick={deleteEvent} />
-            </button>
+                <div>
+                  <button className="svg-btn">
+                    <FaTrashAlt onClick={deleteEvent} />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 

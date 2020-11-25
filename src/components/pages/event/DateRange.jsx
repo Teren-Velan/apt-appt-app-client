@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import Axios from "axios";
 
-function DateRange({ eventData, setEventData }) {
+function DateRange({ eventData, setEventData, userInfo }) {
   const [bothdate, setBothDate] = useState({});
 
   function inputHandler(e) {
@@ -49,11 +49,11 @@ function DateRange({ eventData, setEventData }) {
         <Form.Control name="end_date" onChange={inputHandler} type="date" />
         <Button onClick={onClick}>Submit</Button>
       </Form.Group> */}
-      from
-      <input name="start_date" onChange={inputHandler} type="date" />
+      {eventData.host[0] == userInfo.username ? <div>from<input name="start_date" onChange={inputHandler} type="date"/>
       to
       <input name="end_date" onChange={inputHandler} type="date" />
-      <button onClick={onClick}>submit</button>
+      <button onClick={onClick}>submit</button></div>
+      : <div></div>}
     </div>
   );
 }
