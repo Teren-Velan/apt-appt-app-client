@@ -18,7 +18,7 @@ function Dashboard({ userInfo, setUserInfo }) {
   const [inputFields, setInputFields] = useState({});
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
+  console.log("user here", userInfo)
   useEffect(() => {
     getEventData();
   }, []);
