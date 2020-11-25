@@ -6,14 +6,20 @@ import FriendsList from "../friendslist/FriendsList";
 import Pusher from "pusher-js";
 import { FaArrowUp } from "react-icons/fa"
 import {ca} from "react-date-range/dist/locale";
+import {debounce} from 'throttle-debounce'
 
-function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
+function Chatbox({chat, userInfo, getEventData, pusherTrigger, userTyping}) {
 
   const {eventid} = useParams()
   console.log("eventid", eventid)
   console.log("chat", chat)
 
   const [inputField, setInputField] = useState("")
+
+  // const debouncedTypingState = debounce(3000, setUserTyping)
+  const debouncedTypingTrigger = debounce(3000, typingTrigger)
+  let debounced
+  const chatField = useRef("")
   const messagesEndRef = useRef(null)
 
   const scrollToBottom = () => {
@@ -24,7 +30,7 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
   useEffect(() => {
     renderMessages()
     scrollToBottom()
-  }, [chat])
+  }, [chat, renderMessages])
 
 
   // useEffect(() => {
@@ -49,11 +55,12 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
   // }, [])
 
 
-  async function typingTrigger(user) {
+  async function typingTrigger(user, typing) {
     try {
       await Axios.post('http://localhost:80/pusher/typing', {
         channel: `channel-${eventid}`,
-        user: user
+        user: user,
+        typing: typing
       })
     } catch (err) {
       console.log(err)
@@ -63,9 +70,19 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
 
   function inputHandler(e) {
     setInputField(e.target.value)
+    chatField.current = e.target.value
     if (e.key === 'Enter') {
       sendMessage()
     }
+    // if (chatField.current !== "" && userTyping === false) {
+    //   // setUserTyping(true)
+    //   typingTrigger(userInfo.username, true)
+    //   // debouncedTypingState(false)
+    //   debouncedTypingTrigger(userInfo.username, false)
+    // } else if (chatField.current === "" && userTyping === true) {
+    //   // debouncedTypingState(false)
+    //   debouncedTypingTrigger(userInfo.username, false)
+    // }
   }
 
   async function sendMessage() {
@@ -136,7 +153,7 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
       <div className="chat-bottom-div">
 
         <div className="chat-notif-div">
-          {/*<p>someone is typing..</p>*/}
+          {userTyping ? <p>a participant is typing..</p> : ""}
         </div>
         <div className="chat-input-div">
           <input placeholder="say something..." onChange={inputHandler} onKeyPress={e => e.key === 'Enter' ? sendMessage() : null} value={inputField}></input>
