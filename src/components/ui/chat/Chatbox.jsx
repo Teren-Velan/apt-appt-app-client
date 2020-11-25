@@ -49,7 +49,6 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger}) {
   // }, [])
 
 
-
   async function typingTrigger(user) {
     try {
       await Axios.post('http://localhost:80/pusher/typing', {
