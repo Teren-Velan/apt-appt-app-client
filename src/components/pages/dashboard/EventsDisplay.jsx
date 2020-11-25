@@ -10,7 +10,12 @@ function EventsDisplay({ eventData, setEventData }) {
     ));
   }
 
-  return <Container>{render}</Container>;
+  return (
+    <div>
+      {/* <p>(press to create new event)</p> */}
+      {render}
+    </div>
+  );
 }
 
 export default EventsDisplay;
