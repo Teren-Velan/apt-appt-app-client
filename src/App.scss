@@ -362,11 +362,16 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 650px;
-  height: 500px;
-  background-color: #f1f1f1;
+
+  justify-content: flex-start;
+  width: 300px;
+  height: 300px;
+  background-color: #f6f6f6;
   border-radius: 20px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  box-shadow: 1px 1px 2px 0 rgba(183, 183, 183, 0.5),
+  1px 1px 20px 2px rgba(181, 181, 181, 0.3);
+  margin-top: 50px;
 
   h3 {
     margin-top: 10px;
@@ -431,7 +436,7 @@ html {
         display: flex;
         flex-direction: column;
         width: 100%;
-        margin-bottom: 10px;
+        margin-bottom: 3px;
 
         &.peer {
           align-items: flex-start;
@@ -444,25 +449,35 @@ html {
         }
 
         .message-bubble {
-          background-color: #9f9f9f;
-          border-radius: 10px;
-          padding: 10px 15px;
+
+          border-radius: 8px;
+          padding: 6px 12px;
           max-width: 200px;
+
+
+          &.peer {
+            background-color: #999999;
+          }
+
+          &.user {
+            background-color: #838383;
+          }
+
         }
 
         h6 {
           font-family: "Cabin", sans-serif;
-          font-size: 12px;
+          font-size: 10px;
           font-weight: bold;
           margin: 0;
-          color: whitesmoke;
+          color: #f6f6f6;
         }
 
         p {
           font-family: "Heebo", sans-serif;
-          font-size: 15px;
+          font-size: 13px;
           margin: 0;
-          color: whitesmoke;
+          color: #fcfcfc;
         }
       }
     }
@@ -473,6 +488,8 @@ html {
 
     .chat-notif-div {
       height: 30px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 12px;
     }
 
     .chat-input-div {
@@ -527,13 +544,28 @@ html {
   //border: solid red 1px;
   padding: 20px;
   margin-top: 30px;
+
   .eventpage-left {
     width: 100%;
 
     .event-name-div {
-      h1 {
-        font-family: "Cabin", sans-serif;
+
+
+      h6 {
+        margin: 0;
+        font-family: 'Cabin', sans-serif;
+        font-size: 15px;
+        color: #b3b3b3;
       }
+
+      h1 {
+        margin: 0;
+        font-family: 'Heebo', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        color: #0f2662;
+      }
+
     }
 
     .participants-div {
@@ -549,7 +581,7 @@ html {
       }
 
       .participant-card {
-        background-color: #fafafa;
+        background-color: #f5fcff;
         border-radius: 10px;
         padding: 5px 10px;
         margin: 0 3px;
@@ -562,10 +594,78 @@ html {
         }
       }
     }
+
+
+    .date-range-main-div {
+      //border: solid red 1px;
+
+      input{
+        margin: 10px 10px;
+      }
+    }
+
+    .planner-main-div {
+      //border: red solid 1px;
+      margin-top: 50px;
+
+
+      p {
+        font-family: 'Heebo', sans-serif;
+        font-size: 20px;
+      }
+
+      .dateblocks-chooser-div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        //border: red solid 1px;
+
+
+        .dateblock-card {
+          display: flex;
+          align-items: center;
+          padding: 0 20px;
+          width: 200px;
+          height: 45px;
+          background-color: #f1f1f1;
+          margin-bottom: 10px;
+          border-radius: 10px;
+
+          &.blocked {
+            opacity: .5;
+          }
+
+          p {
+            font-family: 'Cabin', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            margin: 0;
+          }
+
+        }
+
+
+      }
+
+    }
+
+    .dates-results-main-div {
+        margin-top: 30px;
+      p {
+        font-family: 'Heebo', sans-serif;
+        font-size: 20px;
+      }
+
+
+    }
+
   }
+
+
 
   .eventpage-right {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     //border: solid red 1px;
   }
@@ -612,6 +712,7 @@ html {
   .event-Details .title {
     align-items: center;
   }
+
   .event-Details .status {
     font-size: 20px;
     font-size: 17px;
@@ -658,6 +759,7 @@ html {
   border-radius: 15px;
   transition: 1s;
 }
+
 .remove_friend_button:hover {
   opacity: 1;
 }
@@ -697,9 +799,11 @@ html {
 #flip div div {
   background: #b3deca;
 }
+
 #flip div:first-child div {
   background: #b5e6f7;
 }
+
 #flip div:last-child div {
   background: #edb6c1;
 }
@@ -797,6 +901,7 @@ html {
     opacity: 1;
   }
 }
+
 .loginButton {
   opacity: 0;
   transition: 1s;
@@ -809,11 +914,13 @@ html {
   color: #b5e6f7;
   font-weight: bold;
 }
+
 .hoveringright:hover {
   .loginButton {
     opacity: 1;
   }
 }
+
 // EventCount.jsx
 
 .countcontainer {
@@ -845,11 +952,20 @@ html {
     font-weight: 100;
     font-family: "Source Sans Pro", sans-serif;
   }
+
 }
 
 .count-number h1 {
   font-weight: 300;
   font-family: "Source Sans Pro", sans-serif;
+
+
+  .count-heading {
+    font-weight: 500;
+    font-size: 25px;
+    margin: 12px auto;
+  }
+
 }
 
 .event-btn-cont {
