@@ -2,7 +2,6 @@ import React from "react";
 import Axios from "axios";
 
 function FriendsList({ userInfo, setUserInfo, eventpage, eventID, setEventData}) {
-  console.log("userinfo: ", userInfo);
   async function toggleFriend(e) {
     if (eventpage != "true"){
     console.log(e.target.value);
@@ -19,6 +18,8 @@ function FriendsList({ userInfo, setUserInfo, eventpage, eventID, setEventData})
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log("not in event")
+      console.log(setUserInfo)
       setUserInfo(userData.data.user);
     } catch (error) {
       console.log(error);
