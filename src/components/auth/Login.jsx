@@ -21,15 +21,19 @@ function Login({ setUserInfo, setIsAuth }) {
       let profile = await Axios.post(
         "http://localhost:80/auth/login",
         inputFields
-      );
-      console.log(profile);
+      );;
       localStorage.setItem("token", profile.data.token);
       let decoded_user = await decode(profile.data.token);
+      let resData = await Axios.get(`http://localhost:80/dashboard/`, {
+        headers: {
+          Authorization: `Bearer ${profile.data.token}`,
+        },
+      });
       setIsAuth(true);
-      setUserInfo(decoded_user.user);
+      setUserInfo(resData.data.user);
+      console.log("resdata", resData.data.user)
       console.log("decoded: ", decoded_user);
       // console.log(user);
-
       history.push(`/dashboard/${decoded_user.user.username}/event`);
     } catch (err) {
       console.log(err);
@@ -60,7 +64,7 @@ function Login({ setUserInfo, setIsAuth }) {
                 onChange={inputHandler}
               />
             </Form.Group>
-
+            
             <button
               onClick={login}
               className="btn btn-primary my-3"
