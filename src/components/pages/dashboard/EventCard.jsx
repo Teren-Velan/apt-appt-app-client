@@ -45,7 +45,7 @@ function EventCard({ eventData, setEventData }) {
   async function deleteEvent() {
     let token = localStorage.token;
     try {
-      let res = await Axios.delete(
+      await Axios.delete(
         `http://localhost:80/dashboard/${eventData._id}/delete`,
         {
           headers: {

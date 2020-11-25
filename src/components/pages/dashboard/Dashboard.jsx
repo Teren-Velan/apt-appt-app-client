@@ -63,8 +63,7 @@ function Dashboard({ userInfo, setUserInfo }) {
       console.log(error);
       // return res.status(400).json({ error: error });
     }
-  }
-  console.log("uuuuser,", userInfo);
+  };
   // for rendering event data
   let render = "";
   if (Object.keys(eventData).length !== 0) {
