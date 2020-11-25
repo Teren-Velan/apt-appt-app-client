@@ -78,7 +78,7 @@ function Dashboard({ userInfo, setUserInfo }) {
       <div className="dashboard-main-div">
         {/* left side  */}
         <div className="dashboard-page-left">
-          <div className="main-dashboard-container">
+          <div className="main-dashboard-container-left">
             <div className="event-count-container">
               <EventCount />
             </div>
