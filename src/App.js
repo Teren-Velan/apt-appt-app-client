@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import logo from './logo.svg';
 import './App.scss';
+import './Welcome.scss'
 import "./Dashboard.scss";
 import "./EventPage.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +17,7 @@ import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
 import Chatbox from "./components/ui/chat/Chatbox";
+
 
 
 function App() {
@@ -71,7 +73,7 @@ function App() {
             <Login setUserInfo={setUserInfo} setIsAuth={setIsAuth}/>
           </Route>
 
-          <Route path="/dashboard/:username/event">
+          <Route path="/dashboard">
 {/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
             <Dashboard userInfo={userInfo}/>
           </Route>

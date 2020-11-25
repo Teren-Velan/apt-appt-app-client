@@ -12,7 +12,9 @@ function WelcomePage() {
             <div className="float_right">get</div>
             <div className="float_right">Started</div>
             <div className="float_right">TOday</div>
+            <a href="/register">
             <button className="signupButton">Join</button>
+            </a>
           </div>
           <div className="divider col-1">
             <div className="line"></div>
@@ -33,7 +35,9 @@ function WelcomePage() {
               </div>
               easier!
               <div>
-                <button className="loginButton">Login</button>
+                <a href="/login">
+                  <button className="loginButton">Login</button>
+                </a>
               </div>
             </div>
           </div>
