@@ -76,7 +76,7 @@ function App() {
 
           <Route path="/dashboard">
 {/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
-            <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+            <Dashboard userInfo={userInfo}/>
           </Route>
 
 
