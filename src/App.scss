@@ -33,7 +33,7 @@ html {
 
 .topbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #f6f6f6;
   padding: 0 20px;
@@ -225,13 +225,6 @@ html {
 
   // dashboard styling
 
-  .main-dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 400px !important;
-  }
-
   .topbar-right {
     display: flex;
     flex-direction: row;
@@ -361,15 +354,14 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   justify-content: flex-start;
   width: 300px;
-  height: 300px;
+  height: 800px;
   background-color: #f6f6f6;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 1px 1px 2px 0 rgba(183, 183, 183, 0.5),
-  1px 1px 20px 2px rgba(181, 181, 181, 0.3);
+    1px 1px 20px 2px rgba(181, 181, 181, 0.3);
   margin-top: 50px;
 
   h3 {
@@ -448,11 +440,9 @@ html {
         }
 
         .message-bubble {
-
           border-radius: 8px;
           padding: 6px 12px;
           max-width: 200px;
-
 
           &.peer {
             background-color: #999999;
@@ -461,7 +451,6 @@ html {
           &.user {
             background-color: #838383;
           }
-
         }
 
         h6 {
@@ -487,7 +476,7 @@ html {
 
     .chat-notif-div {
       height: 30px;
-      font-family: 'Heebo', sans-serif;
+      font-family: "Heebo", sans-serif;
       font-size: 12px;
     }
 
@@ -540,31 +529,29 @@ html {
   width: 70%;
   min-width: 1000px;
   max-width: 1500px;
-  //border: solid red 1px;
+  // border: solid red 1px;
   padding: 20px;
   margin-top: 30px;
 
   .eventpage-left {
     width: 100%;
+    // border: solid red 1px;
 
     .event-name-div {
-
-
       h6 {
         margin: 0;
-        font-family: 'Cabin', sans-serif;
+        font-family: "Cabin", sans-serif;
         font-size: 15px;
         color: #b3b3b3;
       }
 
       h1 {
         margin: 0;
-        font-family: 'Heebo', sans-serif;
+        font-family: "Heebo", sans-serif;
         font-weight: 700;
         font-size: 30px;
         color: #0f2662;
       }
-
     }
 
     .participants-div {
@@ -594,11 +581,10 @@ html {
       }
     }
 
-
     .date-range-main-div {
       //border: solid red 1px;
 
-      input{
+      input {
         margin: 10px 10px;
       }
     }
@@ -607,9 +593,8 @@ html {
       //border: red solid 1px;
       margin-top: 50px;
 
-
       p {
-        font-family: 'Heebo', sans-serif;
+        font-family: "Heebo", sans-serif;
         font-size: 20px;
       }
 
@@ -618,7 +603,6 @@ html {
         grid-template-columns: 1fr 1fr;
         width: 100%;
         //border: red solid 1px;
-
 
         .dateblock-card {
           display: flex;
@@ -631,36 +615,27 @@ html {
           border-radius: 10px;
 
           &.blocked {
-            opacity: .5;
+            opacity: 0.5;
           }
 
           p {
-            font-family: 'Cabin', sans-serif;
+            font-family: "Cabin", sans-serif;
             font-weight: 500;
             font-size: 15px;
             margin: 0;
           }
-
         }
-
-
       }
-
     }
 
     .dates-results-main-div {
-        margin-top: 30px;
+      margin-top: 30px;
       p {
-        font-family: 'Heebo', sans-serif;
+        font-family: "Heebo", sans-serif;
         font-size: 20px;
       }
-
-
     }
-
   }
-
-
 
   .eventpage-right {
     display: flex;
@@ -697,7 +672,7 @@ html {
   font-family: "Heebo", sans-serif;
   font-weight: 700;
   display: flex;
-  width: 90%;
+  width: 100%;
   margin: auto;
 
   .event-Details {
@@ -748,8 +723,9 @@ html {
 
 // For FriendList Styling
 .side_chick {
-  // position: fixed;
-  // right: 0;
+  position: fixed;
+  top: 65px;
+  right: 290px;
   height: 100vh;
 }
 
@@ -763,18 +739,13 @@ html {
   opacity: 1;
 }
 
-.friends-list-div {
-  height: 100%;
-  width: 500px;
-}
-
 //Welcome Page Styling
 #container {
   color: #999;
   text-transform: uppercase;
   font-size: 36px;
   font-weight: bold;
-  width: 500px;
+  width: 900px;
   display: block;
 }
 
@@ -951,28 +922,26 @@ html {
     font-weight: 100;
     font-family: "Source Sans Pro", sans-serif;
   }
-
 }
 
 .count-number h1 {
   font-weight: 300;
   font-family: "Source Sans Pro", sans-serif;
 
-
   .count-heading {
     font-weight: 500;
     font-size: 25px;
     margin: 12px auto;
   }
-
 }
 
 .event-btn-cont {
   display: flex;
   justify-content: flex-start;
-  margin-top: 20px;
-  width: 600px;
+  margin-top: 40px;
+  width: 400px;
   height: 80px;
+  margin-left: 100px;
   // margin-left: -10px;
   background-color: #fff;
 
@@ -982,7 +951,6 @@ html {
     // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     transition: 0.3s;
     border-radius: 5px;
-    margin-left: 75px;
     width: 300px;
     background-color: #fff;
     font-family: "Source Sans Pro", sans-serif;
@@ -999,17 +967,29 @@ h1 svg {
 }
 
 .event-count-container {
-  width: 150px;
+  width: 900px;
   margin: auto;
 }
 
 .dashboard-main-div {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .dashboard-page-left {
+    width: 50%;
+    .main-dashboard-container {
+      display: flex;
+      flex-direction: column;
+      // justify-content: space-between;
+      align-items: center;
+      width: 1000px;
+      // border: 1px solid red;
+      margin-left: 150px;
+    }
+  }
+  .dashboard-page-right {
     width: 50%;
   }
 }
