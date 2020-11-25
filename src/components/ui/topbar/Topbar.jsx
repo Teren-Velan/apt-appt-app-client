@@ -47,7 +47,7 @@ function Topbar({ userInfo, logout, setUserInfo }) {
     <div className="topbar">
       <div className="topbar-left">
 
-        <NavLink to="/">
+        <NavLink to="/dashboard">
         <div className="home-icon-div">
           <FaHome className="home-icon" />
         </div>

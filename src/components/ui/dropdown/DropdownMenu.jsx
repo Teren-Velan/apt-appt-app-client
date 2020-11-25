@@ -10,7 +10,7 @@ function DropdownMenu({ type, list, logout }) {
         <div className="arrow-div"></div>
         <div className="dropdown-div">
           <div className="dropdown-card">Profile</div>
-          <NavLink to="/login" className="dropdown-card" onClick={logout}>
+          <NavLink to="/" className="dropdown-card" onClick={logout}>
             Logout
           </NavLink>
         </div>
