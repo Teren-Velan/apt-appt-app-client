@@ -249,7 +249,8 @@ function Event({userInfo, setUserInfo}) {
 
             </div>
 
-            <DateRange eventData={eventData} setEventData={setEventData} userInfo={userInfo}/>
+            {eventData.host[0] === userInfo.username && <DateRange eventData={eventData} setEventData={setEventData} userInfo={userInfo}/>}
+
             <Planner eventData={eventData} userInfo={userInfo} pusherTrigger={pusherTrigger}/>
 
 
