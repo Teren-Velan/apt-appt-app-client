@@ -132,8 +132,6 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
         // />)
 
         let index = userDBlocks.findIndex(date => date === availDate)
-        console.log("hgahah", index)
-
         if (index > -1) {
           return (
             <div className="date-card blocked" id={availDate} onClick={clickBlock}>

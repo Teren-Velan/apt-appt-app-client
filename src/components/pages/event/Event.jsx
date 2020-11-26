@@ -98,7 +98,21 @@ function Event({userInfo, setUserInfo}) {
       console.log(err)
     }
   }
-
+  async function kickParticipant(e){
+    let token = localStorage.token
+    console.log(e.target.id)
+    try{
+      await Axios.put(`http://localhost:80/event/${eventid}/participant/delete`, {participant: e.target.id},{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+      )
+      await pusherTrigger()
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   function stringDates(element) {
     let date = new Date(element);
@@ -205,12 +219,12 @@ function Event({userInfo, setUserInfo}) {
 
               {eventData.participants.map((participant) => {
                 if (eventData.readyUsers.findIndex(readyUser => readyUser === participant) > -1) {
-                  return <div className="participant-card ready">
-                    <p>{participant}</p>
+                  return <div className="participant-card ready" id={participant} onClick={kickParticipant} >
+                    <p id={participant}>{participant}</p>
                   </div>
                 } else {
-                  return <div className="participant-card">
-                    <p> {participant}</p>
+                  return <div className="participant-card" id={participant} onClick={kickParticipant}>
+                    <p id={participant}> {participant}</p>
                   </div>
                 }
 

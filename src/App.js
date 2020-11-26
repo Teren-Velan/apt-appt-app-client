@@ -73,7 +73,9 @@ function App() {
           </Route>
 
           <Route path="/dashboard">
-            <Dashboard userInfo={userInfo}/>
+
+            <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+
           </Route>
 
           <Route path="/event/:eventid">
