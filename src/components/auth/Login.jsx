@@ -22,7 +22,7 @@ function Login({ setUserInfo, setIsAuth }) {
       let profile = await Axios.post(
         "http://localhost:80/auth/login",
         inputFields
-      );;
+      );
       localStorage.setItem("token", profile.data.token);
       let decoded_user = await decode(profile.data.token);
       let resData = await Axios.get(`http://localhost:80/dashboard/`, {
@@ -32,7 +32,7 @@ function Login({ setUserInfo, setIsAuth }) {
       });
       setIsAuth(true);
       setUserInfo(resData.data.user);
-      console.log("resdata", resData.data.user)
+      console.log("resdata", resData.data.user);
       console.log("decoded: ", decoded_user);
       // console.log(user);
       history.push(`/dashboard/${decoded_user.user.username}/event`);
@@ -42,40 +42,35 @@ function Login({ setUserInfo, setIsAuth }) {
   }
 
   return (
-    <div>
-      <Container className="Login" style={{ width: "100%" }}>
-        <Card className="card" style={{ width: "40rem", margin: "0 auto" }}>
-          <Card.Body className="card-body">
-            <Form.Group as={Row}>
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                className="form-control"
-                name="username"
-                onChange={inputHandler}
-              />
-            </Form.Group>
+    <div class="gfg-div">
+      <div class="gfg-title">Welcome Back</div>
+      {/* <div class="gfg-sub-title">AaA</div> */}
+      <div class="gfg-input-fields">
+        <div class="gfg-email">
+          <input
+            name="username"
+            onChange={inputHandler}
+            type="text"
+            placeholder="Username"
+          />
+        </div>
+        <div class="gfg-password">
+          <input
+            name="password"
+            onChange={inputHandler}
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+      <button onClick={login} class="gfg-button">
+        Sign In
+      </button>
+      <div class="gfg-link">
+        {/* <a href="#">Forgot password?</a> or */}
 
-            <Form.Group as={Row}>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                className="form-control"
-                name="password"
-                onChange={inputHandler}
-              />
-            </Form.Group>
-            
-            <button
-              onClick={login}
-              className="btn btn-primary my-3"
-              style={{ width: "100%" }}
-            >
-              Log in
-            </button>
-          </Card.Body>
-        </Card>
-      </Container>
+        <a href="/register">New? Click here to register</a>
+      </div>
     </div>
   );
 }

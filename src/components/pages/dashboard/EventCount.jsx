@@ -17,11 +17,11 @@ function EventCount() {
             <FaRegLaughBeam
               style={{ color: "green" }}
               size={16}
-              className="ml-3 mt-1"
+              className="ml-1 mt-1"
             />
           </div>
           <div className="count-number">
-            <h1>10</h1>
+            <h1>1</h1>
           </div>
         </div>
       </div>
@@ -33,11 +33,11 @@ function EventCount() {
             <FaRegLaughWink
               style={{ color: "orange" }}
               size={16}
-              className="mt-1 ml-3"
+              className="mt-1 ml-1"
             />
           </div>
           <div className="count-number">
-            <h1>5</h1>
+            <h1>3</h1>
           </div>
         </div>
       </div>
@@ -49,11 +49,11 @@ function EventCount() {
             <FaRegLaughSquint
               style={{ color: "tomato" }}
               size={16}
-              className="mt-1 ml-3"
+              className="mt-1 ml-1"
             />
           </div>
           <div className="count-number">
-            <h1>20</h1>
+            <h1>0</h1>
           </div>
         </div>
       </div>

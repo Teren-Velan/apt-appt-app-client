@@ -15,9 +15,11 @@ import { BsCircle } from "react-icons/bs";
 import Axios from "axios";
 import OutsideAlerter from "../../ui/searchbar/OutsideAlerter";
 import DropdownMenu from "../../ui/dropdown/DropdownMenu";
+import { CSSTransition } from "react-transition-group";
 
 function EventCard({ eventData, setEventData }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [appear, setAppear] = useState(true);
 
   function profileDropdown() {
     setShowProfileDropdown(!showProfileDropdown);

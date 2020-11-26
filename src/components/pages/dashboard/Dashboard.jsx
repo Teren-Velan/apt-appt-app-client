@@ -10,7 +10,11 @@ import { FaPlusCircle } from "react-icons/fa";
 import { FcPlus } from "react-icons/fc";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import FriendsList from "../../ui/friendslist/FriendsList";
+
+import "../../../App.scss";
+
 import Pusher from "pusher-js";
+
 
 function Dashboard({ userInfo, setUserInfo }) {
   let { username } = useParams();
@@ -19,7 +23,6 @@ function Dashboard({ userInfo, setUserInfo }) {
   const [inputFields, setInputFields] = useState({});
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-
 
   useEffect(() => {
     getEventData();
@@ -74,25 +77,30 @@ function Dashboard({ userInfo, setUserInfo }) {
           },
         }
       );
-      await getEventData();
+
+      getEventData();
+      setShow(false);
+
     } catch (error) {
       console.log(error);
       // return res.status(400).json({ error: error });
     }
-  };
+  }
   // for rendering event data
   let render = "";
   if (Object.keys(eventData).length !== 0) {
     render = [
+      // <CSSTransition in={appear} appear={true} timeout={300} classNames="fade">
       <EventsDisplay eventData={eventData} setEventData={setEventData} />,
+      // </CSSTransition>,
     ];
   }
 
   return (
     <>
-      <div className="dashboard-main-div">
+      <div className="page-main-div">
         {/* left side  */}
-        <div className="dashboard-page-left">
+        <div className="page-left">
           <div className="event-count-container">
             <EventCount />
           </div>
@@ -143,11 +151,11 @@ function Dashboard({ userInfo, setUserInfo }) {
           </Modal>
         </div>
 
-        <div className="dashboard-page-right">
+        <div className="page-right">
           {/* rightside */}
-          <div className="side_chick">
-            <FriendsList userInfo={userInfo} setUserInfo={setUserInfo} />
-          </div>
+          {/* <div className="side_chick"> */}
+          <FriendsList userInfo={userInfo} setUserInfo={setUserInfo} />
+          {/* </div> */}
         </div>
       </div>
     </>

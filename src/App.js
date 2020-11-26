@@ -20,6 +20,7 @@ import Chatbox from "./components/ui/chat/Chatbox";
 import "react-datepicker/dist/react-datepicker.css"
 
 
+
 function App() {
 //states
   const [userInfo, setUserInfo] = useState({})
@@ -75,17 +76,47 @@ function App() {
           <Route path="/dashboard">
 
             <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
-            <footer></footer>
+
+            <footer>
+              {/* <div className="footer-icon">
+                <FaInstagram/>
+                <FaFacebook/>
+                <FaTwitch/>
+              </div>
+
+              <div className="footer-text">
+                <div className="copy">
+                  <p>copy right reseerved</p>
+                </div>
+                
+                <div className="terms">
+                  <p>Terms</p>
+                  <p>Privacy</p>
+                  <p>Security</p>
+                </div>
+              </div> */}
+            </footer>
+
+
           </Route>
 
           <Route path="/event/:eventid">
             <Event userInfo={userInfo}/>
+
+            <footer>
+             
+            </footer>
+
             <footer></footer>
+
           </Route>
 
         </Switch>
 
       </div>
+
+    
+
 
 
     </Router>
