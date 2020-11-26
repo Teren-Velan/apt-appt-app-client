@@ -19,6 +19,8 @@ function Dashboard({ userInfo, setUserInfo }) {
   const [inputFields, setInputFields] = useState({});
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const [appear, setAppear] = useState(true);
+
   console.log("user here", userInfo);
   useEffect(() => {
     getEventData();
@@ -60,6 +62,7 @@ function Dashboard({ userInfo, setUserInfo }) {
         }
       );
       getEventData();
+      setShow(false);
     } catch (error) {
       console.log(error);
       // return res.status(400).json({ error: error });
@@ -69,7 +72,9 @@ function Dashboard({ userInfo, setUserInfo }) {
   let render = "";
   if (Object.keys(eventData).length !== 0) {
     render = [
+      // <CSSTransition in={appear} appear={true} timeout={300} classNames="fade">
       <EventsDisplay eventData={eventData} setEventData={setEventData} />,
+      // </CSSTransition>,
     ];
   }
 

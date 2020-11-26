@@ -18,6 +18,7 @@ import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
 import Chatbox from "./components/ui/chat/Chatbox";
 import {FaFacebook, FaInstagram, FaTwitch} from "react-icons/fa"
+import {CSSTransition} from "react-transition-group"
 
 
 function App() {
@@ -77,7 +78,7 @@ function App() {
 
             <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
             <footer>
-              <div className="footer-icon">
+              {/* <div className="footer-icon">
                 <FaInstagram/>
                 <FaFacebook/>
                 <FaTwitch/>
@@ -93,7 +94,7 @@ function App() {
                   <p>Privacy</p>
                   <p>Security</p>
                 </div>
-              </div>
+              </div> */}
             </footer>
           </Route>
 

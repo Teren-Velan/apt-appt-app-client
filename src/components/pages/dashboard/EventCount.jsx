@@ -21,7 +21,7 @@ function EventCount() {
             />
           </div>
           <div className="count-number">
-            <h1>10</h1>
+            <h1>1</h1>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ function EventCount() {
             />
           </div>
           <div className="count-number">
-            <h1>5</h1>
+            <h1>3</h1>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ function EventCount() {
             />
           </div>
           <div className="count-number">
-            <h1>20</h1>
+            <h1>0</h1>
           </div>
         </div>
       </div>
