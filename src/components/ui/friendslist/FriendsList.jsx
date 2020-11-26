@@ -9,6 +9,7 @@ function FriendsList({
   eventpage,
   eventID,
   setEventData,
+  pusherTrigger
 }) {
   async function toggleFriend(e) {
     if (eventpage != "true") {
@@ -34,7 +35,7 @@ function FriendsList({
       }
     } else {
 
-      console.log("participant add");
+
       try {
         let token = localStorage.token;
         await Axios.post(
@@ -57,6 +58,7 @@ function FriendsList({
       
         setEventData(resData.data.event);
         await dashboardTrigger(e.target.value)
+        await pusherTrigger()
       } catch (error) {
         console.log(error)
       }
