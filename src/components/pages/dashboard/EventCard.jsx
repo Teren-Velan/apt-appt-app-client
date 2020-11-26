@@ -66,7 +66,7 @@ function EventCard({ eventData, setEventData }) {
         <div
           style={{
             backgroundColor:
-              eventData.status === "Completed" ? "#fafff0" : "#f2f2f2",
+              eventData.status === "Confirmed" ? "#fafff0" : "#f2f2f2",
           }}
           className="event-Details"
         >
@@ -83,7 +83,7 @@ function EventCard({ eventData, setEventData }) {
               <div className="status">
                 <p>
                   {eventData.status}
-                  {eventData.status == "Completed" &&
+                  {eventData.status == "Confirmed" &&
                     `: ${new Date(
                       eventData.confirmedDate
                     ).getDate()}/${new Date(
