@@ -17,7 +17,7 @@ import OutsideAlerter from "../../ui/searchbar/OutsideAlerter";
 import DropdownMenu from "../../ui/dropdown/DropdownMenu";
 import { CSSTransition } from "react-transition-group";
 
-function EventCard({ eventData, setEventData }) {
+function EventCard({ eventData, setEventData, setUserInfo }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [appear, setAppear] = useState(true);
 
@@ -55,6 +55,16 @@ function EventCard({ eventData, setEventData }) {
           },
         }
       );
+      let user  = await Axios.get(
+        `http://localhost:80/dashboard/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setUserInfo(user.data.user)
       getEventData();
     } catch (error) {
       console.log(error);

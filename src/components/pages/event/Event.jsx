@@ -83,6 +83,9 @@ function Event({userInfo, setUserInfo}) {
           },
         });
         await pusherTrigger()
+        for (const participant of eventData.participants) {
+          await dashboardTrigger(participant)
+        }
       } catch (err) {
         console.log(err);
       }
@@ -211,7 +214,7 @@ function Event({userInfo, setUserInfo}) {
 
 // use eventData to dislay all info
 
-  let render = "";
+  let render = <div className="page-main-div"></div>;
 
   if (Object.keys(eventData).length !== 0) {
     render = [
@@ -234,11 +237,11 @@ function Event({userInfo, setUserInfo}) {
                               {eventData.participants.map((participant) => {
                 if (eventData.readyUsers.findIndex(readyUser => readyUser === participant) > -1) {
                   return <div className="participant-card ready" id={participant} onClick={kickParticipant} >
-                    <p id={participant}>{participant}</p>
+                    {participant===eventData.host[0] ? <p id={participant}>Host: {participant}</p> : <p id={participant}> {participant}</p>}
                   </div>
                 } else {
                   return <div className="participant-card" id={participant} onClick={kickParticipant}>
-                    <p id={participant}> {participant}</p>
+                    {participant===eventData.host[0] ? <p id={participant}>Host: {participant}</p> : <p id={participant}> {participant}</p>}
                   </div>
                 }
               })}
@@ -255,6 +258,7 @@ function Event({userInfo, setUserInfo}) {
               {eventData.status === "Ready" && eventData.host[0] === userInfo.username && <p>Everyone is ready! Click on the date to lock it in!</p>}
               {eventData.status === "Ready" && eventData.host[0] !== userInfo.username && <p>Everyone is ready! Please wait for host to confirm the date</p>}
               {eventData.status === "Confirmed" && eventData.host[0]=== userInfo.username && <p>Date is confirmed.</p>}
+              {eventData.status === "Confirmed" && eventData.host[0]!== userInfo.username && <p>Date is confirmed.</p>}
               <div className="results-grid">
                 {availRender}
               </div>
@@ -268,7 +272,7 @@ function Event({userInfo, setUserInfo}) {
 
             <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}
                      pusherTrigger={pusherTrigger} userTyping={userTyping}/>
-            <FriendsList userInfo={userInfo} eventpage="true" eventID={eventData._id} setEventData={setEventData}/>
+            {userInfo.username === eventData.host[0] && <FriendsList userInfo={userInfo} eventpage="true" eventID={eventData._id} setEventData={setEventData} pusherTrigger={pusherTrigger}/>}
 
           </div>
         </div>
