@@ -84,7 +84,15 @@ function App() {
               </div>
 
               <div className="footer-text">
-                <p>copy right reseerved</p>
+                <div className="copy">
+                  <p>copy right reseerved</p>
+                </div>
+                
+                <div className="terms">
+                  <p>Terms</p>
+                  <p>Privacy</p>
+                  <p>Security</p>
+                </div>
               </div>
             </footer>
           </Route>
