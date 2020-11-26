@@ -31,33 +31,29 @@ html {
   -moz-osx-font-smoothing: grayscale;
   justify-content: flex-start;
 
-
   .page-main-div {
-  display: flex;
-  justify-content: space-between;
-  min-width: 1000px;
-  max-width: 1280px;
-  padding: 20px;
-  margin: 50px 0 70px 0;
-  min-height: 900px;
-
-
-  .page-left {
-    width: 100%;
-    // border: 1px solid green;
-    margin-right: 20px;
-  }
-
-  .page-right {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    // border: 1px solid orange;
+    justify-content: space-between;
+    min-width: 1000px;
+    max-width: 1280px;
+    padding: 20px;
+    margin: 50px 0 70px 0;
+    min-height: 900px;
+
+    .page-left {
+      width: 100%;
+      // border: 1px solid green;
+      margin-right: 20px;
+    }
+
+    .page-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      // border: 1px solid orange;
+    }
   }
 }
-}
-
-
 
 // FOR GENERAL TOP BAR
 .topbar {
@@ -87,7 +83,7 @@ html {
         font-family: "Cabin", sans-serif;
         font-size: 24px;
         font-weight: 700;
-        color: #000753;
+        color: #6846e2;
       }
     }
 
@@ -100,15 +96,13 @@ html {
       height: 50px;
       width: 50px;
 
-
-
       .home-icon {
-        color: #000e62;
+        color: #5b36e0;
+        // color: #5b36e0;
         font-size: 25px;
         margin: 0;
         padding: 0;
       }
-
     }
   }
 
@@ -137,8 +131,6 @@ html {
       &:focus {
         outline: none;
       }
-
-  
 
       &::placeholder {
         color: #a4a4a4;
@@ -183,7 +175,7 @@ html {
         animation-duration: 1s;
         animation-name: slidein;
         box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5),
-        1px 1px 20px 2px rgba(191, 191, 191, 0.3);
+          1px 1px 20px 2px rgba(191, 191, 191, 0.3);
 
         cursor: pointer;
 
@@ -203,7 +195,7 @@ html {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: #001e64;
+          background-color: #5b36e0;
 
           p {
             font-family: "Heebo", sans-serif;
@@ -214,7 +206,7 @@ html {
 
           &:hover {
             cursor: pointer;
-            background-color: #072c83;
+            background-color: #5649d1;
           }
         }
 
@@ -278,9 +270,9 @@ html {
       &:before {
         content: "";
         background-image: linear-gradient(
-                        rgba(210, 210, 210, 0.1),
-                        rgba(210, 210, 210, 0.7),
-                        rgba(210, 210, 210, 0.1)
+          rgba(210, 210, 210, 0.1),
+          rgba(210, 210, 210, 0.7),
+          rgba(210, 210, 210, 0.1)
         );
         height: 35px;
         width: 1px;
@@ -299,7 +291,7 @@ html {
         background-color: #dedede;
         color: #ffffff;
         box-shadow: 0 0 0 2px #ffffff, 1px 1px 2px 0 rgba(186, 186, 186, 0.2),
-        1px 1px 15px 2px rgba(140, 140, 140, 0.2);
+          1px 1px 15px 2px rgba(140, 140, 140, 0.2);
         font-family: "Heebo", sans-serif;
         font-size: 14px;
         font-weight: 700;
@@ -321,7 +313,7 @@ html {
           font-family: "Heebo", sans-serif;
           font-weight: 700;
           font-size: 16px;
-          color: #07124c;
+          color: #5b36e0;
         }
       }
 
@@ -359,7 +351,7 @@ html {
         display: flex;
         flex-direction: column;
         box-shadow: 1px 1px 2px 0 rgba(31, 31, 31, 0.5),
-        1px 1px 15px 2px rgba(140, 140, 140, 0.3);
+          1px 1px 15px 2px rgba(140, 140, 140, 0.3);
 
         .dropdown-card {
           border-bottom: rgba(165, 165, 165, 0.2) solid 1px;
@@ -399,7 +391,7 @@ html {
   border-radius: 20px;
   overflow: scroll;
   box-shadow: 1px 1px 2px 0 rgba(183, 183, 183, 0.5),
-  1px 1px 20px 2px rgba(181, 181, 181, 0.3);
+    1px 1px 20px 2px rgba(181, 181, 181, 0.3);
   // margin-top: -50px;
 
   h3 {
