@@ -19,9 +19,9 @@
 }
 .gfg-div-regs {
   /* Login Card Width and height */
-  margin-top: 200px;
+  margin-top: 120px;
   width: 430px;
-  height: 500px;
+  height: 600px;
   /* padding */
   padding: 20px 35px 15px 35px;
   border-radius: 35px;
@@ -41,6 +41,7 @@
   color: #0f2662;
   font-weight: 700;
   font-family: "Heebo", sans-serif;
+  margin-bottom: 20px;
 }
 .gfg-sub-title {
   text-align: center;
@@ -88,6 +89,9 @@
   background: #0f2662;
   box-shadow: 7px 7px 8px #cbced1, -7px -7px 8px #ffffff;
   transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .gfg-button:hover {
   background: #5fb87d;

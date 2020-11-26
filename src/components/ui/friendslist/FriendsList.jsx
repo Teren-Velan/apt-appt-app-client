@@ -2,7 +2,6 @@ import React from "react";
 import Axios from "axios";
 import { FaUserCircle, FaAngleDown, FaHome } from "react-icons/fa";
 
-
 function FriendsList({
   userInfo,
   setUserInfo,
@@ -33,7 +32,6 @@ function FriendsList({
         console.log(error);
       }
     } else {
-
       console.log("participant add");
       try {
         let token = localStorage.token;
@@ -53,30 +51,25 @@ function FriendsList({
           },
         });
 
-
-      
         setEventData(resData.data.event);
-        await dashboardTrigger(e.target.value)
+        await dashboardTrigger(e.target.value);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   }
 
-
   async function dashboardTrigger(username) {
     try {
-      await Axios.post('http://localhost:80/pusher/trigger', {
-        channel: `channel-${username}`
-      })
+      await Axios.post("http://localhost:80/pusher/trigger", {
+        channel: `channel-${username}`,
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-
   }
 
   return (
-
     <div className="friends-list-div">
       <h3>{eventpage ? "Add friend to event" : "Friends list"}</h3>
       {userInfo.friendlist &&
@@ -87,20 +80,16 @@ function FriendsList({
               <FaUserCircle className="display-circle mr-2" />
               {el.username}
             </p>
-            <button
+            <div
               className="remove_friend_button"
               value={el.username}
               onClick={toggleFriend}
             >
               {eventpage === "true" ? "add" : "remove"}
-            </button>
+            </div>
           </div>
         ))}
     </div>
-
-
-
-
   );
 }
 

@@ -41,50 +41,47 @@ function DateRange({ eventData, setEventData, userInfo }) {
   // console.log(eventData);
   return (
     <div className="date-range-main-div">
-
       {eventData.host[0] == userInfo.username ? (
-        <div>
-          <div>
-            from
+        <div className="datepick-container">
+          <div className="start-date">
+            From:
             <DatePicker
               onChange={(date) => setStartDate(date)}
-              placeholderText={ 
+              placeholderText={
                 startDate
                   ? `${startDate.getDate()}/${
                       startDate.getMonth() + 1
                     }/${startDate.getFullYear()}`
                   : eventData.start_date
                   ? `${new Date(eventData.start_date).getDate()}/${
-                    new Date(eventData.start_date).getMonth() + 1
-                  }/${new Date(eventData.start_date).getFullYear()}`
-                  :
-                  `${new Date(Date.now()).getDate()}/${
-                    new Date(Date.now()).getMonth() + 1
-                  }/${new Date(Date.now()).getFullYear()}`
+                      new Date(eventData.start_date).getMonth() + 1
+                    }/${new Date(eventData.start_date).getFullYear()}`
+                  : `${new Date(Date.now()).getDate()}/${
+                      new Date(Date.now()).getMonth() + 1
+                    }/${new Date(Date.now()).getFullYear()}`
               }
             />
           </div>
-          <div>
-            to
+          <div className="end-date">
+            To:
             <DatePicker
               onChange={(date) => setEndDate(date)}
               placeholderText={
-                  endDate
+                endDate
                   ? `${endDate.getDate()}/${
                       endDate.getMonth() + 1
                     }/${endDate.getFullYear()}`
-                  :
-                  eventData.end_date
+                  : eventData.end_date
                   ? `${new Date(eventData.end_date).getDate()}/${
                       new Date(eventData.end_date).getMonth() + 1
                     }/${new Date(eventData.end_date).getFullYear()}`
-                    :
-                     "mm/dd/yyyy"
-
+                  : "mm/dd/yyyy"
               }
             />
           </div>
-          <button onClick={onClick}>submit</button>
+          <div className="date-pick-submit" onClick={onClick}>
+            submit
+          </div>
         </div>
       ) : (
         <div></div>

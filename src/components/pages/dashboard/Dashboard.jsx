@@ -15,7 +15,6 @@ import "../../../App.scss";
 
 import Pusher from "pusher-js";
 
-
 function Dashboard({ userInfo, setUserInfo }) {
   let { username } = useParams();
   const [eventData, setEventData] = useState({});
@@ -27,20 +26,18 @@ function Dashboard({ userInfo, setUserInfo }) {
   useEffect(() => {
     getEventData();
     let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
-      cluster: 'ap1'
+      cluster: "ap1",
     });
     let channel = pusher.subscribe(`channel-${userInfo.username}`);
-    console.log("subscribe to", userInfo)
-    channel.bind('trigger', function (data) {
-       getEventData()
-    })
+    console.log("subscribe to", userInfo);
+    channel.bind("trigger", function (data) {
+      getEventData();
+    });
 
     return () => {
-      channel.unbind()
-    }
+      channel.unbind();
+    };
   }, []);
-
-  
 
   // for input handling of modal
   function inputHandling(e) {
@@ -80,7 +77,6 @@ function Dashboard({ userInfo, setUserInfo }) {
 
       getEventData();
       setShow(false);
-
     } catch (error) {
       console.log(error);
       // return res.status(400).json({ error: error });
@@ -106,12 +102,12 @@ function Dashboard({ userInfo, setUserInfo }) {
           </div>
 
           <div className="event-btn-cont">
-            <button className="create-event-btn" onClick={handleShow}>
+            <div className="create-event-btn" onClick={handleShow}>
               <h1>
                 Events List
                 <BsFillPlusCircleFill size={35} className="mb-2 ml-2" />
               </h1>
-            </button>
+            </div>
           </div>
 
           <div className="render-display">{render}</div>
