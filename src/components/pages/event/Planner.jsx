@@ -31,7 +31,6 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
       temp.splice(index, 1);
       setBlockDates(temp);
     }
-    console.log("blockdates:", blockDates)
   }
 
 
@@ -91,7 +90,6 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
 
   function findUserDateBlocks() {
     let dateblocksArr = eventData.dateblocks
-    console.log("dateblockarr:", dateblocksArr)
     let index = dateblocksArr.findIndex(el => el.participant === userInfo.username)
     console.log("index:", index)
     if (index > -1) {
@@ -116,7 +114,7 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
     ];
     let onlyDay = date.getDay();
     let onlyYear = date.getFullYear();
-    // console.log(new Date(`${onlyYear}-${onlyMonth}-${onlyDate}`));
+
 
     return `${arr[onlyDay]} ${onlyDate}-${onlyMonth}-${onlyYear}`;
   }
@@ -125,13 +123,6 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
 
   if (eventData !== undefined && userDBlocks !== undefined) {
     render = eventData.availableDates.map((availDate) => {
-        // return (<Form.Check
-        //   value={`${availDate}`}
-        //   onClick={onClickState}
-        //   type="checkbox"
-        //   label={`${stringDates(availDate)}`}
-        // />)
-
         let index = userDBlocks.findIndex(date => date === availDate)
         if (index > -1) {
           return (
