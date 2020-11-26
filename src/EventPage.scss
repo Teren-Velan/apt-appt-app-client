@@ -13,6 +13,7 @@
   1px 1px 20px 2px rgba(181, 181, 181, 0.3);
   margin-bottom: 40px;
 
+
   h3 {
     margin-top: 10px;
     font-family: "Cabin", sans-serif;
@@ -141,14 +142,9 @@
 // for event pagew
 .page-main-div {
 
-
-
   .page-left {
-
-
     .event-name-div {
       //border: red solid 1px;
-
 
       h6 {
         margin: 0;
@@ -185,33 +181,69 @@
         font-size: 15px;
       }
 
-
       .participant-cards-div {
         display: flex;
 
         .participant-card {
-        background-color: #e3e3e3;
-        border-radius: 10px;
-        padding: 5px 10px;
-        margin: 0 3px;
+          background-color: #e3e3e3;
+          border-radius: 10px;
+          padding: 5px 10px;
+          margin: 0 3px;
 
-        &.ready {
-          background-color: #79e270;
-        }
+          &.ready {
+            background-color: #79e270;
+          }
 
-        p {
-          font-family: "Heebo", sans-serif;
-          margin: 0;
-          font-size: 12px;
+          p {
+            font-family: "Heebo", sans-serif;
+            margin: 0;
+            font-size: 12px;
+          }
         }
       }
-      }
-
-
     }
 
     .date-range-main-div {
-      //border: solid red 1px;
+      // border: solid red 1px;
+
+      .datepick-container {
+        // border: solid blue 1px;
+        background: rgb(255, 246, 246);
+        border-radius: 15px;
+        display: flex;
+        justify-content: flex-start;
+        height: 70px;
+        align-items: center;
+        width: 620px;
+        font-family: "Heebo", sans-serif;
+      }
+
+      .date-pick-submit {
+        border: 1px solid grey;
+        border-radius: 10px;
+        height: 30px;
+        width: 70px;
+        text-align: center;
+        cursor: pointer;
+        margin-left: 40px;
+        color: grey;
+        padding: 2px;
+      }
+
+      .datepick-container input {
+        border-radius: 10px;
+        padding: 4px 0 4px 10px;
+        border: 1px solid rgb(177, 177, 177);
+      }
+
+      .date-pick-submit:hover {
+        color: black;
+        border: 1px solid black;
+      }
+
+      .start-date {
+        padding-left: 20px;
+      }
 
       input {
         margin: 10px 10px;
@@ -247,21 +279,18 @@
           justify-content: center;
           align-items: center;
 
-
           &.ready {
             background-color: #183396;
             box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5),
-            1px 1px 10px 2px rgba(181, 181, 181, 0.3);
+              1px 1px 10px 2px rgba(181, 181, 181, 0.3);
 
             &:hover {
               //width: 220px;
               transform: scale(1.05);
               transform-origin: center;
               transition-duration: 0.4s;
-
             }
           }
-
 
           p {
             font-size: 15px;
@@ -271,20 +300,14 @@
           }
 
           .ready-button {
-
             color: #e2e2e2;
-
 
             &.ready {
               color: #39d639;
             }
-
-
           }
         }
-
       }
-
 
       .dateblocks-chooser-div {
         display: grid;
@@ -294,13 +317,12 @@
         //border: red solid 1px;
 
         .date-card {
-
           &:hover {
             //width: 220px;
             transform: scale(1.04);
             transform-origin: center;
             box-shadow: 1px 1px 5px 0 rgba(190, 190, 190, 0.4),
-            1px 1px 20px 2px rgba(188, 188, 188, 0.2);
+              1px 1px 20px 2px rgba(188, 188, 188, 0.2);
             transition-duration: 0.3s;
           }
 
@@ -332,8 +354,7 @@
       border-radius: 10px;
       cursor: pointer;
       box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5),
-      1px 1px 10px 2px rgba(181, 181, 181, 0.3);
-
+        1px 1px 10px 2px rgba(181, 181, 181, 0.3);
 
       &.blocked {
         opacity: 0.5;
@@ -361,7 +382,6 @@
         width: 100%;
         justify-items: center;
 
-
         .date-card {
           background-color: #7ed07e;
 
@@ -375,21 +395,14 @@
             font-size: 15px;
             margin: 0;
           }
-
-
         }
       }
-
-
     }
   }
 
-
   .page-right {
-
     .friends-list-div {
-
-      height: 300px
+      height: 300px;
     }
   }
 }

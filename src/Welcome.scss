@@ -56,10 +56,6 @@
 
   38% {
     margin-top: -90px;
-
-  
-
-  
   }
   66% {
     margin-top: -90px;
@@ -67,9 +63,6 @@
 
   71% {
     margin-top: 0px;
-
-  
-
   }
   99.99% {
     margin-top: 0px;
@@ -123,11 +116,11 @@
 
 .signupButton {
   opacity: 1;
-  transition: 1s;
+  transition: 0.5s;
   font-size: 30px;
   border: none;
   background-color: #f7f7f7;
-  // border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   font-family: "Heebo", sans-serif;
   padding-left: 20px;
@@ -138,13 +131,17 @@
   margin-top: 5%;
 }
 
+.signupButton:hover {
+  transform: scale(1.04);
+}
+
 .loginButton {
   opacity: 1;
-  transition: 1s;
+  transition: 0.5s;
   font-size: 30px;
   border: none;
   background-color: #f7f7f7;
-  // border-radius: 20px;
+  border-radius: 15px;
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 10px;
@@ -152,4 +149,42 @@
   font-family: "Heebo", sans-serif;
   color: #000e62;
   font-weight: bold;
+}
+
+.loginButton:hover {
+  transform: scale(1.04);
+}
+
+.welcome-cont {
+  width: 300px;
+  display: flex;
+}
+
+.welcome-login {
+  text-decoration: none !important;
+  color: black;
+  border: 1px solid rgb(161, 161, 161);
+  width: 120px;
+  text-align: center;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.welcome-login:hover {
+  background-color: rgb(228, 255, 228);
+  color: black;
+}
+
+.welcome-reg {
+  text-decoration: none !important;
+  color: black;
+  border: 1px solid rgb(161, 161, 161);
+  width: 120px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.welcome-reg:hover {
+  background-color: rgb(249, 255, 215);
+  color: black;
 }

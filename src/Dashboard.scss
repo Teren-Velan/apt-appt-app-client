@@ -68,6 +68,7 @@
         width: 300px;
         background-color: #fff;
         font-family: "Source Sans Pro", sans-serif;
+        cursor: pointer;
       }
     }
     .create-event-btn h1 {
@@ -187,18 +188,17 @@
       background-color: #f7f7f7;
       border-radius: 35px;
       margin-right: 10px;
+      margin-left: -20px;
     }
     .event-icons .svg-btn:hover {
       background-color: rgb(255, 233, 233);
-      font-size: 18 px;
+
       transition: 0.3s;
     }
   }
   // }
 
   .page-right {
+    min-height: 300px;
   }
-}
-.friends-list-div {
-  height: 690px !important;
 }

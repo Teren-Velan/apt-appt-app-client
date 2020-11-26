@@ -63,9 +63,9 @@ function Login({ setUserInfo, setIsAuth }) {
           />
         </div>
       </div>
-      <button onClick={login} class="gfg-button">
+      <div onClick={login} class="gfg-button">
         Sign In
-      </button>
+      </div>
       <div class="gfg-link">
         {/* <a href="#">Forgot password?</a> or */}
 

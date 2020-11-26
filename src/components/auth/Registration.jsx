@@ -55,9 +55,9 @@ function Registration() {
           />
         </div>
       </div>
-      <button onClick={register} class="gfg-button">
+      <div onClick={register} class="gfg-button">
         Sign Up
-      </button>
+      </div>
       <div class="gfg-link">
         <a href="/login">Already have an account? Click here</a>
       </div>

@@ -23,7 +23,6 @@ html {
   -webkit-border-radius: 6px;
 }
 
-
 .main-div {
   display: flex;
   flex-direction: column;
@@ -41,6 +40,7 @@ html {
   padding: 20px;
   margin: 50px 0 70px 0;
   min-height: 900px;
+
 
   .page-left {
     width: 100%;
@@ -84,13 +84,12 @@ html {
       h2 {
         margin: 0;
         padding: 0;
-        font-family: 'Cabin', sans-serif;
+        font-family: "Cabin", sans-serif;
         font-size: 24px;
         font-weight: 700;
         color: #000753;
       }
     }
-
 
     .home-icon-div {
       display: flex;
@@ -101,6 +100,19 @@ html {
       height: 50px;
       width: 50px;
 
+      &:after {
+        content: "";
+        background-image: linear-gradient(
+          rgba(210, 210, 210, 0.1),
+          rgba(210, 210, 210, 0.7),
+          rgba(210, 210, 210, 0.1)
+        );
+        height: 35px;
+        width: 1px;
+        margin-right: 7px;
+        margin-left: 7px;
+      }
+
 
       .home-icon {
         color: #000e62;
@@ -108,7 +120,6 @@ html {
         margin: 0;
         padding: 0;
       }
-
 
     }
   }
@@ -122,7 +133,6 @@ html {
 
     z-index: 5;
     //border: 1px solid blue;
-
 
     input {
       //width: 50%;
@@ -140,6 +150,7 @@ html {
         outline: none;
       }
 
+  
 
       &::placeholder {
         color: #a4a4a4;
@@ -162,7 +173,6 @@ html {
       -webkit-animation: spin 0.5s linear infinite; /* Safari */
       animation: spin 0.5s linear infinite;
     }
-
 
     .searchSuggestions {
       position: absolute;
@@ -267,6 +277,7 @@ html {
     flex-direction: row;
     align-items: center;
     //border: solid red 1px;
+    justify-content: flex-end;
 
     .topbar-element-group {
       min-width: 200px;
@@ -398,7 +409,7 @@ html {
   width: 300px;
   background-color: #f2f2f2;
   border-radius: 20px;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: 1px 1px 2px 0 rgba(183, 183, 183, 0.5),
   1px 1px 20px 2px rgba(181, 181, 181, 0.3);
   // margin-top: -50px;
@@ -462,13 +473,21 @@ html {
 // For FriendList Styling
 
 .remove_friend_button {
+  text-align: center;
+  width: 50px;
   opacity: 1;
-  border-radius: 15px;
-  transition: 1s;
+  border-radius: 10px;
+  transition: 0.5s;
+  font-size: 11px;
+  border: 1px solid grey;
+  cursor: pointer;
+  color: grey;
 }
 
 .remove_friend_button:hover {
-  // opacity: 1;
+  opacity: 1;
+  color: black;
+  border: 1px solid black;
 }
 
 footer {
