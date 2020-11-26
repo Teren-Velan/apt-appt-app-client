@@ -67,6 +67,22 @@ function Event({userInfo, setUserInfo}) {
     }
   }
 
+  async function confirmDate(e) {
+    let token = localStorage.token;
+    try {
+      await Axios.put(`http://localhost:80/event/${eventid}/confirm`, {
+        date: e.target.id
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await pusherTrigger()
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
   async function pusherTrigger() {
     try {
@@ -77,7 +93,21 @@ function Event({userInfo, setUserInfo}) {
       console.log(err)
     }
   }
-
+  async function kickParticipant(e){
+    let token = localStorage.token
+    console.log(e.target.id)
+    try{
+      await Axios.put(`http://localhost:80/event/${eventid}/participant/delete`, {participant: e.target.id},{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+      )
+      await pusherTrigger()
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   function stringDates(element) {
     let date = new Date(element);
@@ -137,7 +167,20 @@ function Event({userInfo, setUserInfo}) {
     }
 
     availRender = availDates.map((date) => {
-      return <li>{stringDates(date)}</li>
+      if (date === eventData.confirmedDate) {
+        return (
+          <div className="date-card confirm" id={date} onClick={confirmDate}>
+            <p id={date}>{stringDates(date)}</p>
+          </div>
+        )
+      } else {
+        return (
+          <div className="date-card" id={date} onClick={confirmDate}>
+            <p id={date}>{stringDates(date)}</p>
+          </div>
+        )
+      }
+
     })
   }
 
@@ -147,7 +190,7 @@ function Event({userInfo, setUserInfo}) {
   }
 
 
-  // use eventData to dislay all info
+// use eventData to dislay all info
 
   let render = "";
 
@@ -167,21 +210,29 @@ function Event({userInfo, setUserInfo}) {
             <div className="participants-div">
 
               <h2>Participants</h2>
+              <p>{eventData.readyUsers.length} / {eventData.participants.length} users are ready</p>
 
-              {eventData.participants.map((participant) => (
-                <div className="participant-card">
-                  <p>{participant}</p>
+              {eventData.participants.map((participant) => {
+                if (eventData.readyUsers.findIndex(readyUser => readyUser === participant) > -1) {
+                  return <div className="participant-card ready" id={participant} onClick={kickParticipant} >
+                    <p id={participant}>{participant}</p>
+                  </div>
+                } else {
+                  return <div className="participant-card" id={participant} onClick={kickParticipant}>
+                    <p id={participant}> {participant}</p>
+                  </div>
+                }
 
-                </div>
-              ))}
+
+              })}
             </div>
 
-            <DateRange eventData={eventData} setEventData={setEventData} userInfo ={userInfo}/>
+            <DateRange eventData={eventData} setEventData={setEventData} userInfo={userInfo}/>
             <Planner eventData={eventData} userInfo={userInfo} pusherTrigger={pusherTrigger}/>
 
 
             <div className="dates-results-main-div">
-             <p>Current potential appointment dates</p>
+              <p>Current potential appointment dates</p>
               {availRender}
             </div>
 
