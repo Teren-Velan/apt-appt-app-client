@@ -11,3 +11,12 @@ node_modules
 .env
 
 .eslintcache
+
+src/Dashboard.css
+src/Dashboard.css.map
+src/EventPage.css
+src/EventPage.css.map
+src/App.css
+src/App.css.map
+src/Welcome.css
+src/Welcome.css.map
