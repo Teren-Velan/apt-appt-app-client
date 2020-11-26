@@ -13,3 +13,11 @@ node_modules
 .eslintcache
 
 .css.map
+
+src/Dashboard.css
+src/Dashboard.css.map
+src/EventPage.css
+src/EventPage.css.map
+
+src/Dashboard.css 2.map
+src/EventPage.css 2.map
