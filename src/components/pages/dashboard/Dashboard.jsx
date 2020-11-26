@@ -22,7 +22,7 @@ function Dashboard({ userInfo, setUserInfo }) {
   useEffect(() => {
     getEventData();
   }, []);
-
+  
   // for input handling of modal
   function inputHandling(e) {
     setInputFields((input) => ({ ...input, [e.target.name]: e.target.value }));

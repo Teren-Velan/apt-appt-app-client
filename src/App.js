@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.scss';
 import './Welcome.scss'
 import "./Dashboard.scss";
-import "./EventPage.scss"
+import "./EventPage.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
 import Registration from "./components/auth/Registration"
@@ -17,6 +17,7 @@ import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
 import Chatbox from "./components/ui/chat/Chatbox";
+import "react-datepicker/dist/react-datepicker.css"
 
 
 
