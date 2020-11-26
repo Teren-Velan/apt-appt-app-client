@@ -56,10 +56,9 @@ function App() {
     <Router>
 
       <div className="main-div">
-        {Object.keys(userInfo).length != 0 && <Topbar
-          userInfo={userInfo}
-          logout={logout}
-          setUserInfo={setUserInfo}/>}
+        {Object.keys(userInfo).length !== 0 ?
+          <Topbar type="user" userInfo={userInfo} logout={logout} setUserInfo={setUserInfo}/> :
+          <Topbar type="blank" userInfo={userInfo} logout={logout} setUserInfo={setUserInfo}/>}
 
 
         <Switch>
@@ -76,17 +75,17 @@ function App() {
           <Route path="/dashboard">
 
             <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
-
+            <footer></footer>
           </Route>
 
           <Route path="/event/:eventid">
             <Event userInfo={userInfo}/>
+            <footer></footer>
           </Route>
 
         </Switch>
 
       </div>
-      <footer></footer>
 
 
     </Router>

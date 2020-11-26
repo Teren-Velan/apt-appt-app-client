@@ -23,6 +23,7 @@
     flex-direction: column;
     justify-content: flex-end;
     overflow-y: scroll;
+    scrollbar-width: none;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -56,13 +57,13 @@
           min-width: 50px;
 
           &.peer {
-            background-color: #999999;
+            background-color: #375aa7;
             border-radius: 9px 9px 9px 2px;
           }
 
           &.user {
             border-radius: 9px 9px 2px 9px;
-            background-color: #838383;
+            background-color: #18408a;
           }
         }
 
@@ -124,7 +125,7 @@
         border-radius: 25px;
         width: 25px;
         height: 25px;
-        background-color: #233b67;
+        background-color: #193f86;
         cursor: pointer;
 
         .send-icon {
@@ -147,7 +148,6 @@
       //border: red solid 1px;
 
 
-
       h6 {
         margin: 0;
         font-family: "Cabin", sans-serif;
@@ -166,7 +166,9 @@
 
     .participants-div {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 30px;
       //border: red solid 1px;
 
       h2 {
@@ -176,7 +178,16 @@
         margin: 0 20px 0 0;
       }
 
-      .participant-card {
+      p {
+        font-family: "Heebo", sans-serif;
+        font-size: 15px;
+      }
+
+
+      .participant-cards-div {
+        display: flex;
+
+        .participant-card {
         background-color: #e3e3e3;
         border-radius: 10px;
         padding: 5px 10px;
@@ -187,10 +198,14 @@
         }
 
         p {
+          font-family: "Heebo", sans-serif;
           margin: 0;
           font-size: 12px;
         }
       }
+      }
+
+
     }
 
     .date-range-main-div {
@@ -205,10 +220,69 @@
       //border: red solid 1px;
       margin-top: 50px;
 
-      p {
-        font-family: "Heebo", sans-serif;
-        font-size: 20px;
+      .planner-header-div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        //border: red solid 1px;
+        p {
+          font-family: "Heebo", sans-serif;
+          font-size: 20px;
+          margin: 0;
+        }
+
+        .ready-button-div {
+          margin-left: 20px;
+          background-color: #9d9d9d;
+          //border: red solid 1px;
+          cursor: pointer;
+
+          //width: 30px;
+          padding: 20px 10px;
+          height: 30px;
+          display: flex;
+          border-radius: 10px;
+          justify-content: center;
+          align-items: center;
+
+
+          &.ready {
+            background-color: #183396;
+            box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5),
+            1px 1px 10px 2px rgba(181, 181, 181, 0.3);
+
+            &:hover {
+              //width: 220px;
+              transform: scale(1.05);
+              transform-origin: center;
+              transition-duration: 0.4s;
+
+            }
+          }
+
+
+          p {
+            font-size: 15px;
+            padding: 0 10px;
+            margin: 0;
+            color: #ffffff;
+          }
+
+          .ready-button {
+
+            color: #e2e2e2;
+
+
+            &.ready {
+              color: #39d639;
+            }
+
+
+          }
+        }
+
       }
+
 
       .dateblocks-chooser-div {
         display: grid;
@@ -272,20 +346,35 @@
     }
 
     .dates-results-main-div {
-      margin-top: 30px;
+      margin: 30px 0;
 
-      .date-card {
-        background-color: #7ed07e;
+      p {
+        font-family: "Heebo", sans-serif;
+        font-size: 20px;
+      }
 
-        &.confirm {
-          background-color: greenyellow;
-        }
+      .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        justify-items: center;
 
-        p {
-          font-family: "Cabin", sans-serif;
-          font-weight: 500;
-          font-size: 15px;
-          margin: 0;
+
+        .date-card {
+          background-color: #7ed07e;
+
+          &.confirm {
+            background-color: greenyellow;
+          }
+
+          p {
+            font-family: "Cabin", sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            margin: 0;
+          }
+
+
         }
       }
 
