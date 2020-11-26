@@ -3,6 +3,7 @@ import { Form, Row, Card, Container, Image } from "react-bootstrap";
 import Axios from "axios";
 import { decode } from "jsonwebtoken";
 import { Redirect, useHistory } from "react-router-dom";
+import "../../Auth.scss";
 
 function Login({ setUserInfo, setIsAuth }) {
   //states

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   FaEye,
   FaTrashAlt,
@@ -61,57 +61,50 @@ function EventCard({ eventData, setEventData }) {
 
   //pending
   return (
-    <div className="event-Container">
-      <div className="holder">
-        <div
-          style={{
-            backgroundColor:
-              eventData.status === "Completed" ? "#fafff0" : "#f2f2f2",
-          }}
-          className="event-Details"
-        >
-          <div className="title">
-            <h4>
-              {" "}
-              <FaRegArrowAltCircleRight className="mr-3 mb-1" />
-              {eventData.event_name}
-            </h4>
-          </div>
-
-          <div className="event-Options">
-            <div className="option-holder">
-              <div className="status">
-                <p>
-                  {eventData.status}
-                  {eventData.status == "Completed" &&
-                    `: ${new Date(
-                      eventData.confirmedDate
-                    ).getDate()}/${new Date(
-                      eventData.confirmedDate
-                    ).getMonth()}/${new Date(
-                      eventData.confirmedDate
-                    ).getFullYear()} `}
-                </p>
+    <div className="main-event-card">
+      <Link className="link-tag" to={`/event/${eventData._id}`}>
+        <div className="event-Container">
+          <div className="holder">
+            <div
+              style={{
+                backgroundColor:
+                  eventData.status === "Confirmed" ? "#fafff0" : "#f2f2f2",
+              }}
+              className="event-Details"
+            >
+              <div className="title">
+                <h4>
+                  {" "}
+                  <FaRegArrowAltCircleRight className="mr-3 mb-1" />
+                  {eventData.event_name}
+                </h4>
               </div>
 
-              <div className="event-icons">
-                <div>
-                  <button className="svg-btn">
-                    <Link className="see-more" to={`/event/${eventData._id}`}>
-                      <FaEye />
-                    </Link>
-                  </button>
-                </div>
-
-                <div>
-                  <button className="svg-btn">
-                    <FaTrashAlt onClick={deleteEvent} />
-                  </button>
+              <div className="event-Options">
+                <div className="option-holder">
+                  <div className="status">
+                    <p>
+                      {eventData.status}
+                      {eventData.status == "Confirmed" &&
+                        `: ${new Date(
+                          eventData.confirmedDate
+                        ).getDate()}/${new Date(
+                          eventData.confirmedDate
+                        ).getMonth()}/${new Date(
+                          eventData.confirmedDate
+                        ).getFullYear()} `}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </Link>
+      <div className="event-icons">
+        <button onClick={deleteEvent} className="svg-btn">
+          <FaTrashAlt />
+        </button>
       </div>
     </div>
   );
