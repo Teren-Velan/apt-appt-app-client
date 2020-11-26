@@ -48,7 +48,7 @@ else {
 
 
   return (
-    <>
+
       <div className="friends-list-div">
         <h3>{eventpage ? "Add friend to event" : "Friends list"}</h3>
         {userInfo.friendlist &&
@@ -65,7 +65,7 @@ else {
             </div>
           ))}
       </div>
-    </>
+
   );
 }
 
