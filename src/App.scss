@@ -32,28 +32,26 @@ html {
 }
 
 .page-main-div {
-  //border: 1px solid red;
   display: flex;
   justify-content: space-between;
   min-width: 1000px;
   max-width: 1280px;
   padding: 20px;
   margin: 50px 0 70px 0;
-
+  // border: 1px solid red;
 
   .page-left {
     width: 100%;
-    //border: 1px solid green;
-    margin-right: 20px
+    // border: 1px solid green;
+    margin-right: 20px;
   }
 
   .page-right {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    //border: 1px solid orange;
+    // border: 1px solid orange;
   }
-
 }
 
 // FOR GENERAL TOP BAR
@@ -66,7 +64,6 @@ html {
   padding: 0 20px;
   width: 100%;
   height: 70px;
-
 
   .topbar-left {
     //border: solid red 1px;
@@ -81,9 +78,9 @@ html {
       &:after {
         content: "";
         background-image: linear-gradient(
-                        rgba(210, 210, 210, 0.1),
-                        rgba(210, 210, 210, 0.7),
-                        rgba(210, 210, 210, 0.1)
+          rgba(210, 210, 210, 0.1),
+          rgba(210, 210, 210, 0.7),
+          rgba(210, 210, 210, 0.1)
         );
         height: 35px;
         width: 1px;
@@ -96,153 +93,151 @@ html {
         margin: 20px;
       }
     }
-
-
   }
   .searchBar {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-      z-index: 5;
+    z-index: 5;
     //border: 1px solid blue;
 
-      input {
-        //display: block;
-        width: 400px;
-        height: 50px;
-        font-family: "Heebo", sans-serif;
-        font-size: 15px;
-        border: #efefef 1px solid;
-        margin-left: 10px;
-        padding: 10px 10px;
-        border-radius: 20px;
-        min-width: 500px;
-        max-width: 600px;
+    input {
+      //display: block;
+      width: 400px;
+      height: 50px;
+      font-family: "Heebo", sans-serif;
+      font-size: 15px;
+      border: #efefef 1px solid;
+      margin-left: 10px;
+      padding: 10px 10px;
+      border-radius: 20px;
+      min-width: 500px;
+      max-width: 600px;
 
-        &:focus {
-          outline: none;
-        }
-
-        &::placeholder {
-          color: #a4a4a4;
-        }
+      &:focus {
+        outline: none;
       }
 
-      .search-icon {
-        color: #8d8d8d;
-        font-size: 20px;
-        cursor: pointer;
-      }
-
-      .small-loader {
-        margin: auto;
-        border: 3px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 3px solid #343434;
-        width: 25px;
-        height: 25px;
-        -webkit-animation: spin 0.5s linear infinite; /* Safari */
-        animation: spin 0.5s linear infinite;
-      }
-
-      .searchSuggestions {
-        position: absolute;
-        top: 50px;
-        border-radius: 20px;
-
-        .suggestion-card {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          //border-bottom: solid 1px #dddddd;
-          border-radius: 10px;
-          background-color: #fcfcfc;
-          width: 400px;
-          height: 45px;
-          margin-top: 10px;
-          padding: 0 0 0 13px;
-          animation-duration: 1s;
-          animation-name: slidein;
-          box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5),
-          1px 1px 20px 2px rgba(191, 191, 191, 0.3);
-          cursor: pointer;
-
-          &:hover {
-            //background-color: #e5e5e5;
-            text-decoration: none;
-          }
-
-          &:link {
-            text-decoration: none;
-          }
-
-          .add-friend-button {
-            width: 100px;
-            height: 100%;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #efefef;
-
-            p {
-              font-family: "Heebo", sans-serif;
-              font-size: 12px;
-              margin: 0;
-            }
-
-            &:hover {
-              cursor: pointer;
-              background-color: #e2e2e2;
-            }
-          }
-
-          .suggestion-text {
-            display: flex;
-            flex-direction: column;
-            font-family: "Heebo", sans-serif;
-            font-weight: 400;
-            font-size: 15px;
-            margin: 0 10px;
-            width: 80%;
-            z-index: 6;
-
-            &:hover {
-              text-decoration: none;
-            }
-
-            span {
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              text-decoration: none;
-              //border: solid red 1px;
-              &:first-of-type {
-                color: #2b2b2b;
-              }
-
-              &:nth-of-type(2) {
-                color: #606060;
-              }
-            }
-          }
-        }
-
-        .see-more {
-          display: flex;
-          justify-content: center;
-          text-align: center;
-          height: 30px;
-          color: #5b5b5b;
-          border-radius: 0 0 5px 5px;
-        }
+      &::placeholder {
+        color: #a4a4a4;
       }
     }
+
+    .search-icon {
+      color: #8d8d8d;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .small-loader {
+      margin: auto;
+      border: 3px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 3px solid #343434;
+      width: 25px;
+      height: 25px;
+      -webkit-animation: spin 0.5s linear infinite; /* Safari */
+      animation: spin 0.5s linear infinite;
+    }
+
+    .searchSuggestions {
+      position: absolute;
+      top: 50px;
+      border-radius: 20px;
+
+      .suggestion-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        //border-bottom: solid 1px #dddddd;
+        border-radius: 10px;
+        background-color: #fcfcfc;
+        width: 400px;
+        height: 45px;
+        margin-top: 10px;
+        padding: 0 0 0 13px;
+        animation-duration: 1s;
+        animation-name: slidein;
+        box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5),
+          1px 1px 20px 2px rgba(191, 191, 191, 0.3);
+        cursor: pointer;
+
+        &:hover {
+          //background-color: #e5e5e5;
+          text-decoration: none;
+        }
+
+        &:link {
+          text-decoration: none;
+        }
+
+        .add-friend-button {
+          width: 100px;
+          height: 100%;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #efefef;
+
+          p {
+            font-family: "Heebo", sans-serif;
+            font-size: 12px;
+            margin: 0;
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: #e2e2e2;
+          }
+        }
+
+        .suggestion-text {
+          display: flex;
+          flex-direction: column;
+          font-family: "Heebo", sans-serif;
+          font-weight: 400;
+          font-size: 15px;
+          margin: 0 10px;
+          width: 80%;
+          z-index: 6;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            //border: solid red 1px;
+            &:first-of-type {
+              color: #2b2b2b;
+            }
+
+            &:nth-of-type(2) {
+              color: #606060;
+            }
+          }
+        }
+      }
+
+      .see-more {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        height: 30px;
+        color: #5b5b5b;
+        border-radius: 0 0 5px 5px;
+      }
+    }
+  }
 
   .topbar-right {
     display: flex;
@@ -261,9 +256,9 @@ html {
       &:before {
         content: "";
         background-image: linear-gradient(
-                        rgba(210, 210, 210, 0.1),
-                        rgba(210, 210, 210, 0.7),
-                        rgba(210, 210, 210, 0.1)
+          rgba(210, 210, 210, 0.1),
+          rgba(210, 210, 210, 0.7),
+          rgba(210, 210, 210, 0.1)
         );
         height: 35px;
         width: 1px;
@@ -282,7 +277,7 @@ html {
         background-color: #dedede;
         color: #ffffff;
         box-shadow: 0 0 0 2px #ffffff, 1px 1px 2px 0 rgba(186, 186, 186, 0.2),
-        1px 1px 15px 2px rgba(140, 140, 140, 0.2);
+          1px 1px 15px 2px rgba(140, 140, 140, 0.2);
         font-family: "Heebo", sans-serif;
         font-size: 14px;
         font-weight: 700;
@@ -342,11 +337,12 @@ html {
         display: flex;
         flex-direction: column;
         box-shadow: 1px 1px 2px 0 rgba(31, 31, 31, 0.5),
-        1px 1px 15px 2px rgba(140, 140, 140, 0.3);
+          1px 1px 15px 2px rgba(140, 140, 140, 0.3);
 
         .dropdown-card {
           border-bottom: rgba(165, 165, 165, 0.2) solid 1px;
           display: flex;
+
           align-items: center;
           padding-left: 25px;
           width: 125px;
@@ -377,34 +373,48 @@ html {
   align-items: center;
   justify-content: flex-start;
   width: 300px;
-  height: 300px;
-  background-color: #f6f6f6;
+  // height: 300px;
+  background-color: #f2f2f2;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 1px 1px 2px 0 rgba(183, 183, 183, 0.5),
-  1px 1px 20px 2px rgba(181, 181, 181, 0.3);
-  margin-top: 50px;
+    1px 1px 20px 2px rgba(181, 181, 181, 0.3);
+  // margin-top: -50px;
 
   h3 {
     margin-top: 10px;
     font-family: "Cabin", sans-serif;
     font-size: 20px;
+    margin-bottom: 20px;
   }
 
   .friend-card {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 5px 20px;
-    border-bottom: #b0b0b0 solid 1px;
+    padding: 0 20px;
+    margin-bottom: 10px;
 
     p {
       font-family: "Heebo", sans-serif;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 300;
     }
 
     button {
-      height: 30px;
+      height: 20px;
       border: #2b2b2b 1px solid;
+      color: #a7a7a7;
+      font-size: 10px;
+      margin: auto 0;
+      transition: 0.2s;
+      width: 70px;
+    }
+
+    button:hover {
+      color: rgb(83, 83, 83);
     }
   }
 }
@@ -428,26 +438,48 @@ html {
 }
 
 // For FriendList Styling
-.side_chick {
-  // position: fixed;
-  // top: 65px;
-  // right: 290px;
-  height: 100vh;
-  width: 100%;
-}
 
 .remove_friend_button {
-  opacity: 0;
+  opacity: 1;
   border-radius: 15px;
   transition: 1s;
 }
 
 .remove_friend_button:hover {
-  opacity: 1;
+  // opacity: 1;
 }
 
 footer {
+  position: absolute;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  height: 300px;
+  height: 150px;
   background-color: #0f2662;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer .footer-icon {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: wheat;
+  margin: auto;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.footer-icon svg {
+  background-color: rgb(0, 0, 0);
+  border-radius: 30px;
+}
+
+footer .footer-text {
+  color: wheat;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
 }

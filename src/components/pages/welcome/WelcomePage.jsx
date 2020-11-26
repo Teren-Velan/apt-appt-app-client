@@ -1,9 +1,6 @@
 import React from "react";
 
 function WelcomePage() {
-
-  
-
   return (
     <>
       <div className="width_screen">
@@ -13,7 +10,7 @@ function WelcomePage() {
             <div className="float_right">Started</div>
             <div className="float_right">TOday</div>
             <a href="/register" className="signupcont">
-            <button className="signupButton">Join</button>
+              <button className="signupButton">Join</button>
             </a>
           </div>
           <div className="divider col-1">

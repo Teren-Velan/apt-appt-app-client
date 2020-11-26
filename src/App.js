@@ -17,6 +17,7 @@ import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
 import Chatbox from "./components/ui/chat/Chatbox";
+import {FaFacebook, FaInstagram, FaTwitch} from "react-icons/fa"
 
 
 function App() {
@@ -75,17 +76,30 @@ function App() {
           <Route path="/dashboard">
 
             <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+            <footer>
+              <div className="footer-icon">
+                <FaInstagram/>
+                <FaFacebook/>
+                <FaTwitch/>
+              </div>
 
+              <div className="footer-text">
+                <p>copy right reseerved</p>
+              </div>
+            </footer>
           </Route>
 
           <Route path="/event/:eventid">
             <Event userInfo={userInfo}/>
+            <footer>
+             
+            </footer>
           </Route>
 
         </Switch>
 
       </div>
-      <footer></footer>
+      {/* <footer></footer> */}
 
 
     </Router>

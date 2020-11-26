@@ -1,55 +1,37 @@
 // chnage to page main div
-.dashboard-main-div {
-  max-width: 1280px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100vh;
-  border: 1px solid red;
-
-  .dashboard-page-left {
-    width: 63%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 100vh;
-    justify-content: flex-start;
-    margin-left: 100px;
-
-    // EventCount.jsx
-
+.page-main-div {
+  min-height: 624px;
+  .page-left {
     .event-count-container {
-      width: 100%;
+      // width: 100%;
       display: flex;
-      margin-top: 20px;
     }
 
     .countcontainer {
       background-color: #f1f1f1;
       height: 80px;
-      width: 210px;
+      width: 180px;
       transition: 0.3s;
       border-radius: 10px;
       font-family: "Heebo", sans-serif;
       margin-right: 30px;
+      display: flex;
+      // justify-content: flex-start;
 
       .count-heading {
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
         font-weight: 400;
         font-size: 16px;
-        // margin: 15px 0 0 0px;
         color: #84878f;
         font-family: "Source Sans Pro", sans-serif;
+        // justify-content: flex-start;
       }
       .countdetails {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
-        margin: 10px 0 0 25px;
+        margin: 10px 0 0 20px;
         font-weight: 100;
         font-family: "Source Sans Pro", sans-serif;
       }
@@ -64,7 +46,6 @@
       .count-heading {
         font-weight: 500;
         font-size: 25px;
-        margin: 12px auto;
       }
     }
 
@@ -111,18 +92,18 @@
 
     .link-tag {
       width: 100%;
+      text-decoration: none;
+      color: black;
     }
     .render-display {
-      width: 90%;
-      margin-left: -25px;
-      margin-top: 20px;
+      width: 100%;
     }
 
     .event-Container {
       margin-bottom: 15px;
       display: flex;
       flex-direction: row;
-      width: 100%;
+      // width: 100%;
     }
     .holder {
       width: 95%;
@@ -130,7 +111,7 @@
 
     .event-Details {
       width: 100%;
-      margin-left: 20px;
+      // margin-left: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -157,6 +138,7 @@
     .status p {
       margin-top: 15px;
       font-size: 16px;
+      text-decoration: none;
     }
 
     .event-Options {
@@ -171,6 +153,7 @@
     .title h4 {
       font-size: 16px;
       margin-top: 10px;
+      text-decoration: none;
     }
 
     .title h4 a {
@@ -183,6 +166,7 @@
       align-items: center;
       width: 100%;
       margin-left: 10px;
+      text-decoration: none;
     }
 
     svg {
@@ -194,7 +178,6 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-
       margin-bottom: 15px;
     }
 
@@ -207,15 +190,12 @@
     }
     .event-icons .svg-btn:hover {
       background-color: rgb(255, 233, 233);
-      // font-size: 100px;
+      font-size: 18 px;
+      transition: 0.3s;
     }
   }
   // }
 
-  .dashboard-page-right {
-    width: 27%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -160px;
+  .page-right {
   }
 }
