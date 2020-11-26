@@ -37,8 +37,7 @@ function Dashboard({ userInfo, setUserInfo }) {
     }
   }, []);
 
-
-console.log("subscribe to", userInfo)
+  
 
   // for input handling of modal
   function inputHandling(e) {

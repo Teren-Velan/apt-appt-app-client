@@ -73,20 +73,20 @@ function Event({userInfo, setUserInfo}) {
   }
 
   async function confirmDate(e) {
-    let token = localStorage.token;
-    try {
-      await Axios.put(`http://localhost:80/event/${eventid}/confirm`, {
-        date: e.target.id
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      await pusherTrigger()
-    } catch (err) {
-      console.log(err);
+      let token = localStorage.token;
+      try {
+        await Axios.put(`http://localhost:80/event/${eventid}/confirm`, {
+          date: e.target.id
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        await pusherTrigger()
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
 
 
   async function pusherTrigger() {
@@ -111,6 +111,7 @@ function Event({userInfo, setUserInfo}) {
   }
 
   async function kickParticipant(e){
+
     let token = localStorage.token
     try{
       await Axios.put(`http://localhost:80/event/${eventid}/participant/delete`, {participant: e.target.id},{
@@ -124,6 +125,7 @@ function Event({userInfo, setUserInfo}) {
     }catch(error){
       console.log(error)
     }
+
   }
 
   function stringDates(element) {
