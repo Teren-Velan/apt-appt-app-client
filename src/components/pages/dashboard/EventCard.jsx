@@ -55,16 +55,13 @@ function EventCard({ eventData, setEventData, setUserInfo, userInfo }) {
           },
         }
       );
-      let user  = await Axios.get(
-        `http://localhost:80/dashboard/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      let user = await Axios.get(`http://localhost:80/dashboard/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      setUserInfo(user.data.user)
+      setUserInfo(user.data.user);
       getEventData();
     } catch (error) {
       console.log(error);
@@ -113,13 +110,19 @@ function EventCard({ eventData, setEventData, setUserInfo, userInfo }) {
           </div>
         </div>
       </Link>
-      {userInfo ? userInfo.username == eventData.host[0] ?
-      <div className="event-icons">
-        <button onClick={deleteEvent} className="svg-btn">
-          <FaTrashAlt />
-        </button>
-      </div> : "" : ""
-      }
+      {userInfo ? (
+        userInfo.username == eventData.host[0] ? (
+          <div className="event-icons">
+            <button onClick={deleteEvent} className="svg-btn">
+              <FaTrashAlt />
+            </button>
+          </div>
+        ) : (
+          <div className="trash-alt"></div>
+        )
+      ) : (
+        <div className="trash-alt"></div>
+      )}
     </div>
   );
 }
