@@ -7,7 +7,21 @@ import {
   FaRegLaughSquint,
 } from "react-icons/fa";
 
-function EventCount() {
+function EventCount({eventData}) {
+  function eventCount(){
+    let count = 0
+    eventData.forEach((el)=>{
+      if(el.confirmedDate){
+        count = count + 1
+      }
+    })
+    return count
+  }
+  function eventPend(){
+    let eventTotal = eventData.length
+    let eventConfirmed = eventCount()
+    return eventTotal - eventConfirmed
+  }
   return (
     <div className="event-count-container">
       <div className="countcontainer">
@@ -21,7 +35,7 @@ function EventCount() {
             />
           </div>
           <div className="count-number">
-            <h1>1</h1>
+            <h1>{eventData ? eventData.length>0 ?  eventCount() : "" : ""}</h1>
           </div>
         </div>
       </div>
@@ -37,7 +51,7 @@ function EventCount() {
             />
           </div>
           <div className="count-number">
-            <h1>3</h1>
+            <h1>{eventData ? eventData.length>0 ?  eventPend() : "" : ""}</h1>
           </div>
         </div>
       </div>
@@ -45,7 +59,7 @@ function EventCount() {
       <div className="countcontainer">
         <div className="countdetails">
           <div className="count-heading">
-            Completed Events{" "}
+            Total Events{" "}
             <FaRegLaughSquint
               style={{ color: "tomato" }}
               size={16}
@@ -53,7 +67,7 @@ function EventCount() {
             />
           </div>
           <div className="count-number">
-            <h1>0</h1>
+            <h1>{eventData ? eventData.length>0 ?  eventData.length : "" : ""}</h1>
           </div>
         </div>
       </div>
