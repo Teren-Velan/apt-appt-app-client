@@ -2,6 +2,7 @@ import React from "react";
 import Axios from "axios";
 import { FaUserCircle, FaAngleDown, FaHome } from "react-icons/fa";
 
+
 function FriendsList({
   userInfo,
   setUserInfo,
@@ -13,6 +14,7 @@ function FriendsList({
     if (eventpage != "true") {
       console.log(e.target.value);
       let object = { username: e.target.value };
+
       try {
         let token = localStorage.token;
         await Axios.post("http://localhost:80/dashboard/addfriend", object, {
@@ -25,13 +27,13 @@ function FriendsList({
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("not in event");
-        console.log(setUserInfo);
+
         setUserInfo(userData.data.user);
       } catch (error) {
         console.log(error);
       }
     } else {
+
       console.log("participant add");
       try {
         let token = localStorage.token;
@@ -44,20 +46,37 @@ function FriendsList({
             },
           }
         );
+
         let resData = await Axios.get(`http://localhost:80/event/${eventID}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("user: ", resData.data.event);
+
+
+      
         setEventData(resData.data.event);
+        await dashboardTrigger(e.target.value)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   }
 
+
+  async function dashboardTrigger(username) {
+    try {
+      await Axios.post('http://localhost:80/pusher/trigger', {
+        channel: `channel-${username}`
+      })
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
   return (
+
     <div className="friends-list-div">
       <h3>{eventpage ? "Add friend to event" : "Friends list"}</h3>
       {userInfo.friendlist &&
@@ -78,6 +97,10 @@ function FriendsList({
           </div>
         ))}
     </div>
+
+
+
+
   );
 }
 

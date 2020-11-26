@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.scss';
 import './Welcome.scss'
 import "./Dashboard.scss";
-import "./EventPage.scss"
+import "./EventPage.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from "axios"
 import Registration from "./components/auth/Registration"
@@ -17,8 +17,8 @@ import Topbar from "./components/ui/topbar/Topbar";
 import Event from "./components/pages/event/Event"
 import FriendsList from "./components/ui/friendslist/FriendsList";
 import Chatbox from "./components/ui/chat/Chatbox";
-import {FaFacebook, FaInstagram, FaTwitch} from "react-icons/fa"
-import {CSSTransition} from "react-transition-group"
+import "react-datepicker/dist/react-datepicker.css"
+
 
 
 function App() {
@@ -57,10 +57,9 @@ function App() {
     <Router>
 
       <div className="main-div">
-        {Object.keys(userInfo).length != 0 && <Topbar
-          userInfo={userInfo}
-          logout={logout}
-          setUserInfo={setUserInfo}/>}
+        {Object.keys(userInfo).length !== 0 ?
+          <Topbar type="user" userInfo={userInfo} logout={logout} setUserInfo={setUserInfo}/> :
+          <Topbar type="blank" userInfo={userInfo} logout={logout} setUserInfo={setUserInfo}/>}
 
 
         <Switch>
@@ -77,6 +76,7 @@ function App() {
           <Route path="/dashboard">
 
             <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+
             <footer>
               {/* <div className="footer-icon">
                 <FaInstagram/>
@@ -96,19 +96,27 @@ function App() {
                 </div>
               </div> */}
             </footer>
+
+
           </Route>
 
           <Route path="/event/:eventid">
             <Event userInfo={userInfo}/>
+
             <footer>
              
             </footer>
+
+            <footer></footer>
+
           </Route>
 
         </Switch>
 
       </div>
-      {/* <footer></footer> */}
+
+    
+
 
 
     </Router>

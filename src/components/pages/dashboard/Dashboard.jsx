@@ -10,7 +10,11 @@ import { FaPlusCircle } from "react-icons/fa";
 import { FcPlus } from "react-icons/fc";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import FriendsList from "../../ui/friendslist/FriendsList";
+
 import "../../../App.scss";
+
+import Pusher from "pusher-js";
+
 
 function Dashboard({ userInfo, setUserInfo }) {
   let { username } = useParams();
@@ -19,12 +23,24 @@ function Dashboard({ userInfo, setUserInfo }) {
   const [inputFields, setInputFields] = useState({});
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [appear, setAppear] = useState(true);
 
-  console.log("user here", userInfo);
   useEffect(() => {
     getEventData();
+    let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+      cluster: 'ap1'
+    });
+    let channel = pusher.subscribe(`channel-${userInfo.username}`);
+    console.log("subscribe to", userInfo)
+    channel.bind('trigger', function (data) {
+       getEventData()
+    })
+
+    return () => {
+      channel.unbind()
+    }
   }, []);
+
+  
 
   // for input handling of modal
   function inputHandling(e) {
@@ -41,7 +57,7 @@ function Dashboard({ userInfo, setUserInfo }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("user: ", resData.data);
+      // console.log("user: ", resData.data);
       setEventData(resData.data.user.events);
     } catch (err) {
       console.log(err);
@@ -61,8 +77,10 @@ function Dashboard({ userInfo, setUserInfo }) {
           },
         }
       );
+
       getEventData();
       setShow(false);
+
     } catch (error) {
       console.log(error);
       // return res.status(400).json({ error: error });

@@ -28,6 +28,7 @@ function Event({userInfo, setUserInfo}) {
       cluster: 'ap1'
     });
     let channel = pusher.subscribe(`channel-${eventid}`);
+    console.log("subscribe to", channel)
     channel.bind('trigger', function (data) {
       // alert(JSON.stringify(data));
       getEventData()
@@ -50,7 +51,6 @@ function Event({userInfo, setUserInfo}) {
     })
     return () => {
       channel.unbind()
-
     }
 
 
@@ -73,20 +73,20 @@ function Event({userInfo, setUserInfo}) {
   }
 
   async function confirmDate(e) {
-    let token = localStorage.token;
-    try {
-      await Axios.put(`http://localhost:80/event/${eventid}/confirm`, {
-        date: e.target.id
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      await pusherTrigger()
-    } catch (err) {
-      console.log(err);
+      let token = localStorage.token;
+      try {
+        await Axios.put(`http://localhost:80/event/${eventid}/confirm`, {
+          date: e.target.id
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        await pusherTrigger()
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
 
 
   async function pusherTrigger() {
@@ -98,9 +98,21 @@ function Event({userInfo, setUserInfo}) {
       console.log(err)
     }
   }
+
+
+  async function dashboardTrigger(username) {
+    try {
+      await Axios.post('http://localhost:80/pusher/trigger', {
+        channel: `channel-${username}`
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   async function kickParticipant(e){
+
     let token = localStorage.token
-    console.log(e.target.id)
     try{
       await Axios.put(`http://localhost:80/event/${eventid}/participant/delete`, {participant: e.target.id},{
         headers: {
@@ -109,9 +121,11 @@ function Event({userInfo, setUserInfo}) {
       }
       )
       await pusherTrigger()
+      await dashboardTrigger(e.target.id)
     }catch(error){
       console.log(error)
     }
+
   }
 
   function stringDates(element) {
@@ -216,8 +230,8 @@ function Event({userInfo, setUserInfo}) {
 
               <h2>Participants</h2>
               <p>{eventData.readyUsers.length} / {eventData.participants.length} users are ready</p>
-
-              {eventData.participants.map((participant) => {
+              <div className="participant-cards-div">
+                              {eventData.participants.map((participant) => {
                 if (eventData.readyUsers.findIndex(readyUser => readyUser === participant) > -1) {
                   return <div className="participant-card ready" id={participant} onClick={kickParticipant} >
                     <p id={participant}>{participant}</p>
@@ -227,9 +241,9 @@ function Event({userInfo, setUserInfo}) {
                     <p id={participant}> {participant}</p>
                   </div>
                 }
-
-
               })}
+              </div>
+
             </div>
 
             <DateRange eventData={eventData} setEventData={setEventData} userInfo={userInfo}/>
@@ -237,8 +251,14 @@ function Event({userInfo, setUserInfo}) {
 
 
             <div className="dates-results-main-div">
-              <p>Current potential appointment dates</p>
-              {availRender}
+              {eventData.status === "Pending" && <p>Current potential appointment dates</p>}
+              {eventData.status === "Ready" && eventData.host[0] === userInfo.username && <p>Everyone is ready! Click on the date to lock it in!</p>}
+              {eventData.status === "Ready" && eventData.host[0] !== userInfo.username && <p>Everyone is ready! Please wait for host to confirm the date</p>}
+              {eventData.status === "Confirmed" && eventData.host[0]=== userInfo.username && <p>Date is confirmed.</p>}
+              <div className="results-grid">
+                {availRender}
+              </div>
+
             </div>
 
 
