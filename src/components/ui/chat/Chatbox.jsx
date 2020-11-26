@@ -30,7 +30,7 @@ function Chatbox({chat, userInfo, getEventData, pusherTrigger, userTyping}) {
   useEffect(() => {
     renderMessages()
     scrollToBottom()
-  }, [chat, renderMessages])
+  }, [chat])
 
 
   // useEffect(() => {

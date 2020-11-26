@@ -111,89 +111,77 @@
   font-size: 15px;
 }
 
-.eventpage-main-div {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
-  min-width: 1000px;
-  max-width: 1500px;
-  padding: 20px;
-  margin-top: 30px;
-}
-.eventpage-main-div .eventpage-left {
-  width: 100%;
-}
-.eventpage-main-div .eventpage-left .event-name-div h6 {
+.page-main-div .page-left .event-name-div h6 {
   margin: 0;
   font-family: "Cabin", sans-serif;
   font-size: 15px;
   color: #b3b3b3;
 }
-.eventpage-main-div .eventpage-left .event-name-div h1 {
+.page-main-div .page-left .event-name-div h1 {
   margin: 0;
   font-family: "Heebo", sans-serif;
   font-weight: 700;
   font-size: 30px;
   color: #0f2662;
 }
-.eventpage-main-div .eventpage-left .participants-div {
+.page-main-div .page-left .participants-div {
   display: flex;
   align-items: center;
 }
-.eventpage-main-div .eventpage-left .participants-div h2 {
+.page-main-div .page-left .participants-div h2 {
   font-family: "Heebo", sans-serif;
   font-size: 30px;
   font-weight: 200;
   margin: 0 20px 0 0;
 }
-.eventpage-main-div .eventpage-left .participants-div .participant-card {
+.page-main-div .page-left .participants-div .participant-card {
   background-color: #e3e3e3;
   border-radius: 10px;
   padding: 5px 10px;
   margin: 0 3px;
 }
-.eventpage-main-div .eventpage-left .participants-div .participant-card.ready {
+.page-main-div .page-left .participants-div .participant-card.ready {
   background-color: #79e270;
 }
-.eventpage-main-div .eventpage-left .participants-div .participant-card p {
+.page-main-div .page-left .participants-div .participant-card p {
   margin: 0;
   font-size: 12px;
 }
-.eventpage-main-div .eventpage-left .date-range-main-div input {
+.page-main-div .page-left .date-range-main-div input {
   margin: 10px 10px;
 }
-.eventpage-main-div .eventpage-left .planner-main-div {
+.page-main-div .page-left .planner-main-div {
   margin-top: 50px;
 }
-.eventpage-main-div .eventpage-left .planner-main-div p {
+.page-main-div .page-left .planner-main-div p {
   font-family: "Heebo", sans-serif;
   font-size: 20px;
 }
-.eventpage-main-div .eventpage-left .planner-main-div .dateblocks-chooser-div {
+.page-main-div .page-left .planner-main-div .dateblocks-chooser-div {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
   justify-items: center;
 }
-.eventpage-main-div .eventpage-left .planner-main-div .dateblocks-chooser-div .date-card:hover {
+.page-main-div .page-left .planner-main-div .dateblocks-chooser-div .date-card:hover {
   transform: scale(1.04);
   transform-origin: center;
   box-shadow: 1px 1px 5px 0 rgba(190, 190, 190, 0.4), 1px 1px 20px 2px rgba(188, 188, 188, 0.2);
   transition-duration: 0.3s;
 }
-.eventpage-main-div .eventpage-left .planner-main-div .dateblocks-chooser-div .date-card.blocked {
+.page-main-div .page-left .planner-main-div .dateblocks-chooser-div .date-card.blocked {
   transform: none;
   opacity: 0.3;
   box-shadow: none;
   background-color: #f3f3f3;
 }
-.eventpage-main-div .eventpage-left .planner-main-div .dateblocks-chooser-div .date-card p {
+.page-main-div .page-left .planner-main-div .dateblocks-chooser-div .date-card p {
   font-family: "Cabin", sans-serif;
   font-weight: 500;
   font-size: 15px;
   margin: 0;
 }
-.eventpage-main-div .eventpage-left .date-card {
+.page-main-div .page-left .date-card {
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -205,34 +193,32 @@
   cursor: pointer;
   box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5), 1px 1px 10px 2px rgba(181, 181, 181, 0.3);
 }
-.eventpage-main-div .eventpage-left .date-card.blocked {
+.page-main-div .page-left .date-card.blocked {
   opacity: 0.5;
 }
-.eventpage-main-div .eventpage-left .date-card p {
+.page-main-div .page-left .date-card p {
   font-family: "Cabin", sans-serif;
   font-weight: 500;
   font-size: 15px;
   margin: 0;
 }
-.eventpage-main-div .eventpage-left .dates-results-main-div {
+.page-main-div .page-left .dates-results-main-div {
   margin-top: 30px;
 }
-.eventpage-main-div .eventpage-left .dates-results-main-div .date-card {
+.page-main-div .page-left .dates-results-main-div .date-card {
   background-color: #7ed07e;
 }
-.eventpage-main-div .eventpage-left .dates-results-main-div .date-card.confirm {
+.page-main-div .page-left .dates-results-main-div .date-card.confirm {
   background-color: greenyellow;
 }
-.eventpage-main-div .eventpage-left .dates-results-main-div .date-card p {
+.page-main-div .page-left .dates-results-main-div .date-card p {
   font-family: "Cabin", sans-serif;
   font-weight: 500;
   font-size: 15px;
   margin: 0;
 }
-.eventpage-main-div .eventpage-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.page-main-div .page-right .friends-list-div {
+  height: 300px;
 }
 
 @keyframes grow-date-card {

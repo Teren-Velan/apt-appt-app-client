@@ -29,20 +29,35 @@ html {
   justify-content: flex-start;
 }
 
+.page-main-div {
+  display: flex;
+  justify-content: space-between;
+  min-width: 1000px;
+  max-width: 1280px;
+  padding: 20px;
+  margin: 50px 0 70px 0;
+}
+.page-main-div .page-left {
+  width: 100%;
+  margin-right: 20px;
+}
+.page-main-div .page-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
-  background-color: #f6f6f6;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: #dedede 1px solid;
   padding: 0 20px;
-  border-radius: 15px;
-  width: 80%;
-  min-width: 1000px;
-  max-width: 1200px;
+  width: 100%;
   height: 70px;
-  margin: 10px auto;
 }
 .topbar .topbar-left {
-  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -63,39 +78,38 @@ html {
   font-size: 25px;
   margin: 20px;
 }
-.topbar .topbar-left .searchBar {
+.topbar .searchBar {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-width: 440px;
   z-index: 5;
 }
-.topbar .topbar-left .searchBar input {
+.topbar .searchBar input {
   width: 400px;
-  height: 30px;
+  height: 50px;
   font-family: "Heebo", sans-serif;
   font-size: 15px;
-  color: #7a7a7a;
-  background-color: #f6f6f6;
-  border: none;
+  border: #efefef 1px solid;
   margin-left: 10px;
-  padding: 0 10px;
+  padding: 10px 10px;
   border-radius: 20px;
+  min-width: 500px;
+  max-width: 600px;
 }
-.topbar .topbar-left .searchBar input:focus {
+.topbar .searchBar input:focus {
   outline: none;
 }
-.topbar .topbar-left .searchBar input::placeholder {
+.topbar .searchBar input::placeholder {
   color: #a4a4a4;
 }
-.topbar .topbar-left .searchBar .search-icon {
+.topbar .searchBar .search-icon {
   color: #8d8d8d;
   font-size: 20px;
   cursor: pointer;
 }
-.topbar .topbar-left .searchBar .small-loader {
+.topbar .searchBar .small-loader {
   margin: auto;
   border: 3px solid #f3f3f3;
   border-radius: 50%;
@@ -106,12 +120,12 @@ html {
   /* Safari */
   animation: spin 0.5s linear infinite;
 }
-.topbar .topbar-left .searchBar .searchSuggestions {
+.topbar .searchBar .searchSuggestions {
   position: absolute;
   top: 50px;
   border-radius: 20px;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card {
+.topbar .searchBar .searchSuggestions .suggestion-card {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -128,13 +142,13 @@ html {
   box-shadow: 1px 1px 2px 0 rgba(207, 207, 207, 0.5), 1px 1px 20px 2px rgba(191, 191, 191, 0.3);
   cursor: pointer;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card:hover {
+.topbar .searchBar .searchSuggestions .suggestion-card:hover {
   text-decoration: none;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card:link {
+.topbar .searchBar .searchSuggestions .suggestion-card:link {
   text-decoration: none;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .add-friend-button {
+.topbar .searchBar .searchSuggestions .suggestion-card .add-friend-button {
   width: 100px;
   height: 100%;
   margin: 0;
@@ -143,16 +157,16 @@ html {
   justify-content: center;
   background-color: #efefef;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .add-friend-button p {
+.topbar .searchBar .searchSuggestions .suggestion-card .add-friend-button p {
   font-family: "Heebo", sans-serif;
   font-size: 12px;
   margin: 0;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .add-friend-button:hover {
+.topbar .searchBar .searchSuggestions .suggestion-card .add-friend-button:hover {
   cursor: pointer;
   background-color: #e2e2e2;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text {
+.topbar .searchBar .searchSuggestions .suggestion-card .suggestion-text {
   display: flex;
   flex-direction: column;
   font-family: "Heebo", sans-serif;
@@ -162,22 +176,22 @@ html {
   width: 80%;
   z-index: 6;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text:hover {
+.topbar .searchBar .searchSuggestions .suggestion-card .suggestion-text:hover {
   text-decoration: none;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text span {
+.topbar .searchBar .searchSuggestions .suggestion-card .suggestion-text span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text span:first-of-type {
+.topbar .searchBar .searchSuggestions .suggestion-card .suggestion-text span:first-of-type {
   color: #2b2b2b;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .suggestion-card .suggestion-text span:nth-of-type(2) {
+.topbar .searchBar .searchSuggestions .suggestion-card .suggestion-text span:nth-of-type(2) {
   color: #606060;
 }
-.topbar .topbar-left .searchBar .searchSuggestions .see-more {
+.topbar .searchBar .searchSuggestions .see-more {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -350,6 +364,12 @@ html {
 
 .remove_friend_button:hover {
   opacity: 1;
+}
+
+footer {
+  width: 100%;
+  height: 300px;
+  background-color: #0f2662;
 }
 
 /*# sourceMappingURL=App.css.map */

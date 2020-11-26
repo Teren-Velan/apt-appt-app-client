@@ -189,9 +189,9 @@ function Event({userInfo, setUserInfo}) {
     render = [
       <>
 
-        <div className="eventpage-main-div">
+        <div className="page-main-div">
 
-          <div className="eventpage-left">
+          <div className="page-left">
             <div className="event-name-div">
               <h6>event title.</h6>
               <h1>{eventData.event_name}</h1>
@@ -230,7 +230,7 @@ function Event({userInfo, setUserInfo}) {
 
           </div>
 
-          <div className="eventpage-right">
+          <div className="page-right">
 
             <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}
                      pusherTrigger={pusherTrigger} userTyping={userTyping}/>
