@@ -91,7 +91,7 @@ function Dashboard({ userInfo, setUserInfo }) {
   if (Object.keys(eventData).length !== 0) {
     render = [
       // <CSSTransition in={appear} appear={true} timeout={300} classNames="fade">
-      <EventsDisplay eventData={eventData} setEventData={setEventData} />,
+      <EventsDisplay eventData={eventData} setEventData={setEventData} setUserInfo={setUserInfo} />,
       // </CSSTransition>,
     ];
   }
@@ -102,7 +102,7 @@ function Dashboard({ userInfo, setUserInfo }) {
         {/* left side  */}
         <div className="page-left">
           <div className="event-count-container">
-            <EventCount />
+            <EventCount eventData={eventData}/>
           </div>
 
           <div className="event-btn-cont">
