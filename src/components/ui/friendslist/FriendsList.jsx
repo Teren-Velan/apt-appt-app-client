@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { FaUserCircle, FaAngleDown, FaHome } from "react-icons/fa";
-import {da} from "react-date-range/dist/locale";
+import { da } from "react-date-range/dist/locale";
 
 function FriendsList({
   userInfo,
@@ -9,7 +9,7 @@ function FriendsList({
   eventpage,
   eventID,
   setEventData,
-  pusherTrigger
+  pusherTrigger,
 }) {
   async function toggleFriend(e) {
     if (eventpage != "true") {
@@ -29,12 +29,11 @@ function FriendsList({
         });
 
         setUserInfo(userData.data.user);
-        await dashboardTrigger(e.target.id)
+        await dashboardTrigger(e.target.id);
       } catch (error) {
         console.log(error);
       }
     } else {
-
       try {
         let token = localStorage.token;
         await Axios.post(
@@ -55,10 +54,8 @@ function FriendsList({
 
         setEventData(resData.data.event);
 
-
-        await dashboardTrigger(e.target.id)
-        await pusherTrigger()
-
+        await dashboardTrigger(e.target.id);
+        await pusherTrigger();
       } catch (error) {
         console.log(error);
       }
