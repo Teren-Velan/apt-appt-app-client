@@ -26,11 +26,10 @@ function Dashboard({ userInfo, setUserInfo }) {
     let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
       cluster: 'ap1'
     });
-    let channel = pusher.subscribe(`channel-${username}`);
-
+    let channel = pusher.subscribe(`channel-${userInfo.username}`);
+    console.log("subscribe to", userInfo)
     channel.bind('trigger', function (data) {
-      // alert(JSON.stringify(data));
-      getEventData()
+       getEventData()
     })
 
     return () => {
@@ -39,7 +38,7 @@ function Dashboard({ userInfo, setUserInfo }) {
   }, []);
 
 
-
+console.log("subscribe to", userInfo)
 
   // for input handling of modal
   function inputHandling(e) {
@@ -56,7 +55,7 @@ function Dashboard({ userInfo, setUserInfo }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("user: ", resData.data);
+      // console.log("user: ", resData.data);
       setEventData(resData.data.user.events);
     } catch (err) {
       console.log(err);
@@ -76,7 +75,7 @@ function Dashboard({ userInfo, setUserInfo }) {
           },
         }
       );
-      getEventData();
+      await getEventData();
     } catch (error) {
       console.log(error);
       // return res.status(400).json({ error: error });

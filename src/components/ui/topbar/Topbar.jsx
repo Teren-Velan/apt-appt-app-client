@@ -53,7 +53,10 @@ function Topbar({userInfo, logout, setUserInfo, type}) {
 
           </div>
         </NavLink>
-        <h2>Apt Appt App</h2>
+        <div className="brand-div">
+          <h2>Apt Appt App</h2>
+        </div>
+
 
 
       </div>

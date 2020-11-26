@@ -157,15 +157,20 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
     <div className="planner-main-div">
       <div className="planner-header-div">
         <p>Block your unavailable dates</p>
-        <div className="ready-button-div" onClick={readyUp}>
-          {eventData.readyUsers.findIndex(readyUser => readyUser === userInfo.username) > -1 ?
-            <FaCheckCircle className="ready-button ready"/> :
 
+        {eventData.readyUsers.findIndex(readyUser => readyUser === userInfo.username) > -1 ?
+          <div className="ready-button-div ready" onClick={readyUp}>
+            <FaCheckCircle className="ready-button ready"/>
+            <p>Ready up!</p>
+          </div>
+          :
+          <div className="ready-button-div" onClick={readyUp}>
             <FaCheckCircle className="ready-button"/>
+            <p>Ready up!</p>
+          </div>
+        }
 
-          }
-          Ready up!
-        </div>
+
 
       </div>
 

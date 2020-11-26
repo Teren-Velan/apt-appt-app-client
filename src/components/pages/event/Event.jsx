@@ -28,6 +28,7 @@ function Event({userInfo, setUserInfo}) {
       cluster: 'ap1'
     });
     let channel = pusher.subscribe(`channel-${eventid}`);
+    console.log("subscribe to", channel)
     channel.bind('trigger', function (data) {
       // alert(JSON.stringify(data));
       getEventData()
@@ -97,9 +98,20 @@ function Event({userInfo, setUserInfo}) {
       console.log(err)
     }
   }
+
+
+  async function dashboardTrigger(username) {
+    try {
+      await Axios.post('http://localhost:80/pusher/trigger', {
+        channel: `channel-${username}`
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   async function kickParticipant(e){
     let token = localStorage.token
-    console.log(e.target.id)
     try{
       await Axios.put(`http://localhost:80/event/${eventid}/participant/delete`, {participant: e.target.id},{
         headers: {
@@ -108,6 +120,7 @@ function Event({userInfo, setUserInfo}) {
       }
       )
       await pusherTrigger()
+      await dashboardTrigger(e.target.id)
     }catch(error){
       console.log(error)
     }
@@ -215,8 +228,8 @@ function Event({userInfo, setUserInfo}) {
 
               <h2>Participants</h2>
               <p>{eventData.readyUsers.length} / {eventData.participants.length} users are ready</p>
-
-              {eventData.participants.map((participant) => {
+              <div className="participant-cards-div">
+                              {eventData.participants.map((participant) => {
                 if (eventData.readyUsers.findIndex(readyUser => readyUser === participant) > -1) {
                   return <div className="participant-card ready" id={participant} onClick={kickParticipant} >
                     <p id={participant}>{participant}</p>
@@ -226,9 +239,9 @@ function Event({userInfo, setUserInfo}) {
                     <p id={participant}> {participant}</p>
                   </div>
                 }
-
-
               })}
+              </div>
+
             </div>
 
             <DateRange eventData={eventData} setEventData={setEventData} userInfo={userInfo}/>
