@@ -20,7 +20,6 @@ import Chatbox from "./components/ui/chat/Chatbox";
 import "react-datepicker/dist/react-datepicker.css"
 
 
-
 function App() {
 //states
   const [userInfo, setUserInfo] = useState({})
@@ -57,17 +56,16 @@ function App() {
     <Router>
 
       <div className="main-div">
-       {Object.keys(userInfo).length != 0 && <Topbar 
-        userInfo={userInfo}
-        logout={logout} 
-        setUserInfo={setUserInfo}/>}
-        
+        {Object.keys(userInfo).length != 0 && <Topbar
+          userInfo={userInfo}
+          logout={logout}
+          setUserInfo={setUserInfo}/>}
+
 
         <Switch>
           <Route path="/" exact>
             {isAuth ? <p>Welcome back, go to your <NavLink to="/dashboard">dashboard</NavLink></p> : <WelcomePage/>}
           </Route>
-          {/*eheg*/}
           <Route path="/register" exact>
             <Registration/>
           </Route>
@@ -76,20 +74,20 @@ function App() {
           </Route>
 
           <Route path="/dashboard">
-{/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
-            <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
-          </Route>
 
+            <Dashboard userInfo={userInfo} setUserInfo={setUserInfo}/>
+
+          </Route>
 
           <Route path="/event/:eventid">
-{/* //             <Topbar userInfo={userInfo} logout={logout}/> */}
             <Event userInfo={userInfo}/>
           </Route>
-
 
         </Switch>
 
       </div>
+      <footer></footer>
+
 
     </Router>
 

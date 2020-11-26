@@ -52,11 +52,12 @@ function Topbar({ userInfo, logout, setUserInfo }) {
           <FaHome className="home-icon" />
         </div>
           </NavLink>
-        <SearchBar setUserInfo={setUserInfo} />
+
  
         
 
       </div>
+      <SearchBar setUserInfo={setUserInfo} />
 
       <div className="topbar-right">
         <div className="topbar-element-group">

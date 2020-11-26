@@ -20,7 +20,7 @@ function Event({userInfo, setUserInfo}) {
   let availRender = ''
   const [value, onChange] = useState(new Date());
   console.log("id: ", eventid);
-
+  const [userTyping, setUserTyping] = useState(false)
 
   useEffect(() => {
     getEventData();
@@ -34,9 +34,19 @@ function Event({userInfo, setUserInfo}) {
     })
 
     channel.bind('typing', function (data) {
-      if (data.user !== userInfo.username) {
-        alert(`${data.user} is typing`)
+      console.log(data)
+      if (data.typing === true) {
+        if (data.user !== userInfo.username) {
+          setUserTyping(true)
+          console.log("usertyping: ", data.user)
+        }
+      } else {
+        if (data.user !== userInfo.username) {
+          setUserTyping(false)
+          console.log("usertyping: ", userTyping)
+        }
       }
+
     })
     return () => {
       channel.unbind()
@@ -50,11 +60,6 @@ function Event({userInfo, setUserInfo}) {
     let token = localStorage.token;
     console.log(`http://localhost:80/event/${eventid}`);
     try {
-      // let resData = await Axios.get(`http://localhost:80/event/${eventid}`, {
-      //   header: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // });
       let resData = await Axios.get(`http://localhost:80/event/${eventid}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -198,9 +203,9 @@ function Event({userInfo, setUserInfo}) {
     render = [
       <>
 
-        <div className="eventpage-main-div">
+        <div className="page-main-div">
 
-          <div className="eventpage-left">
+          <div className="page-left">
             <div className="event-name-div">
               <h6>event title.</h6>
               <h1>{eventData.event_name}</h1>
@@ -239,10 +244,10 @@ function Event({userInfo, setUserInfo}) {
 
           </div>
 
-          <div className="eventpage-right">
+          <div className="page-right">
 
             <Chatbox chat={eventData.chat} userInfo={userInfo} getEventData={getEventData}
-                     pusherTrigger={pusherTrigger}/>
+                     pusherTrigger={pusherTrigger} userTyping={userTyping}/>
             <FriendsList userInfo={userInfo} eventpage="true" eventID={eventData._id} setEventData={setEventData}/>
 
           </div>
