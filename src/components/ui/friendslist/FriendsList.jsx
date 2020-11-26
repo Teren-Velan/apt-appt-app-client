@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { FaUserCircle, FaAngleDown, FaHome } from "react-icons/fa";
+import {da} from "react-date-range/dist/locale";
 
 function FriendsList({
   userInfo,
@@ -12,8 +13,7 @@ function FriendsList({
 }) {
   async function toggleFriend(e) {
     if (eventpage != "true") {
-      console.log(e.target.value);
-      let object = { username: e.target.value };
+      let object = { username: e.target.id };
 
       try {
         let token = localStorage.token;
@@ -29,6 +29,7 @@ function FriendsList({
         });
 
         setUserInfo(userData.data.user);
+        await dashboardTrigger(e.target.id)
       } catch (error) {
         console.log(error);
       }
@@ -38,7 +39,7 @@ function FriendsList({
         let token = localStorage.token;
         await Axios.post(
           `http://localhost:80/event/${eventID}/participant/add`,
-          { participant: e.target.value },
+          { participant: e.target.id },
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +56,7 @@ function FriendsList({
         setEventData(resData.data.event);
 
 
-        await dashboardTrigger(e.target.value)
+        await dashboardTrigger(e.target.id)
         await pusherTrigger()
 
       } catch (error) {
@@ -87,7 +88,7 @@ function FriendsList({
             </p>
             <div
               className="remove_friend_button"
-              value={el.username}
+              id={el.username}
               onClick={toggleFriend}
             >
               {eventpage === "true" ? "add" : "remove"}
