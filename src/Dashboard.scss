@@ -136,6 +136,11 @@
       flex-direction: row;
       justify-content: flex-end;
     }
+
+    .trash-alt {
+      width: 20px;
+    }
+
     .status p {
       margin-top: 15px;
       font-size: 16px;
@@ -203,10 +208,10 @@
   }
 }
 
-.spaces{
-    border: none;
-    background-color: #f7f7f7;
-    border-radius: 35px;
-    margin-right: 10px;
-    margin-left: -20px;
+.spaces {
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 35px;
+  margin-right: 10px;
+  margin-left: -20px;
 }
