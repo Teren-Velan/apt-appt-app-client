@@ -17,7 +17,7 @@ import OutsideAlerter from "../../ui/searchbar/OutsideAlerter";
 import DropdownMenu from "../../ui/dropdown/DropdownMenu";
 import { CSSTransition } from "react-transition-group";
 
-function EventCard({ eventData, setEventData, setUserInfo }) {
+function EventCard({ eventData, setEventData, setUserInfo, userInfo }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [appear, setAppear] = useState(true);
 
@@ -113,11 +113,13 @@ function EventCard({ eventData, setEventData, setUserInfo }) {
           </div>
         </div>
       </Link>
+      {userInfo ? userInfo.username == eventData.host[0] ?
       <div className="event-icons">
         <button onClick={deleteEvent} className="svg-btn">
           <FaTrashAlt />
         </button>
-      </div>
+      </div> : "" : ""
+      }
     </div>
   );
 }

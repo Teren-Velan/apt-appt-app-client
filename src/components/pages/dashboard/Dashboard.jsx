@@ -87,7 +87,7 @@ function Dashboard({ userInfo, setUserInfo }) {
   if (Object.keys(eventData).length !== 0) {
     render = [
       // <CSSTransition in={appear} appear={true} timeout={300} classNames="fade">
-      <EventsDisplay eventData={eventData} setEventData={setEventData} setUserInfo={setUserInfo} />,
+      <EventsDisplay eventData={eventData} setEventData={setEventData} setUserInfo={setUserInfo} userInfo={userInfo}/>,
       // </CSSTransition>,
     ];
   }
