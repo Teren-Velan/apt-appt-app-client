@@ -50,7 +50,6 @@ function Event({userInfo, setUserInfo}) {
     })
     return () => {
       channel.unbind()
-
     }
 
 
@@ -237,8 +236,14 @@ function Event({userInfo, setUserInfo}) {
 
 
             <div className="dates-results-main-div">
-              <p>Current potential appointment dates</p>
-              {availRender}
+              {eventData.status === "Pending" && <p>Current potential appointment dates</p>}
+              {eventData.status === "Ready" && eventData.host[0] === userInfo.username && <p>Everyone is ready! Click on the date to lock it in!</p>}
+              {eventData.status === "Ready" && eventData.host[0] !== userInfo.username && <p>Everyone is ready! Please wait for host to confirm the date</p>}
+              {eventData.status === "Confirmed" && eventData.host[0]=== userInfo.username && <p>Date is confirmed.</p>}
+              <div className="results-grid">
+                {availRender}
+              </div>
+
             </div>
 
 

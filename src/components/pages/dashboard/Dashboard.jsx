@@ -10,6 +10,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import { FcPlus } from "react-icons/fc";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import FriendsList from "../../ui/friendslist/FriendsList";
+import Pusher from "pusher-js";
 
 function Dashboard({ userInfo, setUserInfo }) {
   let { username } = useParams();
@@ -18,10 +19,27 @@ function Dashboard({ userInfo, setUserInfo }) {
   const [inputFields, setInputFields] = useState({});
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  console.log("user here", userInfo)
+
+
   useEffect(() => {
     getEventData();
+    let pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+      cluster: 'ap1'
+    });
+    let channel = pusher.subscribe(`channel-${username}`);
+
+    channel.bind('trigger', function (data) {
+      // alert(JSON.stringify(data));
+      getEventData()
+    })
+
+    return () => {
+      channel.unbind()
+    }
   }, []);
+
+
+
 
   // for input handling of modal
   function inputHandling(e) {

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Form, Button, Container} from "react-bootstrap";
 import Axios from "axios";
 import {ca} from "react-date-range/dist/locale";
+import {FaCheckCircle} from "react-icons/all";
 
 function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
   // console.log(eventData);
@@ -30,7 +31,7 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
       temp.splice(index, 1);
       setBlockDates(temp);
     }
-    console.log("blockdates:",blockDates)
+    console.log("blockdates:", blockDates)
   }
 
 
@@ -42,8 +43,8 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
         date: dateObj
       }, {
         headers: {
-            Authorization: `Bearer ${token}`,
-          }
+          Authorization: `Bearer ${token}`,
+        }
       })
       pusherTrigger()
     } catch (err) {
@@ -72,7 +73,7 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
     }
   }
 
-  async function readyUp(){
+  async function readyUp() {
     try {
       let token = localStorage.token;
       await Axios.put(`http://localhost:80/event/${eventData._id}/ready`, {},
@@ -135,7 +136,9 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
         if (index > -1) {
           return (
             <div className="date-card blocked" id={availDate} onClick={clickBlock}>
-              <p id={availDate}><del id={availDate}>{stringDates(availDate)}</del></p>
+              <p id={availDate}>
+                <del id={availDate}>{stringDates(availDate)}</del>
+              </p>
             </div>
           )
         } else {
@@ -145,8 +148,6 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
             </div>
           )
         }
-
-
       }
     )
   }
@@ -154,8 +155,20 @@ function Planner({eventData, setEventData, userInfo, pusherTrigger}) {
 
   return (
     <div className="planner-main-div">
-      <p>Block your unavailable dates</p>
-      <button onClick={readyUp}>I'm done!</button>
+      <div className="planner-header-div">
+        <p>Block your unavailable dates</p>
+        <div className="ready-button-div" onClick={readyUp}>
+          {eventData.readyUsers.findIndex(readyUser => readyUser === userInfo.username) > -1 ?
+            <FaCheckCircle className="ready-button ready"/> :
+
+            <FaCheckCircle className="ready-button"/>
+
+          }
+          Ready up!
+        </div>
+
+      </div>
+
       <div className="dateblocks-chooser-div">
         {render}
       </div>
