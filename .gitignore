@@ -30,3 +30,5 @@ src/Welcome.css 2.map
 
 src/Auth.css
 src/Auth.css.map
+
+*.css.map
