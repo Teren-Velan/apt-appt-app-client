@@ -1,0 +1,217 @@
+// chnage to page main div
+.page-main-div {
+  min-height: 624px;
+  .page-left {
+    .event-count-container {
+      // width: 100%;
+      display: flex;
+    }
+
+    .countcontainer {
+      background-color: #f1f1f1;
+      height: 80px;
+      width: 180px;
+      transition: 0.3s;
+      border-radius: 10px;
+      font-family: "Heebo", sans-serif;
+      margin-right: 30px;
+      display: flex;
+      // justify-content: flex-start;
+
+      .count-heading {
+        display: flex;
+        font-weight: 400;
+        font-size: 16px;
+        color: #84878f;
+        font-family: "Source Sans Pro", sans-serif;
+        // justify-content: flex-start;
+      }
+      .countdetails {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        margin: 10px 0 0 20px;
+        font-weight: 100;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+    }
+
+    .count-number h1 {
+      font-weight: 300;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 28px;
+      margin-top: 3px;
+
+      .count-heading {
+        font-weight: 500;
+        font-size: 25px;
+      }
+    }
+
+    .event-btn-cont {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 20px;
+      width: 400px;
+      height: 80px;
+
+      // margin-left: -10px;
+      background-color: #fff;
+
+      .create-event-btn {
+        border: none;
+        // background-color: #fff;
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        border-radius: 5px;
+        width: 300px;
+        background-color: #fff;
+        font-family: "Source Sans Pro", sans-serif;
+        cursor: pointer;
+      }
+    }
+    .create-event-btn h1 {
+      font-weight: 100;
+      margin-top: 10px;
+      font-family: "Source Sans Pro", sans-serif;
+      text-align: start;
+    }
+
+    h1 svg {
+      color: #5b36e0;
+    }
+
+    // for each event container
+
+    .main-event-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .link-tag {
+      width: 100%;
+      text-decoration: none;
+      color: black;
+    }
+    .render-display {
+      width: 100%;
+    }
+
+    .event-Container {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      // width: 100%;
+    }
+    .holder {
+      width: 95%;
+    }
+
+    .event-Details {
+      width: 100%;
+      // margin-left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgb(182, 180, 180);
+      border-radius: 15px;
+      box-shadow: 1px 1px 2px 0 rgba(190, 190, 190, 0.5),
+        1px 1px 10px 2px rgba(181, 181, 181, 0.3);
+    }
+
+    .event-Details:hover {
+      transform: scale(1.01);
+      transform-origin: center;
+      box-shadow: 1px 1px 5px 0 rgba(190, 190, 190, 0.4),
+        1px 1px 20px 2px rgba(188, 188, 188, 0.2);
+      transition-duration: 0.3s;
+    }
+
+    .option-holder {
+      width: 90%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    .trash-alt {
+      width: 20px;
+    }
+
+    .status p {
+      margin-top: 15px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .event-Options {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title h4 {
+      font-size: 16px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .title h4 a {
+      font-size: 16px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .event-Details .title {
+      align-items: center;
+      width: 100%;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    svg {
+      color: grey;
+    }
+
+    .event-icons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .event-icons .svg-btn {
+      font-size: 16px;
+      border: none;
+      background-color: #f7f7f7;
+      border-radius: 35px;
+      margin-right: 10px;
+      margin-left: -20px;
+    }
+    .event-icons .svg-btn:hover {
+      background-color: rgb(255, 233, 233);
+
+      transition: 0.3s;
+    }
+  }
+  // }
+
+  .page-right {
+    min-height: 300px;
+  }
+}
+
+.spaces {
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 35px;
+  margin-right: 10px;
+  margin-left: -20px;
+}
